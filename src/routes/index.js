@@ -123,7 +123,7 @@ const Magictype = Loadable(lazy(() => import('../pages/dashboard/Magictype/Magic
 const EditMagictype = Loadable(lazy(() => import('../pages/dashboard/Magictype/EditMagictype')));
 const AddMagictype = Loadable(lazy(() => import('../pages/dashboard/Magictype/AddMagictype')));
 
-const Tag = Loadable(lazy(() => import('../pages/dashboard/Tag/Tag')));
+const Tag = Loadable(lazy(() => import('../pages/dashboard/Tag/Department')));
 const EditTag = Loadable(lazy(() => import('../pages/dashboard/Tag/EditTag')));
 const AddTag = Loadable(lazy(() => import('../pages/dashboard/Tag/AddTag')));
 

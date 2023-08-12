@@ -7,7 +7,7 @@ import chatReducer from './slices/chat';
 import productReducer from './slices/subadmin';
 import elementReducer from './slices/element';
 import magictypeReducer from './slices/magictype';
-import tagReducer from './slices/tag';
+import departReducer from './slices/department';
 import rarityReducer from './slices/rarity';
 import spellReducer from './slices/spell';
 import characterReducer from './slices/character';
@@ -35,7 +35,7 @@ const rootReducer = combineReducers({
   kanban: kanbanReducer,
   element:elementReducer,
   magictype:magictypeReducer,
-  tag:tagReducer,
+  depart:departReducer,
   rarity:rarityReducer,
   spell:spellReducer,
   character:characterReducer,

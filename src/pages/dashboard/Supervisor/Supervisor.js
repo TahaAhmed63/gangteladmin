@@ -72,10 +72,9 @@ export default function Element() {
     }
   }, [elements]);
 
-console.log(elements,'----------->>>>>>>>>>>')
   async function handleDelete(rowdata) {
     try {
-      await axios.delete(`element/${rowdata}`)
+      await axios.delete(`admin/supervisor/${rowdata}`)
       .then((response)=>{ 
         if(response?.data?.status === true){
         enqueueSnackbar(response?.data?.message);
@@ -90,10 +89,10 @@ console.log(elements,'----------->>>>>>>>>>>')
   }
 
   return (
-    <Page title="Element">
+    <Page title="Supervisor">
       <Container maxWidth='lg'>
         <HeaderBreadcrumbs
-          heading="Element"
+          heading="Supervisor"
           links={[
             { name: '', href: '' },]}
           action={
@@ -107,7 +106,6 @@ console.log(elements,'----------->>>>>>>>>>>')
             </Button>
           }
         />
-     
           <MaterialReactTable
           columns={columns}
           data={tableData}
@@ -127,7 +125,7 @@ console.log(elements,'----------->>>>>>>>>>>')
                 border: "1px solid",
                 borderColor: "primary.main",
               }}
-              onClick={()=>{navigate(PATH_DASHBOARD.rarity.editrarity(row.original.id))}}
+              onClick={()=>{navigate(PATH_DASHBOARD.element.editelement(row.original.id))}}
             >
               <EditIcon />
             </IconButton>

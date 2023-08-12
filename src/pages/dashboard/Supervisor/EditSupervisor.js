@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { LoadingButton } from '@mui/lab';
 import { Card,  Grid, Stack,   Container, } from '@mui/material';
-// routes
+import {SupervisorSchema,getDefaultValues} from '../AllSchema/SupervisorSchema'
 import { useSelector} from '../../../redux/store';
 import axios from '../../../utils/axios';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
@@ -18,7 +18,7 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 import {
   FormProvider,
   RHFTextField,
-  RHFDescription,
+  RHFSelect,
 } from '../../../components/hook-form';
 
 
@@ -29,23 +29,14 @@ export default function EditElement() {
   const { id } = useParams();
   const { elements } = useSelector((state) => state.element);
 
-  const currentelement = elements.find((element) =>element.id === +(id))
-
-  const NewElementSchema = Yup.object().shape({
-    name: Yup.string().required('Name is required'),
-    description: Yup.string().required('Description is required'),
-  });
-
-  const defaultValues = useMemo(
-    () => ({
-      name:   currentelement?.name || '',
-      description:  currentelement?.desc ||  '',
-    }),
-    []
-  );
+  const currentSupervisor = elements.find((element) =>element.id === +(id))
+  const { departs } = useSelector((state) => state.depart);
+  const { products } = useSelector((state) => state.product);
+console.log(currentSupervisor)
+  const defaultValues = useMemo(() => getDefaultValues(currentSupervisor), [currentSupervisor]);
 
   const methods = useForm({
-    resolver: yupResolver(NewElementSchema),
+    resolver: yupResolver(SupervisorSchema),
     defaultValues,
   });
 
@@ -61,11 +52,21 @@ export default function EditElement() {
     const formValues = getValues();
     console.log(formValues)
     try {
-      const element=new URLSearchParams();
-      element.append('name',formValues?.name)
-      element.append('desc',formValues?.description)
+      const supervisor = new FormData();
+      supervisor.append('first_name', formValues?.fname);
+      supervisor.append('last_name', formValues?.lname);
+      supervisor.append('email', formValues?.email);
+      supervisor.append('password', formValues?.password);
+      supervisor.append('phone', formValues?.phoneNumber);
+      supervisor.append('address', formValues?.address);
+      supervisor.append('department_id', formValues?.department_id);
+      supervisor.append('subadmin_id', formValues?.subadmin_id);
+      supervisor.append('supervisor_name', formValues?.supervisor_name);
+      supervisor.append('supervisor_email', formValues?.supervisor_email);
+      supervisor.append('supervisor_number', formValues?.supervisor_phoneNumber);
+      supervisor.append('_method', 'PUT');
    
-      await axios.put(`element/${id}`,element)
+      await axios.post(`admin/supervisor/${id}`,supervisor)
       
       .then((response)=>{ 
         if(response?.data?.status === true){
@@ -81,45 +82,81 @@ export default function EditElement() {
     }
   };
 
-  const handlePasswordKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      OnSubmit(methods.getValues()); // Call the onSubmit function
-    }
-  };
 
   return (
-    <Container maxWidth='sm'>
-    <HeaderBreadcrumbs
-      heading="Edit element"
-      links={[
-        { name: '', href: '' },]}/>
+    <Container maxWidth="sm">
+    <HeaderBreadcrumbs heading="Edit Supervisor" links={[{ name: '', href: '' }]} />
 
     <Card>
-    <FormProvider methods={methods} onSubmit={handleSubmit(OnSubmit)}>
-      <Grid container spacing={1}>
-        <Grid item xs={12} md={12}>
-          <Card sx={{ p: 3 }}>
+      <FormProvider methods={methods} onSubmit={handleSubmit(OnSubmit)}>
+        <Grid container spacing={1} sx={{ p: 3 }}>
+          <Grid item xs={12} md={6}>
             <Stack spacing={3}>
-              <RHFTextField name="name" label=" Name" focused/>
+              <RHFTextField name="fname" label="First Name" />
+              <RHFTextField name="email" label="Email" />
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack spacing={3}>
+                <RHFTextField name="lname" label="Last Name" />
+                <RHFTextField name="password" label="Password" />
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack spacing={3}>
+              <RHFTextField name="phoneNumber" label=" Phone" />
 
               <div>
-                <RHFDescription name="description" label="description" focused  onKeyPress={handlePasswordKeyPress}/>
+                <RHFTextField name="address" label="Address" />
               </div>
-
-            
-              <Grid item xs={4} md={4}>
-              <LoadingButton type="submit" variant="contained" size="large" loading={isSubmitting}>
-              
-            Update Element
-            </LoadingButton>
-            </Grid>
             </Stack>
-          </Card>
-        </Grid>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack spacing={3}>
+              <RHFTextField name="supervisor_name" label=" Supervisor Name" />
 
-      </Grid>
-    </FormProvider>
+              <div>
+                <RHFTextField name="supervisor_email" label="Supervisor Email" />
+              </div>
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack spacing={3}>
+              <RHFTextField name="supervisor_phoneNumber" label="Supervisor Number" />
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack spacing={3}>
+              <RHFSelect name="department_id" label="Select Your Sub Admin">
+                <option>Select Department</option>
+                {departs?.map((e) => (
+                  <option key={e?.id} value={e?.id}>
+                    {e?.name}
+                  </option>
+                ))}
+              </RHFSelect>
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <Stack spacing={3}>
+              <RHFSelect name="subadmin_id" label="Select Your Sub Admin">
+                <option>Select Sub Admin</option>
+                {products?.map((e) => (
+                  <option key={e?.id} value={e?.id}>
+                    {e?.first_name}
+                  </option>
+                ))}
+              </RHFSelect>
+            </Stack>
+          </Grid>
+          <Grid item xs={4} md={12}>
+            <LoadingButton type="submit" variant="contained" size="large" loading={isSubmitting}>
+            Update Supervisor
+            </LoadingButton>
+          </Grid>
+        </Grid>
+      </FormProvider>
     </Card>
-    </Container>
+  </Container>
   );
 }
