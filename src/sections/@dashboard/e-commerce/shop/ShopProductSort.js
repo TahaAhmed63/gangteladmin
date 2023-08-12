@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button, MenuItem, Typography } from '@mui/material';
 // redux
 import { useDispatch, useSelector } from '../../../../redux/store';
-import { sortByProducts } from '../../../../redux/slices/product';
+import { sortByProducts } from '../../../../redux/slices/subadmin';
 // components
 import Iconify from '../../../../components/Iconify';
 import MenuPopover from '../../../../components/MenuPopover';

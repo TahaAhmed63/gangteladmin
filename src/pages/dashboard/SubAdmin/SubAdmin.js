@@ -13,7 +13,7 @@ import {
 // redux
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from '../../../redux/store';
-import { getProducts } from '../../../redux/slices/product';
+import { getProducts } from '../../../redux/slices/subadmin';
 import axios from '../../../utils/axios';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
@@ -25,7 +25,7 @@ import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 // ----------------------------------------------------------------------
 
 
-export default function Dorm() {
+export default function SubAdmin() {
   const { enqueueSnackbar } = useSnackbar();
   const columns = useMemo(
     () => [
@@ -35,14 +35,19 @@ export default function Dorm() {
         size: 50,
       },
       {
-        accessorKey: "name",
-        header: "Name",
-        size: 150,
+        accessorKey: "first_name",
+        header: "First Name",
+        size: 20,
       },
       {
-        accessorKey: "desc",
-        header: "Description",
-        size: 350,
+        accessorKey: "last_name",
+        header: "Last Name",
+        size: 20,
+      },
+      {
+        accessorKey: "email",
+        header: "Email",
+        size: 20,
       },
     ],
     []
@@ -82,10 +87,10 @@ export default function Dorm() {
   }
 
   return (
-    <Page title="Dorm">
+    <Page title="Admin">
       <Container maxWidth='lg'>
         <HeaderBreadcrumbs
-          heading="Dorm"
+          heading="Admin"
           links={[
             { name: '', href: '' },]}
           action={
@@ -93,9 +98,9 @@ export default function Dorm() {
               variant="contained"
               startIcon={<Iconify icon="eva:plus-fill" />}
               component={RouterLink}
-              to={PATH_DASHBOARD.dorm.adddorm}
+              to={PATH_DASHBOARD.subadmin.addsubadmin}
             >
-              New Dorm
+              New Admin
             </Button>
           }
         />
@@ -119,7 +124,7 @@ export default function Dorm() {
                   border: "1px solid",
                   borderColor: "primary.main",
                 }}
-                onClick={()=>{navigate(PATH_DASHBOARD.rarity.editrarity(row.original.id))}}
+                onClick={()=>{navigate(PATH_DASHBOARD.subadmin.editsubadmin(row.original.id))}}
               >
                 <EditIcon />
               </IconButton>

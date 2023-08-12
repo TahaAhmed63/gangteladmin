@@ -91,7 +91,7 @@ export default function Home() {
   const mdUp = useResponsive('up', 'md');
 
   return (
-    <Page title="Gangtel Panel">
+    <Page title="Panel">
       <RootStyle>
         <Container maxWidth="md">
         

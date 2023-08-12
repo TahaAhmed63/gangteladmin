@@ -27,7 +27,7 @@ const navConfig = [
   {
     items: [
       { title: 'Dashboard', path: '/dashboard/home', icon: ICONS.dashboard },
-      { title: 'Dorm', path: PATH_DASHBOARD.dorm.dorm, icon: ICONS.mail },
+      { title: 'Admin', path: PATH_DASHBOARD.subadmin.subadmin, icon: ICONS.mail },
       { title: 'Element', path: PATH_DASHBOARD.element.element, icon: ICONS.invoice },
       { title: 'Magic Type', path: PATH_DASHBOARD.magictype.magictype, icon: ICONS.ecommerce },
       { title: 'Tag', path: PATH_DASHBOARD.tag.tag, icon: ICONS.analytics },

@@ -216,9 +216,9 @@ export function getProducts() {
   return async () => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get('dorm');
-      dispatch(slice.actions.getProductsSuccess(response?.data?.data));
-      console.log('product------>>>>')
+      const response = await axios.get('admin/subadmin');
+      console.log('admin------>>>>',response)
+      dispatch(slice.actions.getProductsSuccess(response?.data?.subadmins));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }

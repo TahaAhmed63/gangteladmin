@@ -11,7 +11,7 @@ import { Card,Grid, Stack, Container,Typography,Box } from '@mui/material';
 import { getTags} from '../../../redux/slices/tag';
 import { getRaritys} from '../../../redux/slices/rarity';
 import { getSpells} from '../../../redux/slices/spell';
-import { getProducts} from '../../../redux/slices/product';
+import { getProducts} from '../../../redux/slices/subadmin';
 import { getmagictypes} from '../../../redux/slices/magictype';
 import axios from '../../../utils/axios';
 import { fData } from '../../../utils/formatNumber';

@@ -48,9 +48,9 @@ export default function Router() {
 
             { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
             { path: 'home', element: <GeneralAnalytics /> },
-            { path: 'dorm', element: <Dorm /> },
-            { path: 'editdorm/:id', element: <EditDorm /> },
-            { path: 'adddorm', element: <AddDorm /> },
+            { path: 'subadmin', element: <SubAdmin /> },
+            { path: 'editsubadmin/:id', element: <EditSubAdmin /> },
+            { path: 'addsubadmin', element: <AddSubAdmin /> },
             { path: 'element', element: <Element /> },
             { path: 'editelement/:id', element: <EditElement /> },
             { path: 'addelement', element: <AddElement /> },
@@ -111,9 +111,9 @@ const ResetPassword = Loadable(lazy(() => import('../pages/auth/ResetPassword'))
 // const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
 
 
-const Dorm = Loadable(lazy(() => import('../pages/dashboard/Dorm/Dorm')));
-const EditDorm = Loadable(lazy(() => import('../pages/dashboard/Dorm/EditDorm')));
-const AddDorm = Loadable(lazy(() => import('../pages/dashboard/Dorm/AddDorm')));
+const SubAdmin = Loadable(lazy(() => import('../pages/dashboard/SubAdmin/SubAdmin')));
+const EditSubAdmin = Loadable(lazy(() => import('../pages/dashboard/SubAdmin/EditSubAdmin')));
+const AddSubAdmin = Loadable(lazy(() => import('../pages/dashboard/SubAdmin/AddSubAdmin')));
 
 const Element = Loadable(lazy(() => import('../pages/dashboard/Element/Element')));
 const EditElement = Loadable(lazy(() => import('../pages/dashboard/Element/EditElement')));

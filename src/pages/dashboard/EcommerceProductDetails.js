@@ -7,7 +7,7 @@ import { Box, Tab, Card, Grid, Divider, Container, Typography } from '@mui/mater
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
-import { getProduct, addCart, onGotoStep } from '../../redux/slices/product';
+import { getProduct, addCart, onGotoStep } from '../../redux/slices/subadmin';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // hooks

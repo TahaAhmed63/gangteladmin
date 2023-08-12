@@ -11,7 +11,7 @@ import { styled } from '@mui/material/styles';
 import { getTags} from '../../../redux/slices/tag';
 import { getRaritys} from '../../../redux/slices/rarity';
 import { getSpells} from '../../../redux/slices/spell';
-import { getProducts} from '../../../redux/slices/product';
+import { getProducts} from '../../../redux/slices/subadmin';
 import { getmagictypes} from '../../../redux/slices/magictype';
 import { useDispatch, useSelector } from '../../../redux/store';
 import {NewCharacterSchema} from '../AllSchema/CharacterSchema'
