@@ -131,11 +131,11 @@ const Rarity = Loadable(lazy(() => import('../pages/dashboard/Rarity/Rarity')));
 const EditRarity = Loadable(lazy(() => import('../pages/dashboard/Rarity/EditRarity')));
 const AddRarity = Loadable(lazy(() => import('../pages/dashboard/Rarity/AddRarity')));
 
-const Spell = Loadable(lazy(() => import('../pages/dashboard/Spell/Spell')));
+const Spell = Loadable(lazy(() => import('../pages/dashboard/Officer/Officer')));
 
-const EditSpell = Loadable(lazy(() => import('../pages/dashboard/Spell/EditSpell')));
-const AddSpell = Loadable(lazy(() => import('../pages/dashboard/Spell/AddSpell')));
-const Effect = Loadable(lazy(() => import('../pages/dashboard/Spell/Effect')));
+const EditSpell = Loadable(lazy(() => import('../pages/dashboard/Officer/EditSpell')));
+const AddSpell = Loadable(lazy(() => import('../pages/dashboard/Officer/AddOfficer')));
+const Effect = Loadable(lazy(() => import('../pages/dashboard/Officer/Effect')));
 
 const Card = Loadable(lazy(() => import('../pages/dashboard/Card/Card')));
 const EditCard = Loadable(lazy(() => import('../pages/dashboard/Card/EditCard')));

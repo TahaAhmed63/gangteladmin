@@ -58,7 +58,7 @@ export default function Magictype() {
   }, []);
 
   useEffect(() => {
-    if (tags.length) {
+    if (tags?.length) {
       setTableData(tags);
     }
   }, [tags]);

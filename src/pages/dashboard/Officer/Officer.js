@@ -23,7 +23,7 @@ import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 
-export default function Spell() {
+export default function Officer() {
   const { enqueueSnackbar } = useSnackbar();
   const navigate=useNavigate()
   const columns = useMemo(
@@ -86,10 +86,10 @@ export default function Spell() {
   }
 
   return (
-    <Page title="Spell">
+    <Page title="Officer">
       <Container maxWidth='lg'>
         <HeaderBreadcrumbs
-          heading="Spell"
+          heading="Officer"
           links={[
             { name: '', href: '' },]}
           action={
@@ -99,7 +99,7 @@ export default function Spell() {
               component={RouterLink}
               to={PATH_DASHBOARD.spell.addspell}
             >
-              New Spell
+              New Officer
             </Button>
           }
         />
