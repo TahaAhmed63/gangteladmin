@@ -1,43 +1,19 @@
-import { capitalCase } from 'change-case';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box,Grid, Card, Stack, Link, Alert, Tooltip, Container, Typography,CardHeader,Paper, CardContent } from '@mui/material';
+import { Box, Grid, Card, Stack, Container, Typography, CardContent } from '@mui/material';
 import { useNavigate } from 'react-router';
-import loginwebp from '../../../assets/login.webp'
-import {  PATH_ROLE_LOGIN } from '../../../routes/paths';
-import {
-    AnalyticsCurrentVisits,
-    AnalyticsWebsiteVisits,
-    AnalyticsWidgetSummary,
-  } from '../../../sections/@dashboard/general/analytics';
+import Iconify from '../../../components/Iconify';
+import { PATH_ROLE_LOGIN } from '../../../routes/paths';
+import { AnalyticsWidgetSummary } from '../../../sections/@dashboard/general/analytics';
 import useAuth from '../../../hooks/useAuth';
 import useResponsive from '../../../hooks/useResponsive';
 // components
 import Page from '../../../components/Page';
-import Logo from '../../../components/Logo';
-import Image from '../../../components/Image';
 // sections
-import { LoginForm } from '../../../sections/auth/login';
-import SvgIconStyle from '../../../components/SvgIconStyle';
 
-const getIcon = (name) => <SvgIconStyle src={`/icons/${name}.svg`} sx={{ width: 1, height: 1 }} />;
 
-const ICONS = {
-  blog: getIcon('ic_blog'),
-  cart: getIcon('ic_cart'),
-  chat: getIcon('ic_chat'),
-  mail: getIcon('ic_mail'),
-  user: getIcon('ic_user'),
-  kanban: getIcon('ic_kanban'),
-  banking: getIcon('ic_banking'),
-  booking: getIcon('ic_booking'),
-  invoice: getIcon('ic_invoice'),
-  calendar: getIcon('ic_calendar'),
-  ecommerce: getIcon('ic_ecommerce'),
-  analytics: getIcon('ic_analytics'),
-  dashboard: getIcon('ic_dashboard'),
-};
+
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
@@ -94,40 +70,74 @@ export default function Home() {
     <Page title="Gangtel Panel">
       <RootStyle>
         <Container maxWidth="md">
-        
-            <Stack direction="row" alignItems="center" sx={{ mb: 5,mt:10 }}>
-              <Box sx={{ flexGrow: 4 }}>
-                <Typography variant="h4" gutterBottom>
-                  Sign in to Gangtel
-                </Typography>
-              </Box>
-            </Stack>
-            <Card>
-        
+          <Stack direction="row" alignItems="center" sx={{ mb: 5, mt: 10 }}>
+            <Box sx={{ flexGrow: 4 }}>
+              <Typography variant="h4" gutterBottom>
+                Sign in to Gangtel
+              </Typography>
+            </Box>
+          </Stack>
+          <Card>
             <CardContent>
               <Grid container spacing={2}>
-              <Grid item xs={12} sm={6} md={4} onClick={()=>{navigate(PATH_ROLE_LOGIN.admin)}}>
-            <AnalyticsWidgetSummary name={"Admin"}  icon={ICONS?.user}  />
-              </Grid>
-              <Grid item xs={12} sm={6} md={4} onClick={()=>{navigate(PATH_ROLE_LOGIN.subadmin)}}>
-          <AnalyticsWidgetSummary name={"Sub Admin"}  icon={'ant-design:android-filled'}  />
-              </Grid>
-              <Grid item xs={12} sm={6} md={4} onClick={()=>{navigate(PATH_ROLE_LOGIN.supervisor)}}>
-                <AnalyticsWidgetSummary name={"Super Visor"}  icon={'ant-design:android-filled'}  />
-              </Grid>
-              <Grid item xs={12} sm={6} md={6} onClick={()=>{navigate(PATH_ROLE_LOGIN.officer)}}>
-                <AnalyticsWidgetSummary name={"Officer"}  icon={'ant-design:android-filled'}  />
-              </Grid>
-              <Grid item xs={12} sm={6} md={6} onClick={()=>{navigate(PATH_ROLE_LOGIN.member)}}>
-        <AnalyticsWidgetSummary name={"Gang Member"}  icon={'ant-design:android-filled'}  />
-              </Grid>
-               
-              
-            
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  onClick={() => {
+                    navigate(PATH_ROLE_LOGIN.admin);
+                  }}
+                >
+                  <AnalyticsWidgetSummary name={'Admin'} icon={'ri:admin-fill'} />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  onClick={() => {
+                    navigate(PATH_ROLE_LOGIN.subadmin);
+                  }}
+                >
+                  <AnalyticsWidgetSummary name={'Sub Admin'} icon={'subway:admin-1'} />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  onClick={() => {
+                    navigate(PATH_ROLE_LOGIN.supervisor);
+                  }}
+                >
+                  <AnalyticsWidgetSummary name={'Super Visor'} icon={'material-symbols:supervisor-account'} />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={6}
+                  onClick={() => {
+                    navigate(PATH_ROLE_LOGIN.officer);
+                  }}
+                >
+                  <AnalyticsWidgetSummary name={'Officer'} icon={'healthicons:officer'} />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={6}
+                  onClick={() => {
+                    navigate(PATH_ROLE_LOGIN.member);
+                  }}
+                >
+                  <AnalyticsWidgetSummary name={'Gang Member'} icon={'formkit:people'} />
+                </Grid>
               </Grid>
             </CardContent>
           </Card>
-
         </Container>
       </RootStyle>
     </Page>

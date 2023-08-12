@@ -115,9 +115,9 @@ const Dorm = Loadable(lazy(() => import('../pages/dashboard/Dorm/Dorm')));
 const EditDorm = Loadable(lazy(() => import('../pages/dashboard/Dorm/EditDorm')));
 const AddDorm = Loadable(lazy(() => import('../pages/dashboard/Dorm/AddDorm')));
 
-const Element = Loadable(lazy(() => import('../pages/dashboard/Element/Element')));
-const EditElement = Loadable(lazy(() => import('../pages/dashboard/Element/EditElement')));
-const AddElement = Loadable(lazy(() => import('../pages/dashboard/Element/AddElement')));
+const Element = Loadable(lazy(() => import('../pages/dashboard/Supervisor/Supervisor')));
+const EditElement = Loadable(lazy(() => import('../pages/dashboard/Supervisor/EditSupervisor')));
+const AddElement = Loadable(lazy(() => import('../pages/dashboard/Supervisor/AddSupervisor')));
 
 const Magictype = Loadable(lazy(() => import('../pages/dashboard/Magictype/Magictype')));
 const EditMagictype = Loadable(lazy(() => import('../pages/dashboard/Magictype/EditMagictype')));

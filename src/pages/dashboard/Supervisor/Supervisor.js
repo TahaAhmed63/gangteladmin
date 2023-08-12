@@ -34,14 +34,24 @@ export default function Element() {
         size: 50,
       },
       {
-        accessorKey: "name",
-        header: "Name",
+        accessorKey: "first_name",
+        header: "First Name",
         size: 150,
       },
       {
-        accessorKey: "desc",
-        header: "Description",
-        size: 350,
+        accessorKey: "last_name",
+        header: "last Name",
+        size: 150,
+      },
+      {
+        accessorKey: "email",
+        header: "Email",
+        size: 150,
+      },
+      {
+        accessorKey: "phone",
+        header: "Phone",
+        size: 150,
       },
     ],
     []
@@ -57,7 +67,7 @@ export default function Element() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (elements.length) {
+    if (elements?.length) {
       setTableData(elements);
     }
   }, [elements]);
@@ -93,7 +103,7 @@ console.log(elements,'----------->>>>>>>>>>>')
               component={RouterLink}
               to={PATH_DASHBOARD.element.addelement}
             >
-              New Element
+              Add Supervisor
             </Button>
           }
         />

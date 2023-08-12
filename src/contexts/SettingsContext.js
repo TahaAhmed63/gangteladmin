@@ -49,7 +49,7 @@ function SettingsProvider({ children }) {
   const onToggleMode = () => {
     setSettings({
       ...settings,
-      themeMode: settings.themeMode === 'light' ? 'dark' : 'light',
+      themeMode: settings.themeMode === 'dark' ? 'dark' : 'dark',
     });
   };
 
