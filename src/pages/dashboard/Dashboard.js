@@ -16,7 +16,7 @@ import {
 
 // ----------------------------------------------------------------------
 
-export default function GeneralAnalytics() {
+export default function Dashboard() {
   const { themeStretch } = useSettings();
   const navigate = useNavigate();
 
@@ -26,24 +26,24 @@ export default function GeneralAnalytics() {
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3} onClick={()=>{navigate(PATH_DASHBOARD.dorm.dorm)}}>
-            <AnalyticsWidgetSummary title="Dorms" total={714000} icon={'ant-design:android-filled'}  />
+            <AnalyticsWidgetSummary title="Dorms" name={714000} icon={'ant-design:android-filled'}  />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3} onClick={()=>{navigate(PATH_DASHBOARD.character.character)}}> 
-            <AnalyticsWidgetSummary title="Characters" total={1352831} color="info" icon={'ant-design:apple-filled'} />
+            <AnalyticsWidgetSummary title="Characters" name={1352831} color="info" icon={'ant-design:apple-filled'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3} onClick={()=>{navigate(PATH_DASHBOARD.card.card)}}>
             <AnalyticsWidgetSummary
               title="Cards"
-              total={1723315}
+              name={1723315}
               color="warning"
               icon={'ant-design:windows-filled'}
             />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3} onClick={()=>{navigate(PATH_DASHBOARD.spell.spell)}}>
-            <AnalyticsWidgetSummary title="Spells" total={234} color="error" icon={'ant-design:bug-filled'} />
+            <AnalyticsWidgetSummary title="Spells" name={234} color="error" icon={'ant-design:bug-filled'} />
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>

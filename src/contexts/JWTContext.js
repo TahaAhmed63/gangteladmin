@@ -78,7 +78,7 @@ function AuthProvider({ children }) {
 
           // const response = await axios.get('/api/account/my-account');
           // const { user } = response.data;
-const user={}
+          const user={}
           dispatch({
             type: 'INITIALIZE',
             payload: {
@@ -110,14 +110,15 @@ const user={}
     initialize();
   }, []);
 
-  const login = async (email, password) => {
-    const response = await axios.post('login', {
+  const login = async (email, password,url) => {
+    const response = await axios.post(url, {
       email,
       password,
     });
-    const { accessToken, user } = response?.data?.data;
+    console.log(response,'--->>>>>.user')
+    const { token, user } = response?.data;
   
-    setSession(accessToken);
+    setSession(token);
     dispatch({
       type: 'LOGIN',
       payload: {

@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 // @mui
 import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
+// utils
+
 // components
 import Iconify from '../../../../components/Iconify';
 
@@ -26,13 +28,14 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-AnalyticsWidgetSummary.propTypes = {
-  color: PropTypes.oneOf(['primary', 'secondary', 'info', 'success', 'warning', 'error']),
-  icon: PropTypes.string,
-  name: PropTypes.string,
-};
+// AnalyticsWidgetSummary.propTypes = {
+//   color: PropTypes.oneOf(['primary', 'secondary', 'info', 'success', 'warning', 'error']),
+//   icon: PropTypes.string,
+//   title: PropTypes.string,
+//   name: PropTypes.string,
+// };
 
-export default function AnalyticsWidgetSummary({  name, icon, color = 'primary' }) {
+export default function AnalyticsWidgetSummary({ title, name, icon, color = 'primary' }) {
   return (
     <RootStyle
       sx={{
@@ -53,6 +56,9 @@ export default function AnalyticsWidgetSummary({  name, icon, color = 'primary' 
         <Iconify icon={icon} width={24} height={24} />
       </IconWrapperStyle>
       <Typography variant="h5">{name}</Typography>
+      <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
+        {title}
+      </Typography>
     </RootStyle>
   );
 }

@@ -10,7 +10,7 @@ import useIsMountedRef from '../../../hooks/useIsMountedRef';
 import Iconify from '../../../components/Iconify';
 import { FormProvider, RHFTextField } from '../../../components/hook-form';
 
-export default function LoginForm() {
+export default function LoginForm({url}) {
   const { login } = useAuth();
   const navigate = useNavigate()
 
@@ -46,7 +46,7 @@ export default function LoginForm() {
   const onSubmit = async (data) => {
     console.log('login-->>>',data)
     try {
-       await login(data.email, data.password);
+       await login(data.email, data.password,url);
       navigate('/dashboard/home')
     } catch (error) {
       console.error(error);

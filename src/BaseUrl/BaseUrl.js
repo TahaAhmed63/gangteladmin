@@ -1,3 +1,3 @@
 export default{ 
-    BaseUrl : "https://twisterwonderlandapi.dev-sh.xyz/api/"
+    BaseUrl : "http://gangtel.dev-hi.xyz/api/"
 };

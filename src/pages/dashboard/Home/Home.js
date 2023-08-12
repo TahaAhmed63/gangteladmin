@@ -107,7 +107,7 @@ export default function Home() {
             <CardContent>
               <Grid container spacing={2}>
               <Grid item xs={12} sm={6} md={4} onClick={()=>{navigate(PATH_ROLE_LOGIN.admin)}}>
-            <AnalyticsWidgetSummary name={"Admin"}  icon={'ant-design:android-filled'}  />
+            <AnalyticsWidgetSummary name={"Admin"}  icon={ICONS?.user}  />
               </Grid>
               <Grid item xs={12} sm={6} md={4} onClick={()=>{navigate(PATH_ROLE_LOGIN.subadmin)}}>
           <AnalyticsWidgetSummary name={"Sub Admin"}  icon={'ant-design:android-filled'}  />

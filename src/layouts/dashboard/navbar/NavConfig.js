@@ -21,7 +21,6 @@ const ICONS = {
   analytics: getIcon('ic_analytics'),
   dashboard: getIcon('ic_dashboard'),
 };
-
 const navConfig = [
   // GENERAL
   // ----------------------------------------------------------------------
