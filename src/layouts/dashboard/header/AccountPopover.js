@@ -22,7 +22,7 @@ export default function AccountPopover() {
   const navigate = useNavigate();
 
   const { user, logout } = useAuth();
-
+console.log(user,'-------------->>>>')
   const isMountedRef = useIsMountedRef();
 
   const { enqueueSnackbar } = useSnackbar();
@@ -88,11 +88,11 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle2" noWrap>
-           Admin
+           {user?.role}
           </Typography>
-        
+       
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            admin@gmail.com
+          {user?.email}
           </Typography>
         </Box>
         <Divider sx={{ borderStyle: 'dashed' }} />

@@ -60,11 +60,11 @@ export const PATH_DASHBOARD = {
   //   officer: path(ROOTS_LOGIN, '/login/officer'),
   //   member: path(ROOTS_LOGIN, '/login/member'),
   // },
-  dorm: {
+  subadmin: {
     app: path(ROOTS_DASHBOARD, '/'),
-    dorm: path(ROOTS_DASHBOARD, '/dorm'),
-    editdorm: (id) => path(ROOTS_DASHBOARD, `/editdorm/${id}`),
-    adddorm: path(ROOTS_DASHBOARD, '/adddorm'),
+    subadmin: path(ROOTS_DASHBOARD, '/subadmin'),
+    editsubadmin: (id) => path(ROOTS_DASHBOARD, `/editsubadmin/${id}`),
+    addsubadmin: path(ROOTS_DASHBOARD, '/addsubadmin'),
   },
   element: {
     app: path(ROOTS_DASHBOARD, '/'),

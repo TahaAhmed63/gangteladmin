@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Box, Grid, Card, Button, Typography } from '@mui/material';
 // redux
 import { useDispatch, useSelector } from '../../../../redux/store';
-import { onBackStep, onNextStep, createBilling } from '../../../../redux/slices/product';
+import { onBackStep, onNextStep, createBilling } from '../../../../redux/slices/subadmin';
 // _mock_
 import { _addressBooks } from '../../../../_mock';
 // components

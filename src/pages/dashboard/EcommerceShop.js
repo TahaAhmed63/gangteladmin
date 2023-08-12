@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { Container, Typography, Stack } from '@mui/material';
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
-import { getProducts, filterProducts } from '../../redux/slices/product';
+import { getProducts, filterProducts } from '../../redux/slices/subadmin';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // hooks

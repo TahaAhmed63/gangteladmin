@@ -25,8 +25,8 @@ export default function Dashboard() {
     <Page title="Dashboard">
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={3} onClick={()=>{navigate(PATH_DASHBOARD.dorm.dorm)}}>
-            <AnalyticsWidgetSummary title="Dorms" name={714000} icon={'ant-design:android-filled'}  />
+          <Grid item xs={12} sm={6} md={3} onClick={()=>{navigate(PATH_DASHBOARD.subadmin.subadmin)}}>
+            <AnalyticsWidgetSummary title="Sub Admin" name={714000} icon={'ant-design:android-filled'}  />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3} onClick={()=>{navigate(PATH_DASHBOARD.character.character)}}> 

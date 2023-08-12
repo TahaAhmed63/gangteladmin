@@ -31,7 +31,7 @@ NavbarAccount.propTypes = {
 
 export default function NavbarAccount({ isCollapse }) {
   const { user } = useAuth();
-  // const user = JSON.parse(localStorage.getItem('admin'))
+ 
   return (
     <Link underline="none" color="inherit" component={RouterLink} to='/dashboard/home' >
       <RootStyle
@@ -57,10 +57,10 @@ export default function NavbarAccount({ isCollapse }) {
           }}
         >
           <Typography variant="subtitle2" noWrap>
-           admin@gmail.com
+           {user?.email}
           </Typography>
           <Typography variant="body2" noWrap sx={{ color: 'text.secondary' }}>
-           Admin
+          {user?.role}
           </Typography>
         </Box>
       </RootStyle>

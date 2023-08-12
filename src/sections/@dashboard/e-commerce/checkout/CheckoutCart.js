@@ -10,7 +10,7 @@ import {
   applyDiscount,
   increaseQuantity,
   decreaseQuantity,
-} from '../../../../redux/slices/product';
+} from '../../../../redux/slices/subadmin';
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // components

@@ -67,7 +67,7 @@ AuthProvider.propTypes = {
 
 function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-
+console.log(state,'->>>>>>>>>>>>>>>>>state')
   useEffect(() => {
     const initialize = async () => {
       try {

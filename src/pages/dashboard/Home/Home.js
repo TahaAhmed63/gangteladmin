@@ -67,7 +67,7 @@ export default function Home() {
   const mdUp = useResponsive('up', 'md');
 
   return (
-    <Page title="Gangtel Panel">
+    <Page title="Panel">
       <RootStyle>
         <Container maxWidth="md">
           <Stack direction="row" alignItems="center" sx={{ mb: 5, mt: 10 }}>

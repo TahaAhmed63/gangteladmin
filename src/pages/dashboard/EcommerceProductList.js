@@ -18,7 +18,7 @@ import {
 } from '@mui/material';
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
-import { getProducts } from '../../redux/slices/product';
+import { getProducts } from '../../redux/slices/subadmin';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // hooks
