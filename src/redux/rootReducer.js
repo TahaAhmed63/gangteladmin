@@ -7,7 +7,7 @@ import chatReducer from './slices/chat';
 import productReducer from './slices/subadmin';
 import elementReducer from './slices/element';
 import magictypeReducer from './slices/magictype';
-import tagReducer from './slices/tag';
+import departReducer from './slices/department';
 import rarityReducer from './slices/rarity';
 import spellReducer from './slices/spell';
 import characterReducer from './slices/character';

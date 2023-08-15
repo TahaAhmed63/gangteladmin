@@ -34,14 +34,24 @@ export default function Element() {
         size: 50,
       },
       {
-        accessorKey: "name",
-        header: "Name",
+        accessorKey: "first_name",
+        header: "First Name",
         size: 150,
       },
       {
-        accessorKey: "desc",
-        header: "Description",
-        size: 350,
+        accessorKey: "last_name",
+        header: "last Name",
+        size: 150,
+      },
+      {
+        accessorKey: "email",
+        header: "Email",
+        size: 150,
+      },
+      {
+        accessorKey: "phone",
+        header: "Phone",
+        size: 150,
       },
     ],
     []
@@ -57,15 +67,14 @@ export default function Element() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (elements.length) {
+    if (elements?.length) {
       setTableData(elements);
     }
   }, [elements]);
 
-console.log(elements,'----------->>>>>>>>>>>')
   async function handleDelete(rowdata) {
     try {
-      await axios.delete(`element/${rowdata}`)
+      await axios.delete(`admin/supervisor/${rowdata}`)
       .then((response)=>{ 
         if(response?.data?.status === true){
         enqueueSnackbar(response?.data?.message);
@@ -80,10 +89,10 @@ console.log(elements,'----------->>>>>>>>>>>')
   }
 
   return (
-    <Page title="Element">
+    <Page title="Supervisor">
       <Container maxWidth='lg'>
         <HeaderBreadcrumbs
-          heading="Element"
+          heading="Supervisor"
           links={[
             { name: '', href: '' },]}
           action={
@@ -93,11 +102,10 @@ console.log(elements,'----------->>>>>>>>>>>')
               component={RouterLink}
               to={PATH_DASHBOARD.element.addelement}
             >
-              New Element
+              Add Supervisor
             </Button>
           }
         />
-     
           <MaterialReactTable
           columns={columns}
           data={tableData}
@@ -117,7 +125,7 @@ console.log(elements,'----------->>>>>>>>>>>')
                 border: "1px solid",
                 borderColor: "primary.main",
               }}
-              onClick={()=>{navigate(PATH_DASHBOARD.rarity.editrarity(row.original.id))}}
+              onClick={()=>{navigate(PATH_DASHBOARD.element.editelement(row.original.id))}}
             >
               <EditIcon />
             </IconButton>

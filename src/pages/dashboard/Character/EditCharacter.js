@@ -8,7 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { LoadingButton } from '@mui/lab';
 import { Card,  Grid, Stack,   Container,Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { getTags} from '../../../redux/slices/tag';
+// import { getTags} from '../../../redux/slices/tag';
 import { getRaritys} from '../../../redux/slices/rarity';
 import { getSpells} from '../../../redux/slices/spell';
 import { getProducts} from '../../../redux/slices/subadmin';
@@ -147,7 +147,7 @@ export default function EditCharacter() {
   useEffect(() => {
     dispatch(getSpells());
     dispatch(getRaritys());
-    dispatch(getTags());
+    // dispatch(getTags());
     dispatch(getProducts());
     dispatch(getmagictypes());
     setNumFields(currentCharacter?.stat_formula?.length);

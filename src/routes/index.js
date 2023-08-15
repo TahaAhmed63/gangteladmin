@@ -115,15 +115,15 @@ const SubAdmin = Loadable(lazy(() => import('../pages/dashboard/SubAdmin/SubAdmi
 const EditSubAdmin = Loadable(lazy(() => import('../pages/dashboard/SubAdmin/EditSubAdmin')));
 const AddSubAdmin = Loadable(lazy(() => import('../pages/dashboard/SubAdmin/AddSubAdmin')));
 
-const Element = Loadable(lazy(() => import('../pages/dashboard/Element/Element')));
-const EditElement = Loadable(lazy(() => import('../pages/dashboard/Element/EditElement')));
-const AddElement = Loadable(lazy(() => import('../pages/dashboard/Element/AddElement')));
+const Element = Loadable(lazy(() => import('../pages/dashboard/Supervisor/Supervisor')));
+const EditElement = Loadable(lazy(() => import('../pages/dashboard/Supervisor/EditSupervisor')));
+const AddElement = Loadable(lazy(() => import('../pages/dashboard/Supervisor/AddSupervisor')));
 
 const Magictype = Loadable(lazy(() => import('../pages/dashboard/Magictype/Magictype')));
 const EditMagictype = Loadable(lazy(() => import('../pages/dashboard/Magictype/EditMagictype')));
 const AddMagictype = Loadable(lazy(() => import('../pages/dashboard/Magictype/AddMagictype')));
 
-const Tag = Loadable(lazy(() => import('../pages/dashboard/Tag/Tag')));
+const Tag = Loadable(lazy(() => import('../pages/dashboard/Tag/Department')));
 const EditTag = Loadable(lazy(() => import('../pages/dashboard/Tag/EditTag')));
 const AddTag = Loadable(lazy(() => import('../pages/dashboard/Tag/AddTag')));
 

@@ -1,6 +1,7 @@
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 import SvgIconStyle from '../../../components/SvgIconStyle';
+import Iconify from '../../../components/Iconify';
 
 // ----------------------------------------------------------------------
 
@@ -27,14 +28,12 @@ const navConfig = [
   {
     items: [
       { title: 'Dashboard', path: '/dashboard/home', icon: ICONS.dashboard },
-      { title: 'Admin', path: PATH_DASHBOARD.subadmin.subadmin, icon: ICONS.mail },
-      { title: 'Element', path: PATH_DASHBOARD.element.element, icon: ICONS.invoice },
-      { title: 'Magic Type', path: PATH_DASHBOARD.magictype.magictype, icon: ICONS.ecommerce },
-      { title: 'Tag', path: PATH_DASHBOARD.tag.tag, icon: ICONS.analytics },
-      { title: 'Rarity', path: PATH_DASHBOARD.rarity.rarity, icon: ICONS.cart },
-      { title: 'Spell', path: PATH_DASHBOARD.spell.spell, icon: ICONS.booking },
-      { title: 'Character', path: PATH_DASHBOARD.character.character, icon: ICONS.booking },
-      { title: 'Card', path: PATH_DASHBOARD.card.card, icon: ICONS.booking },
+      { title: 'Admin', path: PATH_DASHBOARD.subadmin.subadmin, icon: ICONS.user },
+      { title: 'Supervisor', path: PATH_DASHBOARD.element.element, icon: <Iconify icon="material-symbols:supervisor-account" /> },
+      { title: 'Officer', path: PATH_DASHBOARD.magictype.magictype, icon: <Iconify icon="healthicons:officer" /> },
+      { title: 'Gang', path: PATH_DASHBOARD.rarity.rarity, icon: <Iconify icon="pepicons-pencil:people" /> },
+      // { title: 'GangMember', path: PATH_DASHBOARD.tag.tag, icon: <Iconify icon="fa6-solid:people-line" /> },
+      { title: 'Department', path: PATH_DASHBOARD.tag.tag, icon: <Iconify icon="mingcute:department-fill" /> },
     ],
   },
 

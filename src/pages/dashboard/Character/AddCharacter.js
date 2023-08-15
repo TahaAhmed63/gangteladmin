@@ -8,7 +8,7 @@ import makeAnimated from 'react-select/animated';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoadingButton } from '@mui/lab';
 import { Card,Grid, Stack, Container,Typography,Box } from '@mui/material';
-import { getTags} from '../../../redux/slices/tag';
+// import { getTags} from '../../../redux/slices/tag';
 import { getRaritys} from '../../../redux/slices/rarity';
 import { getSpells} from '../../../redux/slices/spell';
 import { getProducts} from '../../../redux/slices/subadmin';
@@ -40,7 +40,7 @@ export default function AddCharacter() {
   useEffect(() => {
     dispatch(getSpells());
     dispatch(getRaritys());
-    dispatch(getTags());
+    // dispatch(getTags());
     dispatch(getProducts());
     dispatch(getmagictypes());
   }, []);

@@ -5,12 +5,12 @@ import { dispatch } from '../store';
 const initialState = {
   isLoading: false,
   error: null,
-  tags: [],
+  departs: [],
 };
 
 
 const slice = createSlice({
-  name: 'tag',
+  name: 'depart',
   initialState,
   reducers: {
     // START LOADING
@@ -24,10 +24,10 @@ const slice = createSlice({
       state.error = action.payload;
     },
 
-    // GET tag
-    gettagSuccess(state, action) {
+    // GET depart
+    getdepartSuccess(state, action) {
       state.isLoading = false;
-      state.tags = action.payload;
+      state.departs = action.payload;
     },
 
   },
@@ -39,13 +39,13 @@ export default slice.reducer;
 
 // ----------------------------------------------------------------------
 
-export function getTags() {
+export function getDeparts() {
   return async () => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get('tag');
-      console.log(response,'tag--->>>>')
-      dispatch(slice.actions.gettagSuccess(response?.data?.data));
+      const response = await axios.get('admin/department');
+      console.log(response,'depart--->>>>')
+      dispatch(slice.actions.getdepartSuccess(response?.data?.departments));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }

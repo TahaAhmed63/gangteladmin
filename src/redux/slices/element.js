@@ -43,8 +43,9 @@ export function getelements() {
   return async () => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get('element');
-      dispatch(slice.actions.getelementsSuccess(response?.data?.data));
+      const response = await axios.get('admin/supervisor');
+      console.log(response, "superivisor")
+      dispatch(slice.actions.getelementsSuccess(response?.data?.supervisors));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }

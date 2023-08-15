@@ -19,6 +19,7 @@ import { LoginForm } from '../../sections/auth/login';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
+  backgroundColor: "#000",
   [theme.breakpoints.up('md')]: {
     display: 'flex',
   },
@@ -47,6 +48,7 @@ const SectionStyle = styled(Card)(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'center',
   margin: theme.spacing(2, 0, 2, 2),
+  backgroundColor: "#000"
 }));
 
 const ContentStyle = styled('div')(({ theme }) => ({
@@ -78,7 +80,7 @@ export default function Login() {
 
         {mdUp && (
           <SectionStyle>
-            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
+            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5, color: "#fff" }}>
               Hi, Welcome Back
             </Typography>
             <Image
@@ -94,7 +96,7 @@ export default function Login() {
           <ContentStyle>
             <Stack direction="row" alignItems="center" sx={{ mb: 5 }}>
               <Box sx={{ flexGrow: 1 }}>
-                <Typography variant="h4" gutterBottom>
+                <Typography variant="h4" gutterBottom sx={{color: "#fff"}}>
                   Sign in to  Gangtel
                 </Typography>
                 <Typography sx={{ color: 'text.secondary' }}>Enter your details below.</Typography>
