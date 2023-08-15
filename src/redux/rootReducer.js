@@ -36,7 +36,7 @@ const rootReducer = combineReducers({
   kanban: kanbanReducer,
   element: elementReducer,
   magictype: magictypeReducer,
-  tag: tagReducer,
+  // tag: tagReducer,
   rarity: rarityReducer,
   spell: spellReducer,
   character: characterReducer,
