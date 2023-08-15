@@ -20,9 +20,10 @@ import { IconButtonAnimate } from '../../../components/animate';
 
 export default function AccountPopover() {
   const navigate = useNavigate();
+  const user =JSON.parse(localStorage.getItem('user'))
 
-  const { user, logout } = useAuth();
-console.log(user,'-------------->>>>')
+   const { logout } = useAuth();
+
   const isMountedRef = useIsMountedRef();
 
   const { enqueueSnackbar } = useSnackbar();

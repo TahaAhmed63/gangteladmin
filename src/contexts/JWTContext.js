@@ -2,9 +2,10 @@ import { createContext, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 // utils
 import axios from '../utils/axios';
-import { 
-  // isValidToken, 
-  setSession } from '../utils/jwt';
+import {
+  // isValidToken,
+  setSession,
+} from '../utils/jwt';
 
 // ----------------------------------------------------------------------
 
@@ -26,11 +27,11 @@ const handlers = {
   },
   LOGIN: (state, action) => {
     const { user } = action.payload;
-
+    console.log(user, { ...state, user: user }, '<=======from JWT');
     return {
       ...state,
       isAuthenticated: true,
-      user,
+      user: user,
     };
   },
   LOGOUT: (state) => ({
@@ -67,7 +68,7 @@ AuthProvider.propTypes = {
 
 function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-console.log(state,'->>>>>>>>>>>>>>>>>state')
+  console.log(state, '->>>>>>>>>>>>>>>>>state');
   useEffect(() => {
     const initialize = async () => {
       try {
@@ -78,14 +79,15 @@ console.log(state,'->>>>>>>>>>>>>>>>>state')
 
           // const response = await axios.get('/api/account/my-account');
           // const { user } = response.data;
-          const user={}
+          // const user = {};
           dispatch({
             type: 'INITIALIZE',
             payload: {
               isAuthenticated: true,
-              user,
+              user:state.user,
             },
           });
+          
         } else {
           dispatch({
             type: 'INITIALIZE',
@@ -110,15 +112,14 @@ console.log(state,'->>>>>>>>>>>>>>>>>state')
     initialize();
   }, []);
 
-  const login = async (email, password,url) => {
+  const login = async (email, password, url) => {
     const response = await axios.post(url, {
       email,
       password,
     });
-    console.log(response,'--->>>>>.user')
     const { token, user } = response?.data;
-  
-    setSession(token);
+    localStorage.setItem('user',JSON.stringify(user))
+    setSession(token,JSON.stringify(user));
     dispatch({
       type: 'LOGIN',
       payload: {
@@ -147,6 +148,7 @@ console.log(state,'->>>>>>>>>>>>>>>>>state')
 
   const logout = async () => {
     setSession(null);
+    localStorage.clear()
     dispatch({ type: 'LOGOUT' });
   };
 
@@ -157,7 +159,7 @@ console.log(state,'->>>>>>>>>>>>>>>>>state')
         method: 'jwt',
         login,
         logout,
-        register,
+        // register,
       }}
     >
       {children}
@@ -165,4 +167,4 @@ console.log(state,'->>>>>>>>>>>>>>>>>state')
   );
 }
 
-export { AuthContext, AuthProvider };
+export { AuthContext, AuthProvider ,reducer};
