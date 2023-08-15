@@ -13,6 +13,8 @@ import spellReducer from './slices/spell';
 import characterReducer from './slices/character';
 import calendarReducer from './slices/calendar';
 import kanbanReducer from './slices/kanban';
+import gangReducer from './slices/gang';
+import chapterReducer from './slices/chapter';
 
 
 const rootPersistConfig = {
@@ -36,11 +38,13 @@ const rootReducer = combineReducers({
   kanban: kanbanReducer,
   element: elementReducer,
   magictype: magictypeReducer,
-  tag: tagReducer,
+  depart: departReducer,
   rarity: rarityReducer,
   spell: spellReducer,
   character: characterReducer,
   product: productReducer,
+  gang: gangReducer,
+  chapter: chapterReducer,
 
 });
 

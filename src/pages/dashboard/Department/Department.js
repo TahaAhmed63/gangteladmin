@@ -31,7 +31,7 @@ export default function Department() {
       {
         accessorKey: 'name',
         header: 'Name',
-        size: 150,
+        size: 300,
       },
     ],
     []
@@ -40,7 +40,6 @@ export default function Department() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { departs } = useSelector((state) => state.depart);
-console.log(departs,'depart->>>>>>>')
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
@@ -80,7 +79,7 @@ console.log(departs,'depart->>>>>>>')
               variant="contained"
               startIcon={<Iconify icon="eva:plus-fill" />}
               component={RouterLink}
-              to={PATH_DASHBOARD.tag.addtag}
+              to={PATH_DASHBOARD.department.adddepartment}
             >
               New Department
             </Button>
@@ -107,7 +106,7 @@ console.log(departs,'depart->>>>>>>')
                   borderColor: 'primary.main',
                 }}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.rarity.editrarity(row.original.id));
+                  navigate(PATH_DASHBOARD.tag.edittag(row.original.id));
                 }}
               >
                 <EditIcon />

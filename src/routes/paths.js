@@ -66,43 +66,37 @@ export const PATH_DASHBOARD = {
     editsubadmin: (id) => path(ROOTS_DASHBOARD, `/editsubadmin/${id}`),
     addsubadmin: path(ROOTS_DASHBOARD, '/addsubadmin'),
   },
-  element: {
+  supervisor: {
     app: path(ROOTS_DASHBOARD, '/'),
-    element: path(ROOTS_DASHBOARD, '/element'),
-    editelement: (id) => path(ROOTS_DASHBOARD, `/editelement/${id}`),
-    addelement: path(ROOTS_DASHBOARD, '/addelement'),
+    supervisor: path(ROOTS_DASHBOARD, '/supervisor'),
+    editsupervisor: (id) => path(ROOTS_DASHBOARD, `/editsupervisor/${id}`),
+    addsupervisor: path(ROOTS_DASHBOARD, '/addsupervisor'),
   },
-  magictype: {
+  officer: {
     app: path(ROOTS_DASHBOARD, '/'),
-    magictype: path(ROOTS_DASHBOARD, '/magictype'),
-    editmagictype: (id) => path(ROOTS_DASHBOARD, `/editmagictype/${id}`),
-    addmagictype: path(ROOTS_DASHBOARD, '/addmagictype'),
+    officer: path(ROOTS_DASHBOARD, '/officer'),
+    editofficer: (id) => path(ROOTS_DASHBOARD, `/editofficer/${id}`),
+    addofficer: path(ROOTS_DASHBOARD, '/addofficer'),
   },
-  tag: {
+  department: {
     app: path(ROOTS_DASHBOARD, '/'),
-    tag: path(ROOTS_DASHBOARD, '/tag'),
-    edittag: (id) => path(ROOTS_DASHBOARD, `/edittag/${id}`),
-    addtag: path(ROOTS_DASHBOARD, '/addtag'),
+    department: path(ROOTS_DASHBOARD, '/department'),
+    editdepartment: (id) => path(ROOTS_DASHBOARD, `/editdepartment/${id}`),
+    adddepartment: path(ROOTS_DASHBOARD, '/adddepartment'),
   },
-  rarity: {
+  gang: {
     app: path(ROOTS_DASHBOARD, '/'),
-    rarity: path(ROOTS_DASHBOARD, '/rarity'),
-    editrarity: (id) => path(ROOTS_DASHBOARD, `/editrarity/${id}`),
-    addrarity: path(ROOTS_DASHBOARD, '/addrarity'),
+    gang: path(ROOTS_DASHBOARD, '/gang'),
+    gangchapter: (id) => path(ROOTS_DASHBOARD, `/gangchapter/${id}`),
+    addgang: path(ROOTS_DASHBOARD, '/addgang'),
   },
   spell: {
     app: path(ROOTS_DASHBOARD, '/'),
     spell: path(ROOTS_DASHBOARD, '/spell'),
     editspell: (id) => path(ROOTS_DASHBOARD, `/editspell/${id}`),
     addspell: path(ROOTS_DASHBOARD, '/addspell'),
-    spelleffect:(id) => path(ROOTS_DASHBOARD, `/spelleffect/${id}`),
   },
-  character: {
-    app: path(ROOTS_DASHBOARD, '/'),
-    character: path(ROOTS_DASHBOARD, '/character'),
-    editcharacter: (id) => path(ROOTS_DASHBOARD, `/editcharacter/${id}`),
-    addcharacter: path(ROOTS_DASHBOARD, '/addcharacter'),
-  },
+
   card: {
     app: path(ROOTS_DASHBOARD, '/'),
     card: path(ROOTS_DASHBOARD, '/card'),

@@ -14,7 +14,9 @@ import {
 // redux
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from '../../../redux/store';
-import { getSpells } from '../../../redux/slices/spell';
+import { getmagictypes } from '../../../redux/slices/magictype';
+import { getProduct } from '../../../redux/slices/subadmin';
+import { getelements } from '../../../redux/slices/element';
 import axios from '../../../utils/axios';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
@@ -31,22 +33,40 @@ export default function Officer() {
       {
         accessorKey: "id",
         header: "ID",
-        size: 50,
+        size: 5,
       },
       {
-        accessorKey: "name",
-        header: "Name",
-        size: 150,
+        accessorKey: "first_name",
+        header: "First Name",
+        size: 10,
       },
       {
-        accessorKey: "element.name",
-        header: "Element Name",
-        size: 150,
+        accessorKey: "last_name",
+        header: "Last Name",
+        size: 10,
       },
       {
-        accessorKey: "effect.length",
-        header: "No. of Effect",
-        size: 150,
+        accessorKey: "email",
+        header: "Email",
+        size: 20,
+      },
+      {
+        accessorKey: "subadmin",
+        header: "Admin",
+        size: 20,
+        Cell: ({ row }) =>
+          row.subadmin
+            ? `${row.subadmin?.first_name ?? ""} ${row.subadmin?.last_name ?? ""}`
+            : "",
+      },
+      {
+        accessorKey: "supervisor",
+        header: "Supervisor",
+        size: 20,
+        Cell: ({ row }) =>
+          row.supervisor
+            ? `${row.supervisor?.first_name ?? ""} ${row.supervisor?.last_name ?? ""}`
+            : "",
       },
     ],
     []
@@ -54,20 +74,20 @@ export default function Officer() {
 
 
   const dispatch = useDispatch();
-  const { spells } = useSelector((state) => state.spell);
-  const { elements } = useSelector((state) => state.element);
-
+  const { magictypes } = useSelector((state) => state.magictype);
   const [tableData,setTableData]=useState([])
 
   useEffect(() => {
-    dispatch(getSpells());
+    dispatch(getmagictypes());
+    dispatch(getProduct());
+    dispatch(getelements());
   }, []);
 
   useEffect(() => {
-    if (spells.length) {
-      setTableData(spells);
+    if (magictypes?.length) {
+      setTableData(magictypes);
     }
-  }, [spells]);
+  }, [magictypes]);
 
   async function handleDelete(rowdata) {
     try {
@@ -75,7 +95,7 @@ export default function Officer() {
       .then((response)=>{ 
         if(response?.data?.status === true){
         enqueueSnackbar(response?.data?.message);
-        dispatch(getSpells());
+        dispatch(getmagictypes());
       }})
     } catch (error) {
       enqueueSnackbar(error?.message,{ 
@@ -97,7 +117,7 @@ export default function Officer() {
               variant="contained"
               startIcon={<Iconify icon="eva:plus-fill" />}
               component={RouterLink}
-              to={PATH_DASHBOARD.spell.addspell}
+              to={PATH_DASHBOARD.officer.addofficer}
             >
               New Officer
             </Button>
@@ -123,22 +143,10 @@ export default function Officer() {
                 borderColor: "primary.main",
               }}
               color="primary"
-                onClick={()=>{navigate(PATH_DASHBOARD.spell.editspell(row.original.id))}}
+                onClick={()=>{navigate(PATH_DASHBOARD.officer.editofficer(row.original.id))}}
               >
                 <EditIcon />
               </IconButton>
-              <Tooltip arrow title="View Effect">
-              <IconButton
-              sx={{
-                border: "1px solid",
-                borderColor: "warning.main",
-              }}
-              color="warning"
-              onClick={()=>{navigate(PATH_DASHBOARD.spell.spelleffect(row.original.id))}}
-            >
-              <VisibilityIcon />
-            </IconButton>
-            </Tooltip>
               <IconButton
                 color="error"
                 sx={{

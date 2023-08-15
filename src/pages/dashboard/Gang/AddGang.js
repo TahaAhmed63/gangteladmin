@@ -18,26 +18,23 @@ import {
   RHFDescription,
 } from '../../../components/hook-form';
 
-export default function AddTag() {
+export default function AddGang() {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
-  const NewTagSchema = Yup.object().shape({
+  const gangSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
-    description: Yup.string().required('Description is required'),
   });
 
   const defaultValues = useMemo(
     () => ({
       name:  '',
-      description:  '',
     }),
-    //  eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
   const methods = useForm({
-    resolver: yupResolver(NewTagSchema),
+    resolver: yupResolver(gangSchema),
     defaultValues,
   });
 
@@ -52,17 +49,15 @@ export default function AddTag() {
     const formValues = getValues();
     console.log(formValues)
     try {
-      const tag=new FormData();
-      tag.append('name',formValues?.name)
-      tag.append('desc',formValues?.description)
-   
-      await axios.post("tag",tag)
+      const gang=new FormData();
+      gang.append('name',formValues?.name)   
+      await axios.post("admin/gang",gang)
       
       .then((response)=>{ 
         if(response?.data?.status === true){
         enqueueSnackbar(response?.data?.message);
         reset();
-      navigate(PATH_DASHBOARD.tag.tag)
+      navigate(PATH_DASHBOARD.gang.gang)
       }})
     } catch (error) {
       enqueueSnackbar(error?.message,{ 
@@ -75,7 +70,7 @@ export default function AddTag() {
   return (
     <Container maxWidth='sm'>
     <HeaderBreadcrumbs
-      heading="Add Tag"
+      heading="Add Gang"
       links={[
         { name: '', href: '' },]}/>
 
@@ -86,19 +81,10 @@ export default function AddTag() {
           <Card sx={{ p: 3 }}>
             <Stack spacing={3}>
               <RHFTextField name="name" label=" Name" />
-
-              <div>
-          
-              
-                <RHFDescription name="description" label="description"  />
-
-              </div>
-
-            
-              <Grid item xs={4} md={4}>
+              <Grid item xs={6} md={6}>
               <LoadingButton type="submit" variant="contained" size="large" loading={isSubmitting}>
               
-              Create Tag
+              Create Gang
             </LoadingButton>
             </Grid>
             </Stack>

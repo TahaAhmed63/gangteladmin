@@ -6,9 +6,8 @@ import { useMemo } from 'react';
 // form
 import { useForm,  } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-
 import { LoadingButton } from '@mui/lab';
-import { Card,  Grid, Stack,   Container, } from '@mui/material';
+import { Card,  Grid, Stack,  Container, } from '@mui/material';
 // routes
 import { useSelector} from '../../../redux/store';
 import axios from '../../../utils/axios';
@@ -23,29 +22,26 @@ import {
 
 
 
-export default function EditMagictype() {
+export default function EditDepartment() {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
-  const { magictypes } = useSelector((state) => state.magictype);
+  const { departs } = useSelector((state) => state.depart);
 
-  const currentMagictype = magictypes.find((magictype) =>magictype.id === +(id))
-
-  const NewMagictypeSchema = Yup.object().shape({
+  const currentdepart = departs.find((depart) =>depart.id === +(id))
+  const departmentSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
-    description: Yup.string().required('Description is required'),
   });
 
   const defaultValues = useMemo(
     () => ({
-      name:   currentMagictype?.name || '',
-      description:  currentMagictype?.desc ||  '',
+      name:   currentdepart?.name || '',
     }),
     []
   );
 
   const methods = useForm({
-    resolver: yupResolver(NewMagictypeSchema),
+    resolver: yupResolver(departmentSchema),
     defaultValues,
   });
 
@@ -61,17 +57,16 @@ export default function EditMagictype() {
     const formValues = getValues();
     console.log(formValues)
     try {
-      const magictype=new URLSearchParams();
-      magictype.append('name',formValues?.name)
-      magictype.append('desc',formValues?.description)
+      const department=new FormData();
+      department.append('name',formValues?.name)
    
-      await axios.put(`magic-type/${id}`,magictype)
+   await axios.post(`admin/department/${id}`,department)
       
       .then((response)=>{ 
         if(response?.data?.status === true){
         reset();
         enqueueSnackbar(response?.data?.message);
-        navigate(PATH_DASHBOARD.magictype.magictype);
+         navigate(PATH_DASHBOARD.department.department);
       }})
     } catch (error) {
       enqueueSnackbar(error?.message,{ 
@@ -80,17 +75,13 @@ export default function EditMagictype() {
       console.error(error);
     }
   };
-  const handlePasswordKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      OnSubmit(methods.getValues()); // Call the onSubmit function
-    }
-  };
+
   return (
     <Container maxWidth='sm'>
     <HeaderBreadcrumbs
-      heading="Edit magictype"
+      heading="Edit Department"
       links={[
-        { name:'', href:''},]}/>
+        { name: '', href: '' },]}/>
 
     <Card>
     <FormProvider methods={methods} onSubmit={handleSubmit(OnSubmit)}>
@@ -98,17 +89,11 @@ export default function EditMagictype() {
         <Grid item xs={12} md={12}>
           <Card sx={{ p: 3 }}>
             <Stack spacing={3}>
-              <RHFTextField name="name" label=" Name" focused/>
-
-              <div>
-                <RHFDescription name="description" label="description" onKeyPress={handlePasswordKeyPress} focused />
-              </div>
-
-            
+              <RHFTextField name="name" label=" Name" focused />
               <Grid item xs={6} md={6}>
               <LoadingButton type="submit" variant="contained" size="large" loading={isSubmitting}>
               
-            Update magictype
+            Update Department
             </LoadingButton>
             </Grid>
             </Stack>

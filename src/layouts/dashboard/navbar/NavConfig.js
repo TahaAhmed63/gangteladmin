@@ -29,11 +29,11 @@ const navConfig = [
     items: [
       { title: 'Dashboard', path: '/dashboard/home', icon: ICONS.dashboard },
       { title: 'Admin', path: PATH_DASHBOARD.subadmin.subadmin, icon: ICONS.user },
-      { title: 'Supervisor', path: PATH_DASHBOARD.element.element, icon: <Iconify icon="material-symbols:supervisor-account" /> },
-      { title: 'Officer', path: PATH_DASHBOARD.magictype.magictype, icon: <Iconify icon="healthicons:officer" /> },
-      { title: 'Gang', path: PATH_DASHBOARD.rarity.rarity, icon: <Iconify icon="pepicons-pencil:people" /> },
+      { title: 'Supervisor', path: PATH_DASHBOARD.supervisor.supervisor, icon: <Iconify icon="material-symbols:supervisor-account" /> },
+      { title: 'Officer', path: PATH_DASHBOARD.officer.officer, icon: <Iconify icon="healthicons:officer" /> },
+      { title: 'Gang', path: PATH_DASHBOARD.gang.gang, icon: <Iconify icon="pepicons-pencil:people" /> },
       // { title: 'GangMember', path: PATH_DASHBOARD.tag.tag, icon: <Iconify icon="fa6-solid:people-line" /> },
-      { title: 'Department', path: PATH_DASHBOARD.tag.tag, icon: <Iconify icon="mingcute:department-fill" /> },
+      { title: 'Department', path: PATH_DASHBOARD.department.department, icon: <Iconify icon="mingcute:department-fill" /> },
     ],
   },
 

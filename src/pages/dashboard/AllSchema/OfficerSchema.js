@@ -14,11 +14,12 @@ import * as Yup from 'yup';
 
 
   export   const getDefaultValues = (currentOfficer) => ({
+   
     fname: currentOfficer?.first_name ||  '',
     lname: currentOfficer?.last_name || '',
     email: currentOfficer?.email || '',
     password: currentOfficer?.password || '',
-    supervisor_id: currentOfficer?.supervisor_id || '',
+    supervisor_id: currentOfficer?.supervisor?.id || '',
     subadmin_id: currentOfficer?.subadmin_id || '',
   })
 

@@ -14,6 +14,8 @@ import {
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from '../../../redux/store';
 import { getelements } from '../../../redux/slices/element';
+import { getProducts } from '../../../redux/slices/subadmin';
+import { getDeparts } from '../../../redux/slices/department';
 import axios from '../../../utils/axios';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
@@ -64,6 +66,8 @@ export default function Element() {
 
   useEffect(() => {
     dispatch(getelements());
+    dispatch(getDeparts());
+    dispatch(getProducts());
   }, [dispatch]);
 
   useEffect(() => {
@@ -100,7 +104,7 @@ export default function Element() {
               variant="contained"
               startIcon={<Iconify icon="eva:plus-fill" />}
               component={RouterLink}
-              to={PATH_DASHBOARD.element.addelement}
+              to={PATH_DASHBOARD.supervisor.addsupervisor}
             >
               Add Supervisor
             </Button>
@@ -125,7 +129,7 @@ export default function Element() {
                 border: "1px solid",
                 borderColor: "primary.main",
               }}
-              onClick={()=>{navigate(PATH_DASHBOARD.element.editelement(row.original.id))}}
+              onClick={()=>{navigate(PATH_DASHBOARD.supervisor.editsupervisor(row.original.id))}}
             >
               <EditIcon />
             </IconButton>

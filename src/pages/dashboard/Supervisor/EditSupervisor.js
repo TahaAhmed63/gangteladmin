@@ -30,9 +30,9 @@ export default function EditElement() {
   const { elements } = useSelector((state) => state.element);
 
   const currentSupervisor = elements.find((element) =>element.id === +(id))
+  console.log(currentSupervisor)
   const { departs } = useSelector((state) => state.depart);
   const { products } = useSelector((state) => state.product);
-console.log(currentSupervisor)
   const defaultValues = useMemo(() => getDefaultValues(currentSupervisor), [currentSupervisor]);
 
   const methods = useForm({
@@ -72,7 +72,7 @@ console.log(currentSupervisor)
         if(response?.data?.status === true){
         reset();
         enqueueSnackbar(response?.data?.message);
-        navigate(PATH_DASHBOARD.element.element);
+        navigate(PATH_DASHBOARD.supervisor.supervisor);
       }})
     } catch (error) {
       enqueueSnackbar(error?.message,{ 
@@ -92,42 +92,42 @@ console.log(currentSupervisor)
         <Grid container spacing={1} sx={{ p: 3 }}>
           <Grid item xs={12} md={6}>
             <Stack spacing={3}>
-              <RHFTextField name="fname" label="First Name" />
-              <RHFTextField name="email" label="Email" />
+              <RHFTextField name="fname" label="First Name" focused/>
+              <RHFTextField name="email" label="Email" focused/>
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
             <Stack spacing={3}>
-                <RHFTextField name="lname" label="Last Name" />
-                <RHFTextField name="password" label="Password" />
+                <RHFTextField name="lname" label="Last Name"  focused/>
+                <RHFTextField name="password" label="Password" focused/>
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
             <Stack spacing={3}>
-              <RHFTextField name="phoneNumber" label=" Phone" />
+              <RHFTextField name="phoneNumber" label=" Phone" focused/>
 
               <div>
-                <RHFTextField name="address" label="Address" />
+                <RHFTextField name="address" label="Address" focused/>
               </div>
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
             <Stack spacing={3}>
-              <RHFTextField name="supervisor_name" label=" Supervisor Name" />
+              <RHFTextField name="supervisor_name" label=" Supervisor Name" focused/>
 
               <div>
-                <RHFTextField name="supervisor_email" label="Supervisor Email" />
+                <RHFTextField name="supervisor_email" label="Supervisor Email" focused/>
               </div>
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
             <Stack spacing={3}>
-              <RHFTextField name="supervisor_phoneNumber" label="Supervisor Number" />
+              <RHFTextField name="supervisor_phoneNumber" label="Supervisor Number" focused/>
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
             <Stack spacing={3}>
-              <RHFSelect name="department_id" label="Select Your Sub Admin">
+              <RHFSelect name="department_id" label="Select Your Sub Admin" focused>
                 <option>Select Department</option>
                 {departs?.map((e) => (
                   <option key={e?.id} value={e?.id}>
@@ -139,7 +139,7 @@ console.log(currentSupervisor)
           </Grid>
           <Grid item xs={12} md={12}>
             <Stack spacing={3}>
-              <RHFSelect name="subadmin_id" label="Select Your Sub Admin">
+              <RHFSelect name="department_id" label="Select Your Sub Admin" focused>
                 <option>Select Sub Admin</option>
                 {products?.map((e) => (
                   <option key={e?.id} value={e?.id}>

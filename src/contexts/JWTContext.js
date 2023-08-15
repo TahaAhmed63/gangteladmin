@@ -27,11 +27,11 @@ const handlers = {
   },
   LOGIN: (state, action) => {
     const { user } = action.payload;
-    console.log(user, { ...state, user: user }, '<=======from JWT');
+    // console.log(user, { ...state, user: user }, '<=======from JWT');
     return {
       ...state,
       isAuthenticated: true,
-      user: user,
+      user,
     };
   },
   LOGOUT: (state) => ({

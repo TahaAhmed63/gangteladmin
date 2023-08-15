@@ -21,7 +21,7 @@ import {
 
 const TAGS_OPTION = []; 
 
-export default function AddTag() {
+export default function AddOfficer() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -31,6 +31,7 @@ export default function AddTag() {
   }, [dispatch]);
 
   const { elements } = useSelector((state) => state.element);
+  const { products } = useSelector((state) => state.product);
 
   const defaultValues = useMemo(() => getDefaultValues(), []);
 
@@ -52,18 +53,23 @@ console.log(errors)
   const onSubmit = async () => {
     const formValues = getValues();
     try {
-      const spell = new FormData();
-spell.append('name', formValues?.name);
-spell.append('element_id', formValues?.selectElement);
+      const officer = new FormData();
+officer.append('last_name', formValues?.fname);
+officer.append('first_name', formValues?.lname);
+officer.append('email', formValues?.email);
+officer.append('password', formValues?.password);
+officer.append('supervisor_id', formValues?.supervisor_id);
+officer.append('subadmin_id', formValues?.subadmin_id);
 
-   console.log(spell)
-    await axios.post("spell",spell)
+
+   console.log(officer)
+    await axios.post("admin/officer",officer)
       
       .then((response)=>{ 
         if(response?.data?.status === true){
         enqueueSnackbar(response?.data?.message);
         reset();
-      navigate(PATH_DASHBOARD.spell.spell)
+      navigate(PATH_DASHBOARD.officer.officer)
       }})
     } catch (error) {
       enqueueSnackbar(error?.message,{ 
@@ -99,11 +105,11 @@ spell.append('element_id', formValues?.selectElement);
                 </Grid>
                 <Grid item xs={6} md={6} sx={{ ml: 0,mt:2 }}>
                   <Stack spacing={6}>
-                  <RHFSelect name="supervisor_id" label="Select Supervisor">
-                    <option value='Select Supervisor'>Select Supervisor</option>
-                      {elements?.map((e) =>
+                  <RHFSelect name="subadmin_id" label="Select subadmin">
+                    <option value='Select subadmin'>Select Sub Admin</option>
+                      {products?.map((e) =>
                       <option key={e?.id} value={e?.id}>
-                        {e?.name}
+                      {`${e?.first_name} ${e?.last_name}`}
                       </option>
                     )}
                   </RHFSelect>
@@ -115,8 +121,8 @@ spell.append('element_id', formValues?.selectElement);
                   <option value='Select Supervisor'>Select Supervisor</option>
                     {elements?.map((e) =>
                     <option key={e?.id} value={e?.id}>
-                      {e?.name}
-                    </option>
+                    {`${e?.first_name} ${e?.last_name}`}
+                                        </option>
                   )}
                 </RHFSelect>
                   </Stack>
@@ -125,7 +131,7 @@ spell.append('element_id', formValues?.selectElement);
                 </Grid>
                   <Grid item xs={4} md={4}>
                     <LoadingButton type="submit" variant="contained" size="large" loading={isSubmitting}>
-                      Create Spell
+                      Create Officer
                     </LoadingButton>
                   </Grid>
                 </Stack>
