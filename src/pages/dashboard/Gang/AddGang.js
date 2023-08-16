@@ -51,7 +51,7 @@ export default function AddGang() {
     try {
       const gang=new FormData();
       gang.append('name',formValues?.name)   
-      await axios.post("admin/gang",gang)
+      await axios.post("gang",gang)
       
       .then((response)=>{ 
         if(response?.data?.status === true){

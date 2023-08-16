@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 // utils
@@ -27,11 +28,7 @@ const handlers = {
   },
   LOGIN: (state, action) => {
     const { user } = action.payload;
-<<<<<<< HEAD
     console.log(user, { ...state, user }, '<=======from JWT');
-=======
-    // console.log(user, { ...state, user: user }, '<=======from JWT');
->>>>>>> 768509c690208bbcf3a87d80e96884c6e8965791
     return {
       ...state,
       isAuthenticated: true,
@@ -121,6 +118,7 @@ function AuthProvider({ children }) {
       email,
       password,
     });
+    console.log(response,"response ====>")
     const { token, user } = response?.data;
     localStorage.setItem('user',JSON.stringify(user))
     setSession(token,JSON.stringify(user));

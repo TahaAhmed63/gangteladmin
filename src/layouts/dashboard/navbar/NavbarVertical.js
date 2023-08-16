@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -40,6 +41,8 @@ NavbarVertical.propTypes = {
 };
 
 export default function NavbarVertical({ isOpenSidebar, onCloseSidebar }) {
+  const user1 = JSON.parse(localStorage.getItem('user'));
+  console.log(navConfig, 'navConfig');
   const theme = useTheme();
 
   const { pathname } = useLocation();
@@ -88,7 +91,7 @@ export default function NavbarVertical({ isOpenSidebar, onCloseSidebar }) {
 
       <Box sx={{ flexGrow: 1 }} />
 
-       {!isCollapse && <NavbarDocs />}
+      {!isCollapse && <NavbarDocs />}
     </Scrollbar>
   );
 

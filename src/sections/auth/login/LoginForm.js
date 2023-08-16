@@ -12,6 +12,7 @@ import { FormProvider, RHFTextField } from '../../../components/hook-form';
 
 export default function LoginForm({url}) {
   const { login } = useAuth();
+  console.log('url',url)
   const navigate = useNavigate()
 
   const isMountedRef = useIsMountedRef();

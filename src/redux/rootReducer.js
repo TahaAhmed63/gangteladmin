@@ -11,6 +11,7 @@ import spellReducer from './slices/spell';
 import characterReducer from './slices/character';
 import gangReducer from './slices/gang';
 import chapterReducer from './slices/chapter';
+import gangmember from './slices/Member';
 
 
 const rootPersistConfig = {
@@ -31,17 +32,14 @@ const rootReducer = combineReducers({
 
   element: elementReducer,
   magictype: magictypeReducer,
-<<<<<<< HEAD
-  // tag: tagReducer,
-=======
   depart: departReducer,
->>>>>>> 768509c690208bbcf3a87d80e96884c6e8965791
   rarity: rarityReducer,
   spell: spellReducer,
   character: characterReducer,
   product: productReducer,
   gang: gangReducer,
   chapter: chapterReducer,
+  member: gangmember,
 
 });
 

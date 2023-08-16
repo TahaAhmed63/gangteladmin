@@ -90,12 +90,18 @@ export const PATH_DASHBOARD = {
     gangchapter: (id) => path(ROOTS_DASHBOARD, `/gangchapter/${id}`),
     addgang: path(ROOTS_DASHBOARD, '/addgang'),
   },
-  spell: {
+  gangmember: {
     app: path(ROOTS_DASHBOARD, '/'),
-    spell: path(ROOTS_DASHBOARD, '/spell'),
-    editspell: (id) => path(ROOTS_DASHBOARD, `/editspell/${id}`),
-    addspell: path(ROOTS_DASHBOARD, '/addspell'),
+    member: path(ROOTS_DASHBOARD, '/member'),
+    editmember: (id) => path(ROOTS_DASHBOARD, `/editmember/${id}`),
+    addmember: path(ROOTS_DASHBOARD, '/addmember'),
   },
+  // spell: {
+  //   app: path(ROOTS_DASHBOARD, '/'),
+  //   spell: path(ROOTS_DASHBOARD, '/spell'),
+  //   editspell: (id) => path(ROOTS_DASHBOARD, `/editspell/${id}`),
+  //   addspell: path(ROOTS_DASHBOARD, '/addspell'),
+  // },
 
   card: {
     app: path(ROOTS_DASHBOARD, '/'),

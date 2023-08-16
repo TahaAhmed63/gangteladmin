@@ -56,7 +56,7 @@ export default function Gang() {
 
   async function handleDelete(rowdata) {
     try {
-      await axios.delete(`admin/gang/${rowdata}`).then((response) => {
+      await axios.delete(`gang/${rowdata}`).then((response) => {
         if (response?.data?.status === true) {
           enqueueSnackbar(response?.data?.message);
           dispatch(getGangs());

@@ -102,7 +102,7 @@ export default function Login() {
 
            
             </Stack>
-            <LoginForm data={'subadmin/login'}/>
+            <LoginForm url={'subadmin/login'}/>
           </ContentStyle>
         </Container>
       </RootStyle>
