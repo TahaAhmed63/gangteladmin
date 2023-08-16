@@ -31,7 +31,6 @@ import {
 export default function Chapter() {
   const { enqueueSnackbar } = useSnackbar();
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [tableData, setTableData] = useState([]);
 
@@ -42,7 +41,7 @@ export default function Chapter() {
       {
         accessorKey: 'id',
         header: 'ID',
-        size: 50,
+        size: 150,
       },
       {
         accessorKey: 'name',
@@ -57,15 +56,14 @@ export default function Chapter() {
 
   const dispatch = useDispatch();
   const { chapters } = useSelector((state) => state.chapter);
-  console.log(chapters)
 
   const chapterSchema = Yup.object().shape({
-    name: Yup.string().required('Name is required'),
+     name: Yup.string().required('Name is required'),
   });
 
   const defaultValues = useMemo(
     () => ({
-      name:  '',
+      name: '',
     }),
     []
   );
@@ -79,8 +77,10 @@ export default function Chapter() {
     reset,
     getValues,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting,errors },
   } = methods;
+
+console.log(errors)
 
   useEffect(() => {
     dispatch(getChapters(id))
@@ -94,7 +94,7 @@ export default function Chapter() {
 
   async function handleDelete(rowdata) {
     try {
-      await axios.delete(`admin/gang/${rowdata}`).then((response) => {
+      await axios.delete(`admin/gangchapter/${rowdata}`).then((response) => {
         if (response?.data?.status === true) {
           enqueueSnackbar(response?.data?.message);
           dispatch(getChapters());
@@ -107,12 +107,11 @@ export default function Chapter() {
       console.error(error);
     }
   }
-  const OnSubmit = async () => {
-    const formValues = getValues();
-    console.log(formValues)
+
+  const OnSubmit = async (data) => {
     try {
       const chapter=new FormData();
-      chapter.append('name',formValues?.name)   
+      chapter.append('name',data?.name)   
       chapter.append('gang_id',id)   
       await axios.post("admin/gangchapter",chapter)
       
@@ -121,7 +120,7 @@ export default function Chapter() {
         enqueueSnackbar(response?.data?.message);
         reset();
         handleClose()
-      getChapters()
+        dispatch(getChapters(id))
       }})
     } catch (error) {
       enqueueSnackbar(error?.message,{ 
@@ -130,6 +129,12 @@ export default function Chapter() {
       reset();
       console.error(error);
     }
+  };
+
+  const handleClose = () => 
+  {
+    setShow(false)
+    reset()
   };
 
   return (
@@ -162,16 +167,6 @@ export default function Chapter() {
                 justifyContent: 'flex-center',
               }}
             >
-            <IconButton
-            sx={{
-              border: "1px solid",
-              borderColor: "primary.main",
-            }}
-            color="primary"
-              onClick={()=>{navigate(PATH_DASHBOARD.officer.editofficer(row.original.id))}}
-            >
-              <EditIcon />
-            </IconButton>
               <IconButton
                 color="error"
                 sx={{
@@ -189,29 +184,30 @@ export default function Chapter() {
           positionActionsColumn="last"
         />
       </Container>
+
       <Modal show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
-        <Modal.Header closeButton style={{backgroundColor: '#212B36'}}>
+      <FormProvider methods={methods} onSubmit={handleSubmit(OnSubmit)}>
+        <Modal.Header closeButton style={{backgroundColor: '#212B36',borderBottom:'none'}}>
           <Modal.Title>Chapter Info</Modal.Title>
         </Modal.Header>
         <Modal.Body style={{
           backgroundColor: '#212B36'}}>
-        <FormProvider methods={methods} onSubmit={handleSubmit(OnSubmit)}>
         <Grid container spacing={1}>
           <Grid item xs={12} md={12}>
               <Stack spacing={3}>
-                <RHFTextField name="name" label=" Name" />
+                <RHFTextField name="name" label="Chapter Name" />
               </Stack>
           </Grid>
   
         </Grid>
-      </FormProvider>
         </Modal.Body>
-        <Modal.Footer style={{backgroundColor: '#212B36'}}>
+        <Modal.Footer style={{backgroundColor: '#212B36',borderTop:'none'}}>
         <LoadingButton type="submit" variant="contained" size="large" loading={isSubmitting}>
         Create Chapter
-      </LoadingButton>
+        </LoadingButton>
         </Modal.Footer>
-      </Modal>
+        </FormProvider>
+        </Modal>
     </Page>
   );
 }
