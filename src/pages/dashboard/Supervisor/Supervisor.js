@@ -13,7 +13,7 @@ import {
 // redux
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from '../../../redux/store';
-import { getelements } from '../../../redux/slices/element';
+import { getelements } from '../../../redux/slices/supervisor';
 import { getProducts } from '../../../redux/slices/subadmin';
 import { getDeparts } from '../../../redux/slices/department';
 import axios from '../../../utils/axios';

@@ -7,7 +7,7 @@ import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { Card, Chip, Grid, Stack, TextField, Typography, Autocomplete, Container, StepConnector } from '@mui/material';
 import axios from '../../../utils/axios';
-import { getelements } from '../../../redux/slices/element';
+import { getelements } from '../../../redux/slices/supervisor';
 import {OfficerSchema,getDefaultValues} from '../AllSchema/OfficerSchema'
 import { PATH_DASHBOARD } from '../../../routes/paths';
 import { useDispatch, useSelector } from '../../../redux/store';

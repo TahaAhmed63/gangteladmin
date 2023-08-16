@@ -16,7 +16,7 @@ import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from '../../../redux/store';
 import { getmagictypes } from '../../../redux/slices/magictype';
 import { getProduct } from '../../../redux/slices/subadmin';
-import { getelements } from '../../../redux/slices/element';
+import { getelements } from '../../../redux/slices/supervisor';
 import axios from '../../../utils/axios';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
