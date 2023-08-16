@@ -26,24 +26,24 @@ export default function Dashboard() {
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3} onClick={()=>{navigate(PATH_DASHBOARD.subadmin.subadmin)}}>
-            <AnalyticsWidgetSummary title="Sub Admin" name={714000} icon={'ant-design:android-filled'}  />
+            <AnalyticsWidgetSummary title="Sub Admin" name={714000} icon={'mdi:user'}  />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3} onClick={()=>{navigate(PATH_DASHBOARD.character.character)}}> 
-            <AnalyticsWidgetSummary title="Characters" name={1352831} color="info" icon={'ant-design:apple-filled'} />
+            <AnalyticsWidgetSummary title="Supervisor" name={1352831} color="info" icon={'mdi:account-supervisor-outline'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3} onClick={()=>{navigate(PATH_DASHBOARD.card.card)}}>
             <AnalyticsWidgetSummary
-              title="Cards"
+              title="Officers"
               name={1723315}
-              color="warning"
-              icon={'ant-design:windows-filled'}
+              color="info"
+              icon={'healthicons:officer'}
             />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3} onClick={()=>{navigate(PATH_DASHBOARD.spell.spell)}}>
-            <AnalyticsWidgetSummary title="Spells" name={234} color="error" icon={'ant-design:bug-filled'} />
+            <AnalyticsWidgetSummary title="Gang" name={234} color="info" icon={'pepicons-pencil:people'} />
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
