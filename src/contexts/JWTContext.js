@@ -27,7 +27,11 @@ const handlers = {
   },
   LOGIN: (state, action) => {
     const { user } = action.payload;
+<<<<<<< HEAD
     console.log(user, { ...state, user }, '<=======from JWT');
+=======
+    // console.log(user, { ...state, user: user }, '<=======from JWT');
+>>>>>>> 768509c690208bbcf3a87d80e96884c6e8965791
     return {
       ...state,
       isAuthenticated: true,

@@ -46,8 +46,7 @@ import { AuthProvider } from './contexts/JWTContext';
 // import { AuthProvider } from './contexts/Auth0Context';
 // import { AuthProvider } from './contexts/FirebaseContext';
 // import { AuthProvider } from './contexts/AwsCognitoContext';
-
-//
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';

@@ -86,10 +86,10 @@ export default function EditSubAdmin() {
             <Grid item xs={12} md={12}>
               <Card sx={{ p: 3 }}>
                 <Stack spacing={3}>
-                  <RHFTextField name="fname" label="First Name" />
-                  <RHFTextField name="lname" label="Last Name" />
-                  <RHFTextField name="email" label="Email" />
-                  <RHFTextField name="password" label="Password" />
+                  <RHFTextField name="fname" label="First Name" focused/>
+                  <RHFTextField name="lname" label="Last Name" focused/>
+                  <RHFTextField name="email" label="Email" focused/>
+                  <RHFTextField name="password" label="Password" focused/>
 
                   <Grid item xs={4} md={4}>
                     <LoadingButton type="submit" variant="contained" size="large" loading={isSubmitting}>

@@ -1,15 +1,11 @@
 import * as Yup from 'yup';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useMemo } from 'react';
-
-// form
+import {useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-
 import { LoadingButton } from '@mui/lab';
 import { Card, Grid, Stack, Container } from '@mui/material';
-// routes
 import axios from '../../../utils/axios';
 import { getDeparts } from '../../../redux/slices/department';
 import { getProducts } from '../../../redux/slices/subadmin';
@@ -42,10 +38,6 @@ export default function AddElement() {
     formState: { isSubmitting },
   } = methods;
 
-  useEffect(() => {
-    dispatch(getDeparts());
-    dispatch(getProducts());
-  }, [dispatch]);
 
   const OnSubmit = async () => {
     const formValues = getValues();
@@ -71,7 +63,7 @@ export default function AddElement() {
           if (response?.data?.status === true) {
             enqueueSnackbar(response?.data?.message);
             reset();
-            navigate(PATH_DASHBOARD.element.element);
+            navigate(PATH_DASHBOARD.supervisor.supervisor);
           }
         });
     } catch (error) {

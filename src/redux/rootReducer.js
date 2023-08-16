@@ -1,18 +1,16 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-// slices
-import mailReducer from './slices/mail';
-import chatReducer from './slices/chat';
+
 import productReducer from './slices/subadmin';
-import elementReducer from './slices/element';
+import elementReducer from './slices/supervisor';
 import magictypeReducer from './slices/magictype';
 import departReducer from './slices/department';
 import rarityReducer from './slices/rarity';
 import spellReducer from './slices/spell';
 import characterReducer from './slices/character';
-import calendarReducer from './slices/calendar';
-import kanbanReducer from './slices/kanban';
+import gangReducer from './slices/gang';
+import chapterReducer from './slices/chapter';
 
 
 const rootPersistConfig = {
@@ -30,17 +28,20 @@ const rootPersistConfig = {
 // };
 
 const rootReducer = combineReducers({
-  mail: mailReducer,
-  chat: chatReducer,
-  calendar: calendarReducer,
-  kanban: kanbanReducer,
+
   element: elementReducer,
   magictype: magictypeReducer,
+<<<<<<< HEAD
   // tag: tagReducer,
+=======
+  depart: departReducer,
+>>>>>>> 768509c690208bbcf3a87d80e96884c6e8965791
   rarity: rarityReducer,
   spell: spellReducer,
   character: characterReducer,
   product: productReducer,
+  gang: gangReducer,
+  chapter: chapterReducer,
 
 });
 

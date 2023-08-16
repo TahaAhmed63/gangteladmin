@@ -51,28 +51,19 @@ export default function Router() {
             { path: 'subadmin', element: <SubAdmin /> },
             { path: 'editsubadmin/:id', element: <EditSubAdmin /> },
             { path: 'addsubadmin', element: <AddSubAdmin /> },
-            { path: 'element', element: <Element /> },
-            { path: 'editelement/:id', element: <EditElement /> },
-            { path: 'addelement', element: <AddElement /> },
-            { path: 'magictype', element: <Magictype /> },
-            { path: 'editmagictype/:id', element: <EditMagictype /> },
-            { path: 'addmagictype', element: <AddMagictype /> },
-            { path: 'tag', element: <Tag/> },
-            { path: 'edittag/:id', element: <EditTag /> },
-            { path: 'addtag', element: <AddTag /> },
-            { path: 'rarity', element: <Rarity /> },
-            { path: 'editrarity/:id', element: <EditRarity /> },
-            { path: 'addrarity', element: <AddRarity /> },
-             { path: 'spell', element: <Spell /> },
-             { path: 'editspell/:id', element: <EditSpell /> },
-             { path: 'addspell', element: <AddSpell /> },
-             { path: 'spelleffect/:id', element: <Effect/> },
-             { path: 'card', element: <Card /> },
-            { path: 'editcard/:id', element: <EditCard /> },
-            { path: 'addcard', element: <AddCard /> },
-             { path: 'character', element: <Character /> },
-            { path: 'editcharacter/:id', element: <EditCharacter /> },
-            { path: 'addcharacter', element: <AddCharacter /> },
+            { path: 'supervisor', element: <Supervisor /> },
+            { path: 'editsupervisor/:id', element: <EditSupervisor /> },
+            { path: 'addsupervisor', element: <AddSupervisor /> },
+            { path: 'officer', element: <Officer /> },
+            { path: 'editofficer/:id', element: <EditOfficer /> },
+            { path: 'addofficer', element: <AddOfficer /> },
+            { path: 'department', element: <Department/> },
+            { path: 'editdepartment/:id', element: <EditDepartment /> },
+            { path: 'adddepartment', element: <AddDepartment /> },
+            { path: 'gang', element: <Gang /> },
+            { path: 'addgang', element: <AddGang /> },
+            { path: 'gangchapter/:id', element: <Chapter /> },
+           
 
 
 
@@ -115,35 +106,27 @@ const SubAdmin = Loadable(lazy(() => import('../pages/dashboard/SubAdmin/SubAdmi
 const EditSubAdmin = Loadable(lazy(() => import('../pages/dashboard/SubAdmin/EditSubAdmin')));
 const AddSubAdmin = Loadable(lazy(() => import('../pages/dashboard/SubAdmin/AddSubAdmin')));
 
-const Element = Loadable(lazy(() => import('../pages/dashboard/Supervisor/Supervisor')));
-const EditElement = Loadable(lazy(() => import('../pages/dashboard/Supervisor/EditSupervisor')));
-const AddElement = Loadable(lazy(() => import('../pages/dashboard/Supervisor/AddSupervisor')));
+const Supervisor = Loadable(lazy(() => import('../pages/dashboard/Supervisor/Supervisor')));
+const EditSupervisor = Loadable(lazy(() => import('../pages/dashboard/Supervisor/EditSupervisor')));
+const AddSupervisor = Loadable(lazy(() => import('../pages/dashboard/Supervisor/AddSupervisor')));
 
-const Magictype = Loadable(lazy(() => import('../pages/dashboard/Magictype/Magictype')));
-const EditMagictype = Loadable(lazy(() => import('../pages/dashboard/Magictype/EditMagictype')));
-const AddMagictype = Loadable(lazy(() => import('../pages/dashboard/Magictype/AddMagictype')));
+const Officer = Loadable(lazy(() => import('../pages/dashboard/Officer/Officer')));
+const EditOfficer = Loadable(lazy(() => import('../pages/dashboard/Officer/EditOfficer')));
+const AddOfficer = Loadable(lazy(() => import('../pages/dashboard/Officer/AddOfficer')));
 
-const Tag = Loadable(lazy(() => import('../pages/dashboard/Tag/Department')));
-const EditTag = Loadable(lazy(() => import('../pages/dashboard/Tag/EditTag')));
-const AddTag = Loadable(lazy(() => import('../pages/dashboard/Tag/AddTag')));
+const Department = Loadable(lazy(() => import('../pages/dashboard/Department/Department')));
+const EditDepartment = Loadable(lazy(() => import('../pages/dashboard/Department/EditDepartment')));
+const AddDepartment = Loadable(lazy(() => import('../pages/dashboard/Department/AddDepartment')));
 
-const Rarity = Loadable(lazy(() => import('../pages/dashboard/Rarity/Rarity')));
-const EditRarity = Loadable(lazy(() => import('../pages/dashboard/Rarity/EditRarity')));
-const AddRarity = Loadable(lazy(() => import('../pages/dashboard/Rarity/AddRarity')));
+const Gang = Loadable(lazy(() => import('../pages/dashboard/Gang/Gang')));
+const Chapter = Loadable(lazy(() => import('../pages/dashboard/chapter/Chapter')));
+const AddGang = Loadable(lazy(() => import('../pages/dashboard/Gang/AddGang')));
 
-const Spell = Loadable(lazy(() => import('../pages/dashboard/Officer/Officer')));
-
-const EditSpell = Loadable(lazy(() => import('../pages/dashboard/Officer/EditSpell')));
-const AddSpell = Loadable(lazy(() => import('../pages/dashboard/Officer/AddOfficer')));
-const Effect = Loadable(lazy(() => import('../pages/dashboard/Officer/Effect')));
 
 const Card = Loadable(lazy(() => import('../pages/dashboard/Card/Card')));
 const EditCard = Loadable(lazy(() => import('../pages/dashboard/Card/EditCard')));
 const AddCard = Loadable(lazy(() => import('../pages/dashboard/Card/AddCard')));
 
-const Character = Loadable(lazy(() => import('../pages/dashboard/Character/Character')));
-const EditCharacter = Loadable(lazy(() => import('../pages/dashboard/Character/EditCharacter')));
-const AddCharacter = Loadable(lazy(() => import('../pages/dashboard/Character/AddCharacter')));
 
 const GeneralEcommerce = Loadable(lazy(() => import('../pages/dashboard/GeneralEcommerce')));
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));

@@ -5,12 +5,12 @@ import { dispatch } from '../store';
 const initialState = {
   isLoading: false,
   error: null,
-  magictypes: [],
+  gangs: [],
 };
 
 
 const slice = createSlice({
-  name: 'magictype',
+  name: 'gang',
   initialState,
   reducers: {
     // START LOADING
@@ -24,10 +24,10 @@ const slice = createSlice({
       state.error = action.payload;
     },
 
-    // GET magictype
-    getmagictypeSuccess(state, action) {
+    // GET gang
+    getGangSuccess(state, action) {
       state.isLoading = false;
-      state.magictypes = action.payload;
+      state.gangs = action.payload;
     },
 
   },
@@ -39,13 +39,13 @@ export default slice.reducer;
 
 // ----------------------------------------------------------------------
 
-export function getmagictypes() {
+export function getGangs() {
   return async () => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get('admin/officer');
-      console.log(response,'officer--->>>>')
-      dispatch(slice.actions.getmagictypeSuccess(response?.data?.officers));
+      const response = await axios.get('admin/gang');
+      console.log(response,'gang--->>>>')
+      dispatch(slice.actions.getGangSuccess(response?.data?.gangs));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }
