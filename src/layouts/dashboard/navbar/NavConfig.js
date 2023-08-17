@@ -25,6 +25,7 @@ const ICONS = {
 const navConfig = [
   // GENERAL
   // ----------------------------------------------------------------------
+  
   {
     items: [
       { title: 'Dashboard', path: '/dashboard/home', icon: ICONS.dashboard },
