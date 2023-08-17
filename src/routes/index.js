@@ -12,6 +12,7 @@ import AuthGuard from '../guards/AuthGuard';
 import { PATH_AFTER_LOGIN } from '../config';
 // components
 import LoadingScreen from '../components/LoadingScreen';
+import Member from '../pages/dashboard/GangMember/Members';
 
 
 // ----------------------------------------------------------------------
@@ -63,6 +64,9 @@ export default function Router() {
             { path: 'gang', element: <Gang /> },
             { path: 'addgang', element: <AddGang /> },
             { path: 'gangchapter/:id', element: <Chapter /> },
+            { path: 'member', element: <Members /> },
+            { path: 'addmember', element: <AddMember /> },
+            { path: 'editmember/:id', element: <EditMember /> },
            
 
 
@@ -121,6 +125,10 @@ const AddDepartment = Loadable(lazy(() => import('../pages/dashboard/Department/
 const Gang = Loadable(lazy(() => import('../pages/dashboard/Gang/Gang')));
 const Chapter = Loadable(lazy(() => import('../pages/dashboard/chapter/Chapter')));
 const AddGang = Loadable(lazy(() => import('../pages/dashboard/Gang/AddGang')));
+
+const Members = Loadable(lazy(() => import('../pages/dashboard/GangMember/Members')));
+const EditMember = Loadable(lazy(() => import('../pages/dashboard/GangMember/EditMember')));
+const AddMember = Loadable(lazy(() => import('../pages/dashboard/GangMember/AddMember')));
 
 
 const Card = Loadable(lazy(() => import('../pages/dashboard/Card/Card')));

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
 // @mui
 import { styled } from '@mui/material/styles';
@@ -28,25 +29,94 @@ NavSectionVertical.propTypes = {
 };
 
 export default function NavSectionVertical({ navConfig, isCollapse = false, ...other }) {
+  const user1 = JSON.parse(localStorage.getItem('user'));
+  console.log(navConfig, '<=========== navConfig');
   return (
     <Box {...other}>
-      {navConfig.map((group) => (
-        <List key={group.subheader} disablePadding sx={{ px: 2 }}>
-          <ListSubheaderStyle
-            sx={{
-              ...(isCollapse && {
-                opacity: 0,
-              }),
-            }}
-          >
-            {group.subheader}
-          </ListSubheaderStyle>
-
-          {group.items.map((list) => (
-            <NavListRoot key={list.title} list={list} isCollapse={isCollapse} />
+      {user1.role_id === 1 ? (
+        <>
+          {navConfig[0].items.map((group) => (
+            <List key={group.subheader} disablePadding sx={{ px: 2 }}>
+              <NavListRoot key={group.title} list={group} isCollapse={isCollapse} />
+            </List>
           ))}
-        </List>
+        </>
+      ) : user1.role_id === 2 ? (
+        <>
+          {navConfig[1].items.map((group) => (
+            <List key={group.subheader} disablePadding sx={{ px: 2 }}>
+              <NavListRoot key={group.title} list={group} isCollapse={isCollapse} />
+            </List>
+          ))}
+        </>
+      ) : user1.role_id === 3 ? (
+        <>
+          {navConfig[2]?.items?.map((group) => (
+            <>
+              <List key={group.subheader} disablePadding sx={{ px: 2 }}>
+                {/* <ListSubheaderStyle
+                  sx={{
+                    ...(isCollapse && {
+                      opacity: 0,
+                    }),
+                  }}
+                >
+                  {group.subheader}
+                </ListSubheaderStyle> */}
+
+                <NavListRoot key={group.title} list={group} isCollapse={isCollapse} />
+                {/* {group.items.map((list) => (
+                ))} */}
+              </List>
+            </>
+          ))}
+        </>
+      )
+      :user1.role_id === 4 ?
+      <>
+      {navConfig[3]?.items?.map((group) => (
+        <>
+          <List key={group.subheader} disablePadding sx={{ px: 2 }}>
+            {/* <ListSubheaderStyle
+              sx={{
+                ...(isCollapse && {
+                  opacity: 0,
+                }),
+              }}
+            >
+              {group.subheader}
+            </ListSubheaderStyle> */}
+
+            <NavListRoot key={group.title} list={group} isCollapse={isCollapse} />
+            {/* {group.items.map((list) => (
+            ))} */}
+          </List>
+        </>
       ))}
+    </>
+    :
+    <>
+      {navConfig[4]?.items?.map((group) => (
+        <>
+          <List key={group.subheader} disablePadding sx={{ px: 2 }}>
+            {/* <ListSubheaderStyle
+              sx={{
+                ...(isCollapse && {
+                  opacity: 0,
+                }),
+              }}
+            >
+              {group.subheader}
+            </ListSubheaderStyle> */}
+
+            <NavListRoot key={group.title} list={group} isCollapse={isCollapse} />
+            {/* {group.items.map((list) => (
+            ))} */}
+          </List>
+        </>
+      ))}
+    </>
+    }
     </Box>
   );
 }
