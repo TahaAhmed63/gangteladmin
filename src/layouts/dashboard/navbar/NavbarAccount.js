@@ -32,6 +32,7 @@ NavbarAccount.propTypes = {
 export default function NavbarAccount({ isCollapse }) {
   // const { user } = useAuth();
  const user =JSON.parse(localStorage.getItem('user'))
+ console.log(user,'user-------------->>>>')
   return (
     <Link underline="none" color="inherit" component={RouterLink} to='/dashboard/home' >
       <RootStyle
@@ -57,7 +58,7 @@ export default function NavbarAccount({ isCollapse }) {
           }}
         >
           <Typography variant="h6" noWrap>
-          {user?.role}
+          {user?.role? user?.role : user?.first_name}
           </Typography>
           
         </Box>

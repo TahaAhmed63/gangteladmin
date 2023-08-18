@@ -8,7 +8,7 @@ import * as Yup from 'yup';
     .required('Password is required')
     .min(8, 'Password must be at least 8 characters')
     .max(15, 'Password must be at most 15 characters'),
-    subadmin_id: Yup.string().required('Select an Supervisor'),
+    // subadmin_id: Yup.string().required('Select an Supervisor'),
     department_id: Yup.string().required('Select an Supervisor'),
     supervisor_name: Yup.string().required('Name is required'),
     address: Yup.string().required('Address is required'),

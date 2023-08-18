@@ -18,6 +18,7 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 import { FormProvider, RHFTextField, RHFSelect } from '../../../components/hook-form';
 
 export default function AddElement() {
+  const user1 = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
@@ -51,10 +52,11 @@ export default function AddElement() {
       supervisor.append('phone', formValues?.phoneNumber);
       supervisor.append('address', formValues?.address);
       supervisor.append('department_id', formValues?.department_id);
-      supervisor.append('subadmin_id', formValues?.subadmin_id);
       supervisor.append('supervisor_name', formValues?.supervisor_name);
       supervisor.append('supervisor_email', formValues?.supervisor_email);
       supervisor.append('supervisor_number', formValues?.supervisor_phoneNumber);
+      const subadminId = user1.role_id === 2 ? user1.id : formValues?.subadmin_id;
+      supervisor.append('subadmin_id', subadminId);
 
       await axios
         .post('admin/supervisor', supervisor)
@@ -117,7 +119,7 @@ export default function AddElement() {
             </Grid>
             <Grid item xs={12} md={6}>
               <Stack spacing={3}>
-                <RHFSelect name="department_id" label="Select Your Sub Admin">
+                <RHFSelect name="department_id" label="Select Department">
                   <option>Select Department</option>
                   {departs?.map((e) => (
                     <option key={e?.id} value={e?.id}>
@@ -127,18 +129,18 @@ export default function AddElement() {
                 </RHFSelect>
               </Stack>
             </Grid>
-            <Grid item xs={12} md={12}>
-              <Stack spacing={3}>
-                <RHFSelect name="subadmin_id" label="Select Your Sub Admin">
-                  <option>Select Sub Admin</option>
-                  {products?.map((e) => (
-                    <option key={e?.id} value={e?.id}>
-                      {e?.first_name}
-                    </option>
-                  ))}
-                </RHFSelect>
-              </Stack>
-            </Grid>
+         {user1?.role_id !== 2  &&  (<Grid item xs={12} md={12}>
+         <Stack spacing={3}>
+           <RHFSelect name="subadmin_id" label="Select Your Sub Admin">
+             <option>Select Sub Admin</option>
+             {products?.map((e) => (
+               <option key={e?.id} value={e?.id}>
+                 {e?.first_name}
+               </option>
+             ))}
+           </RHFSelect>
+         </Stack>
+       </Grid>)}
             <Grid item xs={4} md={12}>
               <LoadingButton type="submit" variant="contained" size="large" loading={isSubmitting}>
                 Create Supervisor

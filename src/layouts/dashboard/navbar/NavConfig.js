@@ -24,9 +24,7 @@ const ICONS = {
   dashboard: getIcon('ic_dashboard'),
 };
 const navConfig = [
-  // GENERAL
-  // ----------------------------------------------------------------------
-  
+
   {
     items: [
       { title: 'Dashboard', path: '/dashboard/home', icon: ICONS.dashboard },
@@ -44,6 +42,7 @@ const navConfig = [
         path: PATH_DASHBOARD.department.department,
         icon: <Iconify icon="mingcute:department-fill" />,
       },
+      { title: 'Vehicle', path: PATH_DASHBOARD.vehicle.vehicle, icon: <Iconify icon="fa6-solid:people-line" /> },
     ],
   },
   {
@@ -62,6 +61,8 @@ const navConfig = [
         path: PATH_DASHBOARD.department.department,
         icon: <Iconify icon="mingcute:department-fill" />,
       },
+      { title: 'Vehicle', path: PATH_DASHBOARD.vehicle.vehicle, icon: <Iconify icon="fa6-solid:people-line" /> },
+
     ],
   },
   {
@@ -71,6 +72,8 @@ const navConfig = [
       { title: 'Officer', path: PATH_DASHBOARD.officer.officer, icon: <Iconify icon="healthicons:officer" /> },
       { title: 'Gang', path: PATH_DASHBOARD.gang.gang, icon: <Iconify icon="pepicons-pencil:people" /> },
       { title: 'Gang Member', path: PATH_DASHBOARD.gangmember.member, icon: <Iconify icon="fa6-solid:people-line" /> },
+      { title: 'Vehicle', path: PATH_DASHBOARD.vehicle.vehicle, icon: <Iconify icon="fa6-solid:people-line" /> },
+
     ],
   },
   {
@@ -78,12 +81,15 @@ const navConfig = [
       { title: 'Dashboard', path: '/dashboard/home', icon: ICONS.dashboard },
       { title: 'Gang', path: PATH_DASHBOARD.gang.gang, icon: <Iconify icon="pepicons-pencil:people" /> },
       { title: 'Gang Member', path: PATH_DASHBOARD.gangmember.member, icon: <Iconify icon="fa6-solid:people-line" /> },
+      { title: 'Vehicle', path: PATH_DASHBOARD.vehicle.vehicle, icon: <Iconify icon="fa6-solid:people-line" /> },
+
     ],
   },
   {
     items: [
       { title: 'Dashboard', path: '/dashboard/home', icon: ICONS.dashboard },
       { title: 'Gang Member', path: PATH_DASHBOARD.gangmember.member, icon: <Iconify icon="fa6-solid:people-line" /> },
+      { title: 'Vehicle', path: PATH_DASHBOARD.vehicle.vehicle, icon: <Iconify icon="fa6-solid:people-car" /> },
     ],
   },
 ];

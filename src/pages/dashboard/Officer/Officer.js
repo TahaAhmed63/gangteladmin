@@ -33,40 +33,51 @@ export default function Officer() {
       {
         accessorKey: "id",
         header: "ID",
-        size: 5,
+        size: 2,
       },
       {
         accessorKey: "first_name",
         header: "First Name",
-        size: 10,
+        size: 2,
       },
       {
         accessorKey: "last_name",
         header: "Last Name",
-        size: 10,
+        size: 2,
       },
       {
         accessorKey: "email",
         header: "Email",
-        size: 20,
+        size: 10,
       },
       {
-        accessorKey: "subadmin",
-        header: "Admin",
-        size: 20,
-        Cell: ({ row }) =>
-          row.subadmin
-            ? `${row.subadmin?.first_name ?? ""} ${row.subadmin?.last_name ?? ""}`
-            : "",
+        accessorKey: 'subadmin',
+        header: 'Admin',
+        size: 10,
+        Cell: ({ row }) => {
+          if (row.original.subadmin) {
+            return `${row.original.subadmin.first_name} ${row.original.subadmin.last_name}`;
+          }
+        },
       },
       {
-        accessorKey: "supervisor",
-        header: "Supervisor",
+        accessorKey: 'subadmin',
+        header: 'Supervisor',
         size: 20,
-        Cell: ({ row }) =>
-          row.supervisor
-            ? `${row.supervisor?.first_name ?? ""} ${row.supervisor?.last_name ?? ""}`
-            : "",
+        Cell: ({ row }) => {
+          if (row.original.subadmin) {
+            return `${row.original.supervisor.first_name} ${row.original.supervisor.last_name}`;
+          }
+        },
+      },
+      {
+        accessorKey: "status",
+        header: "Status",
+        size: 20,
+        Cell:({row})=> <button className={`btn ${  row?.original?.status === 1 ? `btn-outline-success` : `btn-outline-danger`} 
+        text-capitalize`} style={{ borderRadius: '20px' }} onClick={()=>handleStatus(row.original.id)}>
+        {row?.original?.status === 1 ? `active` : `deactive`}
+      </button>
       },
     ],
     []
@@ -92,6 +103,22 @@ export default function Officer() {
   async function handleDelete(rowdata) {
     try {
       await axios.delete(`spell/${rowdata}`)
+      .then((response)=>{ 
+        if(response?.data?.status === true){
+        enqueueSnackbar(response?.data?.message);
+        dispatch(getmagictypes());
+      }})
+    } catch (error) {
+      enqueueSnackbar(error?.message,{ 
+        variant: 'error'
+      });
+      console.error(error);
+    }
+  }
+  async function handleStatus(id) {
+    try {
+     
+   await axios.get(`admin/subadmin/status/${id}`)
       .then((response)=>{ 
         if(response?.data?.status === true){
         enqueueSnackbar(response?.data?.message);
@@ -140,9 +167,9 @@ export default function Officer() {
               <IconButton
               sx={{
                 border: "1px solid",
-                borderColor: "primary.main",
+                borderColor: "success.main",
               }}
-              color="primary"
+              color="success"
                 onClick={()=>{navigate(PATH_DASHBOARD.officer.editofficer(row.original.id))}}
               >
                 <EditIcon />

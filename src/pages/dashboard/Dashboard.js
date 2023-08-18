@@ -37,7 +37,7 @@ export default function Dashboard() {
                   navigate(PATH_DASHBOARD.subadmin.subadmin);
                 }}
               >
-                <AnalyticsWidgetSummary title="Sub Admin" name={714000} icon={'mdi:user'} />
+                <AnalyticsWidgetSummary title="Admin" name={714000} icon={'mdi:user'} />
               </Grid>
 
               <Grid
@@ -46,7 +46,7 @@ export default function Dashboard() {
                 sm={6}
                 md={3}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.character.character);
+                  navigate(PATH_DASHBOARD.supervisor.supervisor);
                 }}
               >
                 <AnalyticsWidgetSummary
@@ -63,7 +63,7 @@ export default function Dashboard() {
                 sm={6}
                 md={3}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.card.card);
+                  navigate(PATH_DASHBOARD.officer.officer);
                 }}
               >
                 <AnalyticsWidgetSummary title="Officers" name={1723315} color="info" icon={'healthicons:officer'} />
@@ -75,7 +75,7 @@ export default function Dashboard() {
                 sm={6}
                 md={3}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.spell.spell);
+                  navigate(PATH_DASHBOARD.gang.gang);
                 }}
               >
                 <AnalyticsWidgetSummary title="Gang" name={234} color="info" icon={'pepicons-pencil:people'} />
@@ -89,7 +89,7 @@ export default function Dashboard() {
                 sm={6}
                 md={3}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.character.character);
+                  navigate(PATH_DASHBOARD.supervisor.supervisor);
                 }}
               >
                 <AnalyticsWidgetSummary
@@ -104,9 +104,9 @@ export default function Dashboard() {
                 item
                 xs={12}
                 sm={6}
-                md={4}
+                md={3}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.card.card);
+                  navigate(PATH_DASHBOARD.officer.officer);
                 }}
               >
                 <AnalyticsWidgetSummary title="Officers" name={1723315} color="info" icon={'healthicons:officer'} />
@@ -116,9 +116,9 @@ export default function Dashboard() {
                 item
                 xs={12}
                 sm={6}
-                md={4}
+                md={3}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.spell.spell);
+                  navigate(PATH_DASHBOARD.gang.gang);
                 }}
               >
                 <AnalyticsWidgetSummary title="Gang" name={234} color="info" icon={'pepicons-pencil:people'} />
@@ -128,12 +128,12 @@ export default function Dashboard() {
                 item
                 xs={12}
                 sm={6}
-                md={6}
+                md={3}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.spell.spell);
+                  navigate(PATH_DASHBOARD.gangmember.member);
                 }}
               >
-                <AnalyticsWidgetSummary title="Gang" name={234} color="info" icon={'pepicons-pencil:people'} />
+                <AnalyticsWidgetSummary title="Gang Member" name={234} color="info" icon={'pepicons-pencil:people'} />
               </Grid>
             </>
           ) : user1.role_id === 3 ? (
@@ -144,7 +144,7 @@ export default function Dashboard() {
                 sm={6}
                 md={4}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.card.card);
+                  navigate(PATH_DASHBOARD.officer.officer);
                 }}
               >
                 <AnalyticsWidgetSummary title="Officers" name={1723315} color="info" icon={'healthicons:officer'} />
@@ -156,7 +156,7 @@ export default function Dashboard() {
                 sm={6}
                 md={4}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.spell.spell);
+                  navigate(PATH_DASHBOARD.gang.gang);
                 }}
               >
                 <AnalyticsWidgetSummary title="Gang" name={234} color="info" icon={'pepicons-pencil:people'} />
@@ -168,13 +168,13 @@ export default function Dashboard() {
                 sm={6}
                 md={4}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.spell.spell);
+                  navigate(PATH_DASHBOARD.gangmember.member);
                 }}
               >
                 <AnalyticsWidgetSummary title="Gang Member" name={234} color="info" icon={'pepicons-pencil:people'} />
               </Grid>
             </>
-          ) :  user1.role_id === 4 ? 
+          ) :  user1.role_id === 4 ? (
           <>
           <Grid
                 item
@@ -182,7 +182,7 @@ export default function Dashboard() {
                 sm={6}
                 md={6}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.card.card);
+                  navigate(PATH_DASHBOARD.gang.gang);
                 }}
               >
                 <AnalyticsWidgetSummary title="Gang" name={1723315} color="info" icon={'pepicons-pencil:people'} />
@@ -194,13 +194,12 @@ export default function Dashboard() {
                 sm={6}
                 md={6}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.spell.spell);
+                  navigate(PATH_DASHBOARD.gangmember.member);
                 }}
               >
                 <AnalyticsWidgetSummary title="Gang Member" name={234} color="info" icon={'pepicons-pencil:people'} />
               </Grid>
-          </>
-          :
+          </>) :
           (
             <>
              <Grid
@@ -209,10 +208,22 @@ export default function Dashboard() {
                 sm={6}
                 md={6}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.spell.spell);
+                  navigate(PATH_DASHBOARD.gangmember.member);
                 }}
               >
                 <AnalyticsWidgetSummary title="Gang Member" name={234} color="info" icon={'pepicons-pencil:people'} />
+              </Grid>
+         
+             <Grid
+                item
+                xs={12}
+                sm={6}
+                md={6}
+                onClick={() => {
+                  navigate(PATH_DASHBOARD.gangmember.vehicle);
+                }}
+              >
+                <AnalyticsWidgetSummary title="Vehicle" name={234} color="info" icon={'pepicons-pencil:people'} />
               </Grid>
             </>
           )}

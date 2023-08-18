@@ -100,10 +100,10 @@ export default function Department() {
               }}
             >
               <IconButton
-                color="primary"
+                color="success"
                 sx={{
                   border: '1px solid',
-                  borderColor: 'primary.main',
+                  borderColor: 'success.main',
                 }}
                 onClick={() => {
                   navigate(PATH_DASHBOARD.tag.edittag(row.original.id));

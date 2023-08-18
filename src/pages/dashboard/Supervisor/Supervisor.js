@@ -55,6 +55,15 @@ export default function Element() {
         header: "Phone",
         size: 150,
       },
+      {
+        accessorKey: "status",
+        header: "Status",
+        size: 20,
+        Cell:({row})=> <button className={`btn ${  row?.original?.status === 1 ? `btn-outline-success` : `btn-outline-danger`} 
+        text-capitalize`} style={{ borderRadius: '20px' }} onClick={()=>handleStatus(row.original.id)}>
+        {row?.original?.status === 1 ? `active` : `deactive`}
+      </button>
+      },
     ],
     []
   );
@@ -79,6 +88,22 @@ export default function Element() {
   async function handleDelete(rowdata) {
     try {
       await axios.delete(`admin/supervisor/${rowdata}`)
+      .then((response)=>{ 
+        if(response?.data?.status === true){
+        enqueueSnackbar(response?.data?.message);
+        dispatch(getelements());
+      }})
+    } catch (error) {
+      enqueueSnackbar(error?.message,{ 
+        variant: 'error'
+      });
+      console.error(error);
+    }
+  }
+  async function handleStatus(id) {
+    try {
+     
+   await axios.get(`admin/subadmin/status/${id}`)
       .then((response)=>{ 
         if(response?.data?.status === true){
         enqueueSnackbar(response?.data?.message);
@@ -124,10 +149,10 @@ export default function Element() {
             }}
           >
             <IconButton
-              color="primary"
+              color="success"
               sx={{
                 border: "1px solid",
-                borderColor: "primary.main",
+                borderColor: "success.main",
               }}
               onClick={()=>{navigate(PATH_DASHBOARD.supervisor.editsupervisor(row.original.id))}}
             >

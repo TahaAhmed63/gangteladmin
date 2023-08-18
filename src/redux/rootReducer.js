@@ -8,7 +8,7 @@ import magictypeReducer from './slices/magictype';
 import departReducer from './slices/department';
 import rarityReducer from './slices/rarity';
 import spellReducer from './slices/spell';
-import characterReducer from './slices/character';
+import vehicleReducer from './slices/vehicle';
 import gangReducer from './slices/gang';
 import chapterReducer from './slices/chapter';
 import gangmember from './slices/Member';
@@ -35,7 +35,7 @@ const rootReducer = combineReducers({
   depart: departReducer,
   rarity: rarityReducer,
   spell: spellReducer,
-  character: characterReducer,
+  vehicle: vehicleReducer,
   product: productReducer,
   gang: gangReducer,
   chapter: chapterReducer,

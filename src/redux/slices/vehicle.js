@@ -5,12 +5,12 @@ import { dispatch } from '../store';
 const initialState = {
   isLoading: false,
   error: null,
-  characters: [],
+  vehicles: [],
 };
 
 
 const slice = createSlice({
-  name: 'character',
+  name: 'vehicle',
   initialState,
   reducers: {
     // START LOADING
@@ -25,9 +25,9 @@ const slice = createSlice({
     },
 
     // GET spell
-    getcharacteruccess(state, action) {
+    getvehicleuccess(state, action) {
       state.isLoading = false;
-      state.characters = action.payload;
+      state.vehicles = action.payload;
     },
 
   },
@@ -39,13 +39,13 @@ export default slice.reducer;
 
 // ----------------------------------------------------------------------
 
-export function getCharacter() {
+export function getVehicles() {
   return async () => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get('character');
-      console.log(response,'character--->>>>')
-      dispatch(slice.actions.getcharacteruccess(response?.data?.data));
+      const response = await axios.get('vehicle');
+      console.log(response,'vehicle--->>>>')
+      dispatch(slice.actions.getvehicleuccess(response?.data?.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }

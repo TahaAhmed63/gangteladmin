@@ -58,7 +58,7 @@ function NavSectionHorizontal({ navConfig }) {
                 </Stack>
               ))}
             </>
-          ) : (
+          ) : user1.role_id === 4 ? (
             <>
               {navConfig[3]?.map((group) => (
                 <Stack key={group.subheader} direction="row" flexShrink={0}>
@@ -68,7 +68,17 @@ function NavSectionHorizontal({ navConfig }) {
                 </Stack>
               ))}
             </>
-          )}
+          ):(
+            <>
+              {navConfig[4]?.map((group) => (
+                <Stack key={group.subheader} direction="row" flexShrink={0}>
+                  {group.items.map((list) => (
+                    <NavListRoot key={list.title} list={list} />
+                  ))}
+                </Stack>
+              ))}
+            </>)
+        }
         </Stack>
       </Stack>
     </>

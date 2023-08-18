@@ -67,6 +67,9 @@ export default function Router() {
             { path: 'member', element: <Members /> },
             { path: 'addmember', element: <AddMember /> },
             { path: 'editmember/:id', element: <EditMember /> },
+            { path: 'vehicle', element: <Vehicle /> },
+            { path: 'addvehicle', element: <AddVehicle /> },
+            { path: 'editvehicle', element: <EditVehicle /> },
            
 
 
@@ -131,9 +134,9 @@ const EditMember = Loadable(lazy(() => import('../pages/dashboard/GangMember/Edi
 const AddMember = Loadable(lazy(() => import('../pages/dashboard/GangMember/AddMember')));
 
 
-const Card = Loadable(lazy(() => import('../pages/dashboard/Card/Card')));
-const EditCard = Loadable(lazy(() => import('../pages/dashboard/Card/EditCard')));
-const AddCard = Loadable(lazy(() => import('../pages/dashboard/Card/AddCard')));
+const Vehicle = Loadable(lazy(() => import('../pages/dashboard/Vehicle/Vehicle')));
+const EditVehicle = Loadable(lazy(() => import('../pages/dashboard/Vehicle/EditVehicle')));
+const AddVehicle = Loadable(lazy(() => import('../pages/dashboard/Vehicle/AddVehicle')));
 
 
 const GeneralEcommerce = Loadable(lazy(() => import('../pages/dashboard/GeneralEcommerce')));

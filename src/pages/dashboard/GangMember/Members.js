@@ -140,9 +140,9 @@ export default function Member() {
             <IconButton
                 sx={{
                   border: '1px solid',
-                  borderColor: 'primary.main',
+                  borderColor: 'success.main',
                 }}
-                color="primary"
+                color="success"
                 onClick={() => {
                   navigate(PATH_DASHBOARD.gangmember.editmember(row.original.id));
                 }}

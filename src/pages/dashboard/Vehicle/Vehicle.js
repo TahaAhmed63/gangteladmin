@@ -13,7 +13,7 @@ import {
 // redux
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from '../../../redux/store';
-import { getProducts } from '../../../redux/slices/subadmin';
+import { getVehicles } from '../../../redux/slices/vehicle';
 import axios from '../../../utils/axios';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
@@ -26,6 +26,7 @@ import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 
 
 export default function Card() {
+
   const { enqueueSnackbar } = useSnackbar();
   const columns = useMemo(
     () => [
@@ -35,19 +36,29 @@ export default function Card() {
         size: 5,
       },
       {
-        accessorKey: "name",
-        header: "Card Name",
-        size: 30,
+        accessorKey: "registration",
+        header: "Registration",
+        size: 10,
       },
       {
-        accessorKey: "desc",
-        header: "Obtained",
-        size: 30,
+        accessorKey: "model",
+        header: "Model",
+        size: 10,
       },
       {
-        accessorKey: "desc",
-        header: "Character Name",
-        size: 30,
+        accessorKey: "year",
+        header: "Year",
+        size: 10,
+      },
+      {
+        accessorKey: "state",
+        header: "State",
+        size: 10,
+      },
+      {
+        accessorKey: "type",
+        header: "Type",
+        size: 10,
       },
     ],
     []
@@ -59,7 +70,7 @@ export default function Card() {
   const [tableData,setTableData]=useState([])
 
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(getVehicles());
   }, [dispatch]);
 
   useEffect(() => {
@@ -75,7 +86,7 @@ export default function Card() {
       .then((response)=>{ 
         if(response?.data?.status === true){
         enqueueSnackbar(response?.data?.message);
-        dispatch(getProducts());
+        dispatch(getVehicles());
       }})
     } catch (error) {
       enqueueSnackbar(error?.message,{ 
@@ -86,10 +97,10 @@ export default function Card() {
   }
 
   return (
-    <Page title="Card">
+    <Page title="Vehicle">
       <Container maxWidth='lg'>
         <HeaderBreadcrumbs
-          heading="Card"
+          heading="Vehicle"
           links={[
             { name: '', href: '' },]}
           action={
@@ -97,9 +108,9 @@ export default function Card() {
               variant="contained"
               startIcon={<Iconify icon="eva:plus-fill" />}
               component={RouterLink}
-              to={PATH_DASHBOARD.card.addcard}
+              to={PATH_DASHBOARD.vehicle.addvehicle}
             >
-              New Card
+              New Vehicle
             </Button>
           }
         />
@@ -123,7 +134,7 @@ export default function Card() {
                   border: "1px solid",
                   borderColor: "primary.main",
                 }}
-                onClick={()=>{navigate(PATH_DASHBOARD.card.editcard(row.original.id))}}
+                onClick={()=>{navigate(PATH_DASHBOARD.vehicle.editvehicle(row.original.id))}}
               >
                 <EditIcon />
               </IconButton>

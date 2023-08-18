@@ -8,7 +8,7 @@ import {
   Box,
   Button,
   Container,
-  IconButton,
+  IconButton
 } from '@mui/material';
 // redux
 import { useSnackbar } from 'notistack';
@@ -26,6 +26,8 @@ import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 
 
 export default function SubAdmin() {
+
+
   const { enqueueSnackbar } = useSnackbar();
   const columns = useMemo(
     () => [
@@ -48,6 +50,15 @@ export default function SubAdmin() {
         accessorKey: "email",
         header: "Email",
         size: 20,
+      },
+      {
+        accessorKey: "status",
+        header: "Status",
+        size: 20,
+        Cell:({row})=> <button className={`btn ${  row?.original?.status === 1 ? `btn-outline-success` : `btn-outline-danger`} 
+        text-capitalize`} style={{ borderRadius: '20px' }} onClick={()=>handleStatus(row.original.id)}>
+        {row?.original?.status === 1 ? `active` : `deactive`}
+      </button>
       },
     ],
     []
@@ -73,6 +84,22 @@ export default function SubAdmin() {
     try {
      
    await axios.delete(`dorm/${rowdata}`)
+      .then((response)=>{ 
+        if(response?.data?.status === true){
+        enqueueSnackbar(response?.data?.message);
+        dispatch(getProducts());
+      }})
+    } catch (error) {
+      enqueueSnackbar(error?.message,{ 
+        variant: 'error'
+      });
+      console.error(error);
+    }
+  }
+  async function handleStatus(id) {
+    try {
+     
+   await axios.get(`admin/subadmin/status/${id}`)
       .then((response)=>{ 
         if(response?.data?.status === true){
         enqueueSnackbar(response?.data?.message);
@@ -119,10 +146,10 @@ export default function SubAdmin() {
               }}
             >
               <IconButton
-                color="primary"
+                color="success"
                 sx={{
                   border: "1px solid",
-                  borderColor: "primary.main",
+                  borderColor: "success.main",
                 }}
                 onClick={()=>{navigate(PATH_DASHBOARD.subadmin.editsubadmin(row.original.id))}}
               >
