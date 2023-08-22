@@ -84,7 +84,7 @@ export default function Home() {
                   item
                   xs={12}
                   sm={6}
-                  md={4}
+                  md={6}
                   onClick={() => {
                     navigate(PATH_ROLE_LOGIN.admin);
                   }}
@@ -95,7 +95,7 @@ export default function Home() {
                   item
                   xs={12}
                   sm={6}
-                  md={4}
+                  md={6}
                   onClick={() => {
                     navigate(PATH_ROLE_LOGIN.subadmin);
                   }}
@@ -106,7 +106,7 @@ export default function Home() {
                   item
                   xs={12}
                   sm={6}
-                  md={4}
+                  md={6}
                   onClick={() => {
                     navigate(PATH_ROLE_LOGIN.supervisor);
                   }}
@@ -124,7 +124,7 @@ export default function Home() {
                 >
                   <AnalyticsWidgetSummary name={'Officer'} icon={'healthicons:officer'} />
                 </Grid>
-                <Grid
+                {/* <Grid
                   item
                   xs={12}
                   sm={6}
@@ -134,7 +134,7 @@ export default function Home() {
                   }}
                 >
                   <AnalyticsWidgetSummary name={'Gang Member'} icon={'formkit:people'} />
-                </Grid>
+                </Grid> */}
               </Grid>
             </CardContent>
           </Card>

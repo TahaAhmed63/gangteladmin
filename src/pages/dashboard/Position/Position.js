@@ -1,18 +1,18 @@
 import { useState, useEffect, useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
 import EditIcon from '@mui/icons-material/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Delete as DeleteIcon } from '@mui/icons-material';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 // @mui
-import { Box, Button, Container, IconButton } from '@mui/material';
+import { Box, Button, Container, IconButton,Tooltip } from '@mui/material';
 // redux
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from '../../../redux/store';
-import { getVehicles } from '../../../redux/slices/vehicle';
+import { getPosition } from '../../../redux/slices/position';
 import axios from '../../../utils/axios';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
-import { getMembers } from '../../../redux/slices/Member';
 // components
 import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
@@ -20,45 +20,19 @@ import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 
 // ----------------------------------------------------------------------
 
-export default function Card() {
+export default function Position() {
   const { enqueueSnackbar } = useSnackbar();
   const columns = useMemo(
     () => [
       {
         accessorKey: 'id',
         header: 'ID',
-        size: 5,
+        size: 50,
       },
       {
-        accessorKey: 'registration',
-        header: 'Registration',
-        size: 10,
-      },
-      {
-        accessorKey: 'model',
-        header: 'Model',
-        size: 10,
-      },
-      {
-        accessorKey: 'year',
-        header: 'Year',
-        size: 10,
-      },
-
-      {
-        accessorKey: 'type',
-        header: 'Type',
-        size: 10,
-      },
-      {
-        accessorKey: 'Customer',
-        header: 'Customer Name',
-        size: 10,
-        Cell: ({ row }) => {
-          if (row.original.customer) {
-            return `${row.original.customer.first_name} ${row.original.customer.last_name}`;
-          }
-        },
+        accessorKey: 'name',
+        header: 'Name',
+        size: 300,
       },
     ],
     []
@@ -66,26 +40,26 @@ export default function Card() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { vehicles } = useSelector((state) => state.vehicle);
+  const { positions } = useSelector((state) => state.position);
+  console.log(positions,'---------------->>>positions')
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    dispatch(getVehicles());
-    dispatch(getMembers());
+   dispatch(getPosition())
   }, [dispatch]);
 
   useEffect(() => {
-    if (vehicles?.length) {
-      setTableData(vehicles);
+    if (positions?.length) {
+      setTableData(positions);
     }
-  }, [vehicles]);
+  }, [positions]);
 
   async function handleDelete(rowdata) {
     try {
-      await axios.delete(`admin/vehicle/${rowdata}`).then((response) => {
+      await axios.delete(`admin/gangposition/${rowdata}`).then((response) => {
         if (response?.data?.status === true) {
           enqueueSnackbar(response?.data?.message);
-          dispatch(getVehicles());
+          dispatch(getPosition());
         }
       });
     } catch (error) {
@@ -97,19 +71,19 @@ export default function Card() {
   }
 
   return (
-    <Page title="Vehicle">
+    <Page title="Position">
       <Container maxWidth="lg">
         <HeaderBreadcrumbs
-          heading="Vehicle"
+          heading="Position"
           links={[{ name: '', href: '' }]}
           action={
             <Button
               variant="contained"
               startIcon={<Iconify icon="eva:plus-fill" />}
               component={RouterLink}
-              to={PATH_DASHBOARD.vehicle.addvehicle}
+              to={PATH_DASHBOARD.position.addposition}
             >
-              New Vehicle
+              New Position
             </Button>
           }
         />
@@ -127,18 +101,18 @@ export default function Card() {
                 justifyContent: 'flex-center',
               }}
             >
-              <IconButton
-                color="primary"
-                sx={{
-                  border: '1px solid',
-                  borderColor: 'primary.main',
-                }}
-                onClick={() => {
-                  navigate(PATH_DASHBOARD.vehicle.editvehicle(row.original.id));
-                }}
-              >
-                <EditIcon />
-              </IconButton>
+            {/* <Tooltip arrow title="View Gang Chapter">
+            <IconButton
+            sx={{
+              border: "1px solid",
+              borderColor: "warning.main",
+            }}
+            color="warning"
+            onClick={()=>{navigate(PATH_DASHBOARD.gang.gangchapter(row.original.id))}}
+          >
+            <VisibilityIcon />
+          </IconButton>
+          </Tooltip> */}
               <IconButton
                 color="error"
                 sx={{

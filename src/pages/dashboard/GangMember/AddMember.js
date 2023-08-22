@@ -1,18 +1,18 @@
-import React, {  useMemo } from 'react';
+import React, {  useCallback, useMemo } from 'react';
 import { useForm} from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { LoadingButton } from '@mui/lab';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
-import { Card,  Grid, Stack, Container } from '@mui/material';
+import { Card,  Grid, Stack, Container, Typography, Box } from '@mui/material';
 import axios from '../../../utils/axios';
-
+import { fData } from '../../../utils/formatNumber';
 import { MemberSchema, getDefaultValues } from '../AllSchema/gangmember';
 import { PATH_DASHBOARD } from '../../../routes/paths';
 import { useSelector } from '../../../redux/store';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
-import { FormProvider, RHFTextField, RHFSelect} from '../../../components/hook-form';
+import { FormProvider, RHFTextField, RHFSelect, RHFUploadAvatar} from '../../../components/hook-form';
 
 export default function AddMember() {
   const navigate = useNavigate();
@@ -40,6 +40,22 @@ export default function AddMember() {
   } = methods;
   console.log(errors);
 
+  const handleDrop = useCallback(
+    (acceptedFiles) => {
+      const file = acceptedFiles[0];
+
+      if (file) {
+        setValue(
+          'image',
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        );
+      }
+    },
+    [setValue]
+  );
+
   const onSubmit = async () => {
     const formValues = getValues();
     try {
@@ -51,6 +67,7 @@ export default function AddMember() {
       officer.append('officer_id', formValues?.officer_id);
       officer.append('subadmin_id', formValues?.subadmin_id);
       officer.append('supervisor_id', formValues?.supervisor_id);
+      officer.append('image', formValues?.image);
 
       console.log(officer);
       await axios
@@ -78,7 +95,7 @@ export default function AddMember() {
       <Card>
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={1}>
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={8}>
               <Card sx={{ p: 3 }}>
                 <Stack spacing={3}>
                   <Grid container spacing={1}>
@@ -138,6 +155,38 @@ export default function AddMember() {
                   </Grid>
                 </Stack>
               </Card>
+            </Grid>
+            <Grid item xs={12} md={4}>
+            <Stack spacing={3}>
+                      <Card sx={{ py: 6, px: 2, mt: 5 }}>
+                        <Box sx={{ mb: 2 }}>
+                          <Typography variant="subtitle2" sx={{ mb: 0.5 }}>
+                            profile Picture
+                          </Typography>
+                          <RHFUploadAvatar
+                            name="image"
+                            accept="image/*"
+                            maxSize={3145728}
+                            onDrop={handleDrop}
+                            helperText={
+                              <Typography
+                                variant="caption"
+                                sx={{
+                                  mt: 2,
+                                  mx: 'auto',
+                                  display: 'block',
+                                  textAlign: 'center',
+                                  color: 'text.secondary',
+                                }}
+                              >
+                                Allowed *.jpeg, *.jpg, *.png, *.gif
+                                <br /> max size of {fData(3145728)}
+                              </Typography>
+                            }
+                          />
+                        </Box>
+                      </Card>
+                    </Stack>
             </Grid>
           </Grid>
         </FormProvider>

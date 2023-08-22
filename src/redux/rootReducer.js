@@ -12,6 +12,7 @@ import vehicleReducer from './slices/vehicle';
 import gangReducer from './slices/gang';
 import chapterReducer from './slices/chapter';
 import gangmember from './slices/Member';
+import positionReducer from './slices/position';
 
 
 const rootPersistConfig = {
@@ -38,6 +39,7 @@ const rootReducer = combineReducers({
   vehicle: vehicleReducer,
   product: productReducer,
   gang: gangReducer,
+  position: positionReducer,
   chapter: chapterReducer,
   member: gangmember,
 

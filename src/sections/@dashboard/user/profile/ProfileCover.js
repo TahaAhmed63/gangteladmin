@@ -48,12 +48,14 @@ ProfileCover.propTypes = {
 export default function ProfileCover({ myProfile }) {
   const { user } = useAuth();
 
+  // console.log()
   const { position, cover } = myProfile;
 
   return (
     <RootStyle>
       <InfoStyle>
         <MyAvatar
+        // img={}
           sx={{
             mx: 'auto',
             borderWidth: 2,

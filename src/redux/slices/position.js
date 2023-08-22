@@ -5,12 +5,12 @@ import { dispatch } from '../store';
 const initialState = {
   isLoading: false,
   error: null,
-  gangs: [],
+  positions: [],
 };
 
 
 const slice = createSlice({
-  name: 'gang',
+  name: 'position',
   initialState,
   reducers: {
     // START LOADING
@@ -25,9 +25,9 @@ const slice = createSlice({
     },
 
     // GET gang
-    getGangSuccess(state, action) {
+    getPositionSuccess(state, action) {
       state.isLoading = false;
-      state.gangs = action.payload;
+      state.positions = action.payload;
     },
 
   },
@@ -39,13 +39,13 @@ export default slice.reducer;
 
 // ----------------------------------------------------------------------
 
-export function getGangs() {
+export function getPosition() {
   return async () => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get('/admin/gang');
+      const response = await axios.get('/admin/gangposition');
       console.log(response,'gang--->>>>')
-      dispatch(slice.actions.getGangSuccess(response?.data?.gangs));
+      dispatch(slice.actions.getPositionSuccess(response?.data?.gang_positions));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }

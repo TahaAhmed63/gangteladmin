@@ -13,6 +13,9 @@ import { PATH_AFTER_LOGIN } from '../config';
 // components
 import LoadingScreen from '../components/LoadingScreen';
 import Member from '../pages/dashboard/GangMember/Members';
+import ProfileUpdate from '../pages/dashboard/GangMember/ProfileUpdate';
+import AddPosition from '../pages/dashboard/Position/AddPosition';
+import Position from '../pages/dashboard/Position/Position';
 
 
 // ----------------------------------------------------------------------
@@ -63,13 +66,17 @@ export default function Router() {
             { path: 'adddepartment', element: <AddDepartment /> },
             { path: 'gang', element: <Gang /> },
             { path: 'addgang', element: <AddGang /> },
+            { path: 'position', element: <Position /> },
+            { path: 'addposition', element: <AddPosition /> },
             { path: 'gangchapter/:id', element: <Chapter /> },
             { path: 'member', element: <Members /> },
             { path: 'addmember', element: <AddMember /> },
             { path: 'editmember/:id', element: <EditMember /> },
             { path: 'vehicle', element: <Vehicle /> },
             { path: 'addvehicle', element: <AddVehicle /> },
-            { path: 'editvehicle', element: <EditVehicle /> },
+            { path: 'editvehicle/:id', element: <EditVehicle /> },
+            { path: 'update/:id', element: <ProfileUpdate /> },
+            { path: 'user/profile/:id', element: <UserProfile /> },
            
 
 
@@ -163,12 +170,12 @@ const EcommerceCheckout = Loadable(lazy(() => import('../pages/dashboard/Ecommer
 // const BlogPost = Loadable(lazy(() => import('../pages/dashboard/BlogPost')));
 // const BlogNewPost = Loadable(lazy(() => import('../pages/dashboard/BlogNewPost')));
 
-// // USER
-// const UserProfile = Loadable(lazy(() => import('../pages/dashboard/UserProfile')));
-// const UserCards = Loadable(lazy(() => import('../pages/dashboard/UserCards')));
-// const UserList = Loadable(lazy(() => import('../pages/dashboard/UserList')));
-// const UserAccount = Loadable(lazy(() => import('../pages/dashboard/UserAccount')));
-// const UserCreate = Loadable(lazy(() => import('../pages/dashboard/UserCreate')));
+// USER
+const UserProfile = Loadable(lazy(() => import('../pages/dashboard/UserProfile')));
+const UserCards = Loadable(lazy(() => import('../pages/dashboard/UserCards')));
+const UserList = Loadable(lazy(() => import('../pages/dashboard/UserList')));
+const UserAccount = Loadable(lazy(() => import('../pages/dashboard/UserAccount')));
+const UserCreate = Loadable(lazy(() => import('../pages/dashboard/UserCreate')));
 
 // // APP
 // const Chat = Loadable(lazy(() => import('../pages/dashboard/Chat')));

@@ -11,6 +11,7 @@ export  const Vehicle = Yup.object().shape({
     type: Yup.string().required('Select an Vehicle Type'),
     state: Yup.string().required('Select an Registration State'),
     image:  Yup.mixed('Latest Image is required'),
+    member_id:  Yup.string('customer is required'),
   });
 
   export   const getDefaultValues = (currentvehicle) => ({
@@ -23,5 +24,6 @@ export  const Vehicle = Yup.object().shape({
     year: currentvehicle?.year ||  '',
     model: currentvehicle?.model || '',
     registration:currentvehicle?.registration || '',
-    registration_to: currentvehicle?.registered_to || '',
+    registration_to: currentvehicle?.registration_to || '',
+    member_id: currentvehicle?.customer_id || '',
   })

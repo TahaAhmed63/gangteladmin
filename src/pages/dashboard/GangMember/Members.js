@@ -1,7 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect, useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
 import EditIcon from '@mui/icons-material/Edit';
 import { Delete as DeleteIcon } from '@mui/icons-material';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import UpgradeIcon from '@mui/icons-material/Upgrade';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // @mui
@@ -13,6 +16,9 @@ import { getMembers } from '../../../redux/slices/Member';
 import { getProduct } from '../../../redux/slices/subadmin';
 import { getelements } from '../../../redux/slices/supervisor';
 import { getmagictypes } from '../../../redux/slices/magictype';
+import { getChapters } from '../../../redux/slices/chapter';
+import { getGangs } from '../../../redux/slices/gang';
+import { getPosition } from '../../../redux/slices/position';
 
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
@@ -31,6 +37,22 @@ export default function Member() {
         accessorKey: 'id',
         header: 'ID',
         size: 5,
+      },
+      {
+        accessorKey: 'image',
+        header: 'Image',
+        size: 10,
+        Cell: ({ row }) => {
+          if (row.original.image) {
+            console.log('Subadmin data:', row.original.image); // Check the subadmin object
+            return (
+              <>
+                {' '}
+                <img src={`${`http://gangtel.dev-hi.xyz`}${row.original.image}`} alt="" />
+              </>
+            );
+          }
+        },
       },
       {
         accessorKey: 'first_name',
@@ -82,6 +104,9 @@ export default function Member() {
     dispatch(getProduct());
     dispatch(getelements());
     dispatch(getmagictypes());
+    dispatch(getChapters());
+    dispatch(getGangs());
+    dispatch(getPosition());
   }, []);
 
   useEffect(() => {
@@ -137,7 +162,7 @@ export default function Member() {
                 justifyContent: 'flex-center',
               }}
             >
-            <IconButton
+              {/* <IconButton
                 sx={{
                   border: '1px solid',
                   borderColor: 'success.main',
@@ -148,7 +173,31 @@ export default function Member() {
                 }}
               >
                 <EditIcon />
-              </IconButton> 
+              </IconButton> */}
+              <IconButton
+                color="success"
+                sx={{
+                  border: '1px solid',
+                  borderColor: 'success.main',
+                }}
+                onClick={() => {
+                  navigate(PATH_DASHBOARD.user.profile(row.original.id));
+                }}
+              >
+                <RemoveRedEyeIcon />
+              </IconButton>
+              <IconButton
+                color="success"
+                sx={{
+                  border: '1px solid',
+                  borderColor: 'success.main',
+                }}
+                onClick={() => {
+                  navigate(PATH_DASHBOARD.gangmember.update(row.original.id));
+                }}
+              >
+                <EditIcon />
+              </IconButton>
               <IconButton
                 color="error"
                 sx={{

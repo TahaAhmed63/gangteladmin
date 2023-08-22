@@ -37,6 +37,7 @@ const navConfig = [
       { title: 'Officer', path: PATH_DASHBOARD.officer.officer, icon: <Iconify icon="healthicons:officer" /> },
       { title: 'Gang', path: PATH_DASHBOARD.gang.gang, icon: <Iconify icon="pepicons-pencil:people" /> },
       { title: 'Gang Member', path: PATH_DASHBOARD.gangmember.member, icon: <Iconify icon="fa6-solid:people-line" /> },
+      { title: 'Position', path: PATH_DASHBOARD.position.position, icon: <Iconify icon="pepicons-pencil:people" /> },
       {
         title: 'Department',
         path: PATH_DASHBOARD.department.department,
@@ -56,6 +57,7 @@ const navConfig = [
       { title: 'Officer', path: PATH_DASHBOARD.officer.officer, icon: <Iconify icon="healthicons:officer" /> },
       { title: 'Gang', path: PATH_DASHBOARD.gang.gang, icon: <Iconify icon="pepicons-pencil:people" /> },
       { title: 'Gang Member', path: PATH_DASHBOARD.gangmember.member, icon: <Iconify icon="fa6-solid:people-line" /> },
+      { title: 'Position', path: PATH_DASHBOARD.position.position, icon: <Iconify icon="pepicons-pencil:people" /> },
       {
         title: 'Department',
         path: PATH_DASHBOARD.department.department,
@@ -72,6 +74,7 @@ const navConfig = [
       { title: 'Officer', path: PATH_DASHBOARD.officer.officer, icon: <Iconify icon="healthicons:officer" /> },
       { title: 'Gang', path: PATH_DASHBOARD.gang.gang, icon: <Iconify icon="pepicons-pencil:people" /> },
       { title: 'Gang Member', path: PATH_DASHBOARD.gangmember.member, icon: <Iconify icon="fa6-solid:people-line" /> },
+      { title: 'Position', path: PATH_DASHBOARD.position.position, icon: <Iconify icon="pepicons-pencil:people" /> },
       { title: 'Vehicle', path: PATH_DASHBOARD.vehicle.vehicle, icon: <Iconify icon="fa6-solid:people-line" /> },
 
     ],
@@ -81,17 +84,18 @@ const navConfig = [
       { title: 'Dashboard', path: '/dashboard/home', icon: ICONS.dashboard },
       { title: 'Gang', path: PATH_DASHBOARD.gang.gang, icon: <Iconify icon="pepicons-pencil:people" /> },
       { title: 'Gang Member', path: PATH_DASHBOARD.gangmember.member, icon: <Iconify icon="fa6-solid:people-line" /> },
+      { title: 'Position', path: PATH_DASHBOARD.position.position, icon: <Iconify icon="pepicons-pencil:people" /> },
       { title: 'Vehicle', path: PATH_DASHBOARD.vehicle.vehicle, icon: <Iconify icon="fa6-solid:people-line" /> },
 
     ],
   },
-  {
-    items: [
-      { title: 'Dashboard', path: '/dashboard/home', icon: ICONS.dashboard },
-      { title: 'Gang Member', path: PATH_DASHBOARD.gangmember.member, icon: <Iconify icon="fa6-solid:people-line" /> },
-      { title: 'Vehicle', path: PATH_DASHBOARD.vehicle.vehicle, icon: <Iconify icon="fa6-solid:people-car" /> },
-    ],
-  },
+  // {
+  //   items: [
+  //     { title: 'Dashboard', path: '/dashboard/home', icon: ICONS.dashboard },
+  //     { title: 'Gang Member', path: PATH_DASHBOARD.gangmember.member, icon: <Iconify icon="fa6-solid:people-line" /> },
+  //     { title: 'Vehicle', path: PATH_DASHBOARD.vehicle.vehicle, icon: <Iconify icon="fa6-solid:people-car" /> },
+  //   ],
+  // },
 ];
 
 export default navConfig;

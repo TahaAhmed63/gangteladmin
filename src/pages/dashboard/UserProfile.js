@@ -1,9 +1,10 @@
 import { capitalCase } from 'change-case';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Tab, Box, Card, Tabs, Container } from '@mui/material';
 // routes
+import { useParams } from 'react-router';
 import { PATH_DASHBOARD } from '../../routes/paths';
 // hooks
 import useAuth from '../../hooks/useAuth';
@@ -15,6 +16,7 @@ import { _userAbout, _userFeeds, _userFriends, _userGallery, _userFollowers } fr
 import Page from '../../components/Page';
 import Iconify from '../../components/Iconify';
 import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import axiosInstance from '../../utils/axios';
 // sections
 import {
   Profile,
@@ -49,13 +51,32 @@ export default function UserProfile() {
 
   const { user } = useAuth();
 
+  const { id } = useParams();
+
   const { currentTab, onChangeTab } = useTabs('profile');
 
   const [findFriends, setFindFriends] = useState('');
+  const [MemeberDetails, setMemeberDetails] = useState();
 
   const handleFindFriends = (value) => {
     setFindFriends(value);
   };
+
+ async function getMemberDetail() {
+    // return async () => {
+      try {
+        const response = await axiosInstance.get(`admin/customer/${id}`);
+        console.log(response, 'officer--->>>>');
+        setMemeberDetails(response?.data?.customer);
+      } catch (error) {
+        console.log(error);
+      }
+    // };
+  }
+
+  useEffect(() => {
+    getMemberDetail();
+  }, []);
 
   const PROFILE_TABS = [
     {
@@ -63,19 +84,19 @@ export default function UserProfile() {
       icon: <Iconify icon={'ic:round-account-box'} width={20} height={20} />,
       component: <Profile myProfile={_userAbout} posts={_userFeeds} />,
     },
+    // {
+    //   value: 'Gang',
+    //   icon: <Iconify icon={'raphael:people'} width={20} height={20} />,
+    //   component: <ProfileFollowers followers={_userFollowers} />,
+    // },
     {
-      value: 'followers',
-      icon: <Iconify icon={'eva:heart-fill'} width={20} height={20} />,
-      component: <ProfileFollowers followers={_userFollowers} />,
-    },
-    {
-      value: 'friends',
-      icon: <Iconify icon={'eva:people-fill'} width={20} height={20} />,
+      value: 'Vechile',
+      icon: <Iconify icon={'fluent:vehicle-car-20-filled'} width={20} height={20} />,
       component: <ProfileFriends friends={_userFriends} findFriends={findFriends} onFindFriends={handleFindFriends} />,
     },
     {
-      value: 'gallery',
-      icon: <Iconify icon={'ic:round-perm-media'} width={20} height={20} />,
+      value: 'Associates',
+      icon: <Iconify icon={'material-symbols:network-node'} width={20} height={20} />,
       component: <ProfileGallery gallery={_userGallery} />,
     },
   ];

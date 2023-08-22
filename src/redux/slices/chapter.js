@@ -43,7 +43,7 @@ export function getChapters(id) {
   return async () => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get(`gangchapter?gang_id=${id}`);
+      const response = await axios.get(`admin/gangchapter?gang_id=${id}`);
       console.log(response,'chapter--->>>>')
       dispatch(slice.actions.getChapterSuccess(response?.data?.gang_chapters));
     } catch (error) {

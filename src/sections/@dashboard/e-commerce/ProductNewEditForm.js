@@ -221,7 +221,10 @@ export default function ProductNewEditForm({ isEdit, currentProduct }) {
                       {...field}
                       multiple
                       freeSolo
-                      onChange={(event, newValue) => field.onChange(newValue)}
+                      onChange={(event, newValue) => {
+                        field.onChange(newValue);
+                        console.log(newValue, 'cmskcnskc');
+                      }}
                       options={TAGS_OPTION.map((option) => option)}
                       renderTags={(value, getTagProps) =>
                         value.map((option, index) => (

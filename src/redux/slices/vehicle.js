@@ -43,9 +43,9 @@ export function getVehicles() {
   return async () => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get('vehicle');
+      const response = await axios.get('admin/vehicle');
       console.log(response,'vehicle--->>>>')
-      dispatch(slice.actions.getvehicleuccess(response?.data?.data));
+      dispatch(slice.actions.getvehicleuccess(response?.data?.vehicles));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }

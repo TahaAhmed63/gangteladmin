@@ -24,6 +24,8 @@ export default function EditMember() {
   const { elements } = useSelector((state) => state.element);
   const { products } = useSelector((state) => state.product);
 
+console.log(products,"products=====")
+
   const currentMember = members.find((member) => member.id === +id);
   console.log(magictypes,'officer');
   console.log(currentMember,'single member');

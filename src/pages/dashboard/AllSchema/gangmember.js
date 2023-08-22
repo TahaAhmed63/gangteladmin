@@ -1,27 +1,97 @@
 import * as Yup from 'yup';
 
- export const MemberSchema = Yup.object().shape({
-    fname: Yup.string().required('First Name is required'),
-    lname: Yup.string().required('Last Name is required'),
-    email: Yup.string().email('Email must be a valid email address').required('Email is required'),
-    password: Yup.string()
+export const MemberSchema = Yup.object().shape({
+  fname: Yup.string().required('First Name is required'),
+  lname: Yup.string().required('Last Name is required'),
+  email: Yup.string().email('Email must be a valid email address').required('Email is required'),
+  password: Yup.string()
     .required('Password is required')
     .min(8, 'Password must be at least 8 characters')
     .max(15, 'Password must be at most 15 characters'),
-    supervisor_id: Yup.string().required('Select an Supervisor'),
-    subadmin_id: Yup.string().required('Select an Sub Admin'),
-    officer_id: Yup.string().required('Select an Officer'),
-  });
+  supervisor_id: Yup.string().required('Select an Supervisor'),
+  subadmin_id: Yup.string().required('Select an Sub Admin'),
+  officer_id: Yup.string().required('Select an Officer'),
+});
+
+export const profileupdateschema = Yup.object().shape({
+  // gang_id: Yup.string().required('gang is required'),
+  // gangchapter_id: Yup.string().required('gangchapter is required'),
+  // position_id: Yup.string().required('position is required'),
+  first_name: Yup.string().required('first_name is required'),
+  middle_name: Yup.string().required('middle_name is required'),
+  last_name: Yup.string().required('last_name is required'),
+  email: Yup.string().email('Email must be a valid email address').required('Email is required'),
+  phone: Yup.string().required('phone is required'),
+  address: Yup.string().required('address is required'),
+  zip: Yup.string().required('zip is required'),
+  city: Yup.string().required('city is required'),
+  state: Yup.string().required('state is required'),
+  gang_aka: Yup.string().required('gang_aka is required'),
+  // gender: Yup.string().required('gender is required'),
+  old_lady: Yup.string().required('old_lady is required'),
+  notes: Yup.string().required('notes is required'),
+  weight: Yup.string().required('weight is required'),
+  // Dob: Yup.string().required('Dob is required'),
+  driving_licesnes_number: Yup.string().required('driving_licesnes_number is required'),
+  driving_licesnes_state: Yup.string().required('driving_licesnes_state is required'),
+  sbi_number: Yup.string().required('sbi_number is required'),
+  sbi_number_state: Yup.string().required('sbi_number_state is required'),
+  height: Yup.string().required('height is required'),
+  associates: Yup.array().required('associates is required'),
+  officer_saftey: Yup.string().required('officer_saftey is required'),
+  fbi_number: Yup.string().required('fbi_number is required'),
+  facebook: Yup.string().required('facebook link is required'),
+  instagram: Yup.string(),
+  twitter: Yup.string(),
+  linkdin: Yup.string().required('Linkdin Link is required'),
+  prior_charges: Yup.string().required('prior_charges is required'),
+  dmv_image: Yup.mixed().required('DMV_Picture is required'),
+  recent_pictrue: Yup.array().required('recent_pictrue is required'),
+});
+
+export const getDefaultValues = (currentMember) => ({
+  fname: currentMember?.first_name || '',
+  lname: currentMember?.last_name || '',
+  email: currentMember?.email || '',
+  password: currentMember?.password || '',
+  supervisor_id: currentMember?.supervisor?.id || '',
+  subadmin_id: currentMember?.subadmin_id || '',
+  officer_id: currentMember?.officer?.id || '',
+});
 
 
-  export   const getDefaultValues = (currentMember) => ({
-   
-    fname: currentMember?.first_name ||  '',
-    lname: currentMember?.last_name || '',
-    email: currentMember?.email || '',
-    password: currentMember?.password || '',
-    supervisor_id: currentMember?.supervisor?.id || '',
-    subadmin_id: currentMember?.subadmin_id || '',
-    officer_id: currentMember?.officer?.id || '',
-  })
-
+export const getProfileupdatevalues = (currentMember) => ({
+  first_name: currentMember?.first_name || '',
+  middle_name: currentMember?.middle_name || '',
+  last_name: currentMember?.last_name || '',
+  email: currentMember?.email || '',
+  phone: currentMember?.phone || '',
+  address: currentMember?.address || '',
+  zip: currentMember?.zip || '',
+  city: currentMember?.city || '',
+  state: currentMember?.state || '',
+  gang_aka: currentMember?.gang_aka || '',
+  // gender: currentMember?.gender || '',
+  old_lady: currentMember?.old_lady || '',
+  notes: currentMember?.notes || '',
+  weight: currentMember?.weight || '',
+  // Dob: currentMember?.Dob || '',
+  driving_licesnes_number: currentMember?.driving_licesnes_number || '',
+  driving_licesnes_state: currentMember?.driving_licesnes_state || '',
+  sbi_number: currentMember?.sbi_number || '',
+  sbi_number_state: currentMember?.sbi_number_state || '',
+  height: currentMember?.height || '',
+  associates: currentMember?.associates || [],
+  officer_saftey: currentMember?.officer_saftey || '',
+  fbi_number: currentMember?.fbi_number || '',
+  facebook: currentMember?.facebook || '',
+  instagram: currentMember?.instagram || '',
+  twitter: currentMember?.twitter || '',
+  linkdin: currentMember?.linkdin || '',
+  prior_charges: currentMember?.prior_charges || '',
+  dmv_image: currentMember?.DMV_Picture || '',
+  recent_pictrue: currentMember?.recent_picture || [],
+  // gang_id: currentMember?.gang?.id || '',/
+  // gangchapter_id: currentMember?.gangchapter_id || '',
+  // position_id: currentMember?.position_id || '',
+});
