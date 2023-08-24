@@ -15,7 +15,6 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 import {
   FormProvider,
   RHFTextField,
-  RHFDescription,
 } from '../../../components/hook-form';
 
 export default function AddPosition() {

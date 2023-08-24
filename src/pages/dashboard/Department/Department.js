@@ -106,7 +106,7 @@ export default function Department() {
                   borderColor: 'success.main',
                 }}
                 onClick={() => {
-                  navigate(PATH_DASHBOARD.tag.edittag(row.original.id));
+                  navigate(PATH_DASHBOARD.department.editdepartment(row.original.id));
                 }}
               >
                 <EditIcon />

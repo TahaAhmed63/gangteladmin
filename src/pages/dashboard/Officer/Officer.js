@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect ,useMemo } from 'react';
 import MaterialReactTable from "material-react-table";
 import EditIcon from "@mui/icons-material/Edit";
@@ -102,7 +103,7 @@ export default function Officer() {
 
   async function handleDelete(rowdata) {
     try {
-      await axios.delete(`spell/${rowdata}`)
+      await axios.delete(`admin/officer/${rowdata}`)
       .then((response)=>{ 
         if(response?.data?.status === true){
         enqueueSnackbar(response?.data?.message);

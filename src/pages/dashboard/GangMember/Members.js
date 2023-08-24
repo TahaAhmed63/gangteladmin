@@ -48,7 +48,7 @@ export default function Member() {
             return (
               <>
                 {' '}
-                <img src={`${`http://gangtel.dev-hi.xyz`}${row.original.image}`} alt="" />
+                <img src={`${`http://gangtel.dev-hi.xyz`}${row.original.image}`} alt="" width={70} height={70} style={{borderRadius:'10px'}}/>
               </>
             );
           }

@@ -59,6 +59,7 @@ export default function EditDepartment() {
     try {
       const department=new FormData();
       department.append('name',formValues?.name)
+      department.append('_method','PUT')
    
    await axios.post(`admin/department/${id}`,department)
       

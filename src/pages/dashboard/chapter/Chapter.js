@@ -91,7 +91,7 @@ export default function Chapter() {
 
   async function handleDelete(rowdata) {
     try {
-      await axios.delete(`gangchapter/${rowdata}`).then((response) => {
+      await axios.delete(`admin/gangchapter/${rowdata}`).then((response) => {
         if (response?.data?.status === true) {
           enqueueSnackbar(response?.data?.message);
           dispatch(getChapters());
