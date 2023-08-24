@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/prop-types */
 import { useState, useEffect ,useMemo } from 'react';
 import MaterialReactTable from "material-react-table";
 import EditIcon from "@mui/icons-material/Edit";
@@ -23,8 +26,6 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
-
-// ----------------------------------------------------------------------
 
 export default function Element() {
   const { enqueueSnackbar } = useSnackbar();

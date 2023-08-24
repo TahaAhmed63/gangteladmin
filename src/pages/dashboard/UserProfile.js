@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { capitalCase } from 'change-case';
 import { useEffect, useState } from 'react';
 // @mui
@@ -10,9 +11,6 @@ import { PATH_DASHBOARD } from '../../routes/paths';
 import useAuth from '../../hooks/useAuth';
 import useTabs from '../../hooks/useTabs';
 import useSettings from '../../hooks/useSettings';
-// _mock_
-import { _userAbout, _userFeeds, _userFriends, _userGallery, _userFollowers } from '../../_mock';
-// components
 import Page from '../../components/Page';
 import Iconify from '../../components/Iconify';
 import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
@@ -23,7 +21,6 @@ import {
   ProfileCover,
   ProfileFriends,
   ProfileGallery,
-  ProfileFollowers,
 } from '../../sections/@dashboard/user/profile';
 
 // ----------------------------------------------------------------------
@@ -55,12 +52,8 @@ export default function UserProfile() {
 
   const { currentTab, onChangeTab } = useTabs('profile');
 
-  const [findFriends, setFindFriends] = useState('');
   const [MemeberDetails, setMemeberDetails] = useState();
 
-  const handleFindFriends = (value) => {
-    setFindFriends(value);
-  };
 
  async function getMemberDetail() {
     // return async () => {
@@ -82,22 +75,17 @@ export default function UserProfile() {
     {
       value: 'profile',
       icon: <Iconify icon={'ic:round-account-box'} width={20} height={20} />,
-      component: <Profile myProfile={_userAbout} posts={_userFeeds} />,
+      component: <Profile member={MemeberDetails} />,
     },
-    // {
-    //   value: 'Gang',
-    //   icon: <Iconify icon={'raphael:people'} width={20} height={20} />,
-    //   component: <ProfileFollowers followers={_userFollowers} />,
-    // },
     {
       value: 'Vechile',
       icon: <Iconify icon={'fluent:vehicle-car-20-filled'} width={20} height={20} />,
-      component: <ProfileFriends friends={_userFriends} findFriends={findFriends} onFindFriends={handleFindFriends} />,
+      component: <ProfileFriends id={MemeberDetails?.id} />,
     },
     {
       value: 'Associates',
       icon: <Iconify icon={'material-symbols:network-node'} width={20} height={20} />,
-      component: <ProfileGallery gallery={_userGallery} />,
+      component: <ProfileGallery member={MemeberDetails?.customerdetail?.associates} />,
     },
   ];
 
@@ -119,7 +107,7 @@ export default function UserProfile() {
             position: 'relative',
           }}
         >
-          <ProfileCover myProfile={_userAbout} />
+          <ProfileCover member={MemeberDetails} />
 
           <TabsWrapperStyle>
             <Tabs

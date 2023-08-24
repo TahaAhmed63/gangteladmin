@@ -1,7 +1,6 @@
 /* eslint-disable no-nested-ternary */
-// @mui
-import { useEffect } from 'react';
-import { Grid, Container, Typography } from '@mui/material';
+
+import { Grid, Container} from '@mui/material';
 // hooks
 import { useNavigate } from 'react-router';
 import useSettings from '../../hooks/useSettings';

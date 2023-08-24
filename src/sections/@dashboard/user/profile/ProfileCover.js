@@ -1,27 +1,30 @@
-import PropTypes from 'prop-types';
-// @mui
+/* eslint-disable react/prop-types */
 import { styled } from '@mui/material/styles';
-import { Box, Typography } from '@mui/material';
-// utils
+import { Box, Typography,Avatar } from '@mui/material';
+
 import cssStyles from '../../../../utils/cssStyles';
-// hooks
-import useAuth from '../../../../hooks/useAuth';
-// components
-import MyAvatar from '../../../../components/MyAvatar';
+
 import Image from '../../../../components/Image';
 
-// ----------------------------------------------------------------------
-
-const RootStyle = styled('div')(({ theme }) => ({
+const RootStyle = styled('div')(() => ({
+  // '&:before': {
+  //   ...cssStyles().bgBlur({ blur: 2, color: theme.palette.primary.darker }),
+  //   top: 0,
+  //   zIndex: 9,
+  //   content: "''",
+  //   width: '100%',
+  //   height: '100%',
+  //   position: 'absolute',
+  // },
   '&:before': {
-    ...cssStyles().bgBlur({ blur: 2, color: theme.palette.primary.darker }),
+    ...cssStyles().bgBlur({ blur:0.05 }),
     top: 0,
-    zIndex: 9,
-    content: "''",
+    // zIndex: 9,
+    // content: "''",
     width: '100%',
-    height: '100%',
+    height: '50%',
     position: 'absolute',
-  },
+  }
 }));
 
 const InfoStyle = styled('div')(({ theme }) => ({
@@ -39,45 +42,28 @@ const InfoStyle = styled('div')(({ theme }) => ({
   },
 }));
 
-// ----------------------------------------------------------------------
 
-ProfileCover.propTypes = {
-  myProfile: PropTypes.object,
-};
 
-export default function ProfileCover({ myProfile }) {
-  const { user } = useAuth();
-
-  // console.log()
-  const { position, cover } = myProfile;
+export default function ProfileCover({ member }) {
 
   return (
     <RootStyle>
       <InfoStyle>
-        <MyAvatar
-        // img={}
-          sx={{
-            mx: 'auto',
-            borderWidth: 2,
-            borderStyle: 'solid',
-            borderColor: 'common.white',
-            width: { xs: 80, md: 128 },
-            height: { xs: 80, md: 128 },
-          }}
-        />
+      <Avatar alt={''} src={`${`http://gangtel.dev-hi.xyz`}${member?.customerdetail?.recent_picture}`} sx={{ width: 148, height: 148,border:'2px solid white',boxShadow:''}} />
+
         <Box
           sx={{
+            my:-18,
             ml: { md: 3 },
-            mt: { xs: 1, md: 0 },
+            mt: { xs: 5, md: 0 },
             color: 'common.white',
-            textAlign: { xs: 'center', md: 'left' },
+            textAlign: { xs: 'bottom', md: 'left' },
           }}
         >
-          <Typography variant="h4">{user?.displayName}</Typography>
-          <Typography sx={{ opacity: 0.72 }}>{position}</Typography>
+          <Typography variant="h4">{`${member?.first_name} ${member?.last_name}`}</Typography>
         </Box>
       </InfoStyle>
-      <Image alt="profile cover" src={cover} sx={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+      <Image alt="profile cover" src={`${`http://gangtel.dev-hi.xyz`}${member?.customerdetail?.dmv_image}`} sx={{ position: 'absolute',width:'auto',height:'auto', top: 0, left: 0, right: 0, bottom: 0 }} />
     </RootStyle>
   );
 }

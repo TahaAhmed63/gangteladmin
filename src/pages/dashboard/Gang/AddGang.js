@@ -15,7 +15,6 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 import {
   FormProvider,
   RHFTextField,
-  RHFDescription,
 } from '../../../components/hook-form';
 
 export default function AddGang() {
@@ -51,7 +50,7 @@ export default function AddGang() {
     try {
       const gang=new FormData();
       gang.append('name',formValues?.name)   
-      await axios.post("gang",gang)
+      await axios.post("admin/gang",gang)
       
       .then((response)=>{ 
         if(response?.data?.status === true){

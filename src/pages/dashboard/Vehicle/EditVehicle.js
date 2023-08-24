@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useSnackbar } from 'notistack';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useMemo, useCallback } from 'react';
@@ -5,8 +7,6 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoadingButton } from '@mui/lab';
 import { Card, Grid, Stack, Container, Typography, Box } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import makeAnimated from 'react-select/animated';
 import { Vehicle, getDefaultValues } from '../AllSchema/VehicleSchema';
 import { fData } from '../../../utils/formatNumber';
 import { useSelector } from '../../../redux/store';
@@ -16,16 +16,10 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
 import { FormProvider, RHFUploadAvatar, RHFTextField, RHFSelect } from '../../../components/hook-form';
 
-const LabelStyle = styled(Typography)(({ theme }) => ({
-  ...theme.typography.subtitle2,
-  color: theme.palette.text.error,
-  marginBottom: theme.spacing(0),
-}));
 
 export default function EditCard() {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const animatedComponents = makeAnimated();
   const { id } = useParams();
 
   const currentYear = new Date().getFullYear();
@@ -41,9 +35,7 @@ export default function EditCard() {
   const { vehicles } = useSelector((state) => state.vehicle);
   const { members } = useSelector((state) => state.member);
   const currentvehicle = vehicles.find((vehicle) => vehicle.id === +id);
-
-  console.log(vehicles, 'vehicles');
-
+  
   const defaultValues = useMemo(() => getDefaultValues(currentvehicle));
 
   const methods = useForm({

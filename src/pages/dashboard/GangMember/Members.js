@@ -1,14 +1,14 @@
+/* eslint-disable consistent-return */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
 import EditIcon from '@mui/icons-material/Edit';
 import { Delete as DeleteIcon } from '@mui/icons-material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import UpgradeIcon from '@mui/icons-material/Upgrade';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // @mui
-import { Box, Button, Container, IconButton, Tooltip } from '@mui/material';
+import { Box, Button, Container, IconButton } from '@mui/material';
 // redux
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from '../../../redux/store';

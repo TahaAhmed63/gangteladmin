@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as Yup from 'yup';
 import { useState, useEffect, useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
@@ -22,7 +24,6 @@ import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import { FormProvider, RHFTextField } from '../../../components/hook-form';
-// ----------------------------------------------------------------------
 
 export default function Chapter() {
   const { enqueueSnackbar } = useSnackbar();
@@ -110,7 +111,7 @@ export default function Chapter() {
       chapter.append('name', data?.name);
       chapter.append('gang_id', id);
       await axios
-        .post('gangchapter', chapter)
+        .post('admin/gangchapter', chapter)
 
         .then((response) => {
           if (response?.data?.status === true) {

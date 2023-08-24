@@ -15,35 +15,31 @@ const IconStyle = styled(Iconify)(({ theme }) => ({
   marginRight: theme.spacing(2),
 }));
 
-// ----------------------------------------------------------------------
 
-ProfileSocialInfo.propTypes = {
-  profile: PropTypes.object,
-};
+export default function ProfileSocialInfo( {member} ) {
+  console.log(member)
 
-export default function ProfileSocialInfo({ profile }) {
-  const { facebookLink, instagramLink, linkedinLink, twitterLink } = profile;
 
   const SOCIALS = [
     {
       name: 'Linkedin',
       icon: <IconStyle icon={'eva:linkedin-fill'} color="#006097" />,
-      href: linkedinLink,
+      href: member?.customerdetail?.linkdin,
     },
     {
       name: 'Twitter',
       icon: <IconStyle icon={'eva:twitter-fill'} color="#1C9CEA" />,
-      href: twitterLink,
+      href: member?.customerdetail?.twitter,
     },
     {
       name: 'Instagram',
       icon: <IconStyle icon={'ant-design:instagram-filled'} color="#D7336D" />,
-      href: instagramLink,
+      href: member?.customerdetail?.instagram,
     },
     {
       name: 'Facebook',
       icon: <IconStyle icon={'eva:facebook-fill'} color="#1877F2" />,
-      href: facebookLink,
+      href: member?.customerdetail?.facebook,
     },
   ];
 

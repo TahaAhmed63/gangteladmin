@@ -1,13 +1,14 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable camelcase */
+/* eslint-disable react/jsx-key */
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
+import { Icon } from '@iconify/react';
+import { useParams } from 'react-router';
 import PropTypes from 'prop-types';
-// @mui
-import { Box, Grid, Card, Link, Avatar, IconButton, Typography, InputAdornment } from '@mui/material';
-// components
-import Iconify from '../../../../components/Iconify';
-import InputStyle from '../../../../components/InputStyle';
-import SocialsButton from '../../../../components/SocialsButton';
-import SearchNotFound from '../../../../components/SearchNotFound';
+import { Box,  Card, Typography,Stack} from '@mui/material';
+import axiosInstance from '../../../../utils/axios';
 
-// ----------------------------------------------------------------------
 
 ProfileFriends.propTypes = {
   friends: PropTypes.array,
@@ -15,91 +16,131 @@ ProfileFriends.propTypes = {
   onFindFriends: PropTypes.func,
 };
 
-export default function ProfileFriends({ friends, findFriends, onFindFriends }) {
-  const friendFiltered = applyFilter(friends, findFriends);
+export default function ProfileFriends() {
+  const { id } = useParams();
+  const [vehicle, setVehicle] = useState(null);
 
-  const isNotFound = friendFiltered.length === 0;
+  useEffect(() => {
+    getVehiclerDetail();
+  }, []);
+
+  async function getVehiclerDetail() {
+      try {
+        const response = await axiosInstance.get(`admin/vehicle?customer_id=${id}`);
+        console.log(response, 'vehicles--->>>>');
+        setVehicle(response?.data?.vehicles);
+      } catch (error) {
+        console.log(error);
+      }
+  }
+
 
   return (
     <Box sx={{ mt: 5 }}>
-      <Typography variant="h4" sx={{ mb: 3 }}>
-        Friends
-      </Typography>
-
-      <InputStyle
-        stretchStart={240}
-        value={findFriends}
-        onChange={(event) => onFindFriends(event.target.value)}
-        placeholder="Find friends..."
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <Iconify icon={'eva:search-fill'} sx={{ color: 'text.disabled', width: 20, height: 20 }} />
-            </InputAdornment>
-          ),
-        }}
-        sx={{ mb: 5 }}
-      />
-
-      <Grid container spacing={3}>
-        {friendFiltered.map((friend) => (
-          <Grid key={friend.id} item xs={12} md={4}>
-            <FriendCard friend={friend} />
-          </Grid>
-        ))}
-      </Grid>
-
-      {isNotFound && (
-        <Box sx={{ mt: 5 }}>
-          <SearchNotFound searchQuery={findFriends} />
-        </Box>
-      )}
+    <Typography variant="h4" sx={{ mb: 3 }}>
+      Vehicles
+    </Typography>
+        {vehicle?.map((e)=> <FriendCard {...e}/>)}
     </Box>
   );
 }
 
-// ----------------------------------------------------------------------
 
-FriendCard.propTypes = {
-  friend: PropTypes.object,
-};
-
-function FriendCard({ friend }) {
-  const { name, role, avatarUrl } = friend;
+function FriendCard({ make,type,recent_picture,color,registration,registration_to ,registration_state,model,year}) {
 
   return (
-    <Card
-      sx={{
-        py: 5,
-        display: 'flex',
-        position: 'relative',
-        alignItems: 'center',
-        flexDirection: 'column',
-      }}
-    >
-      <Avatar alt={name} src={avatarUrl} sx={{ width: 64, height: 64, mb: 3 }} />
-      <Link variant="subtitle1" color="text.primary">
-        {name}
-      </Link>
-
-      <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1 }}>
-        {role}
+    <Card sx={{ p: 3 ,my:3}}>
+    <Box
+    sx={{
+      display: 'grid',
+      gap: 3,
+      gridTemplateColumns: {
+        xs: 'repeat(1, 1fr)',
+        sm: 'repeat(2, 1fr)',
+        md: 'repeat(3, 1fr)',
+      },
+    }}
+  >
+    <Card sx={{ cursor: 'pointer'}}>
+      <img alt="Vehicle"  src={`${`http://gangtel.dev-hi.xyz`}${recent_picture}`} style={{width:'auto',height:335}} />
+    </Card>
+    <Stack spacing={2} sx={{ p: 3 }}>
+        <Stack direction="row">
+    <Icon icon="teenyicons:brush-outline" style={{ marginRight:'10px',marginTop:'2px' }} />
+    <Typography variant="body2" sx={{color: 'text.secondary'}} >
+      Color &nbsp;
+      <Typography component="span" variant="subtitle2" color="text.primary">
+        {color}
       </Typography>
-
-      <SocialsButton initialColor />
-
-      <IconButton sx={{ top: 8, right: 8, position: 'absolute' }}>
-        <Iconify icon={'eva:more-vertical-fill'} width={20} height={20} />
-      </IconButton>
+    </Typography>
+        </Stack>
+        <Stack direction="row">
+        <Icon icon="fluent-emoji-high-contrast:wheel" style={{ marginRight:'10px',marginTop:'2px' }}/>
+          <Typography variant="body2" sx={{color: 'text.secondary'}}>
+          Type &nbsp;
+            <Typography component="span" variant="subtitle2" color="text.primary">
+              {type}
+            </Typography>
+          </Typography>
+        </Stack>
+      
+        <Stack direction="row">
+        <Icon icon="simple-icons:worldhealthorganization" style={{ marginRight:'10px',marginTop:'2px' }}/>
+          <Typography variant="body2" sx={{color: 'text.secondary'}}>
+            Make &nbsp;
+            <Typography component="span" variant="subtitle2" color="text.primary">
+              {make}
+            </Typography>
+          </Typography>
+        </Stack>
+        <Stack direction="row">
+        <Icon icon="carbon:model" style={{ marginRight:'10px',marginTop:'2px' }} />
+        <Typography variant="body2" sx={{color: 'text.secondary'}}>
+          Model &nbsp;
+          <Typography component="span" variant="subtitle2" color="text.primary">
+            {model}
+          </Typography>
+        </Typography>
+      </Stack>
+      <Stack direction="row">
+      <Icon icon="iwwa:year"  style={{ marginRight:'10px',marginTop:'2px' }}/>
+      <Typography variant="body2" sx={{color: 'text.secondary'}}>
+        Year &nbsp;
+        <Typography component="span" variant="subtitle2" color="text.primary">
+          {year}
+        </Typography>
+      </Typography>
+    </Stack>
+        <Stack direction="row">
+        <Icon icon="ic:sharp-app-registration" style={{ marginRight:'10px',marginTop:'2px' }}/>
+          <Typography variant="body2" sx={{color: 'text.secondary'}}>
+          Registration &nbsp;
+            <Typography component="span" variant="subtitle2" color="text.primary">
+              {registration}
+            </Typography>
+          </Typography>
+        </Stack>
+        <Stack direction="row">
+        <Icon icon="medical-icon:i-registration"  style={{ marginRight:'10px',marginTop:'2px' }}/>
+          <Typography variant="body2" sx={{color: 'text.secondary'}}>
+          Registration To &nbsp;
+            <Typography component="span" variant="subtitle2" color="text.primary">
+              {registration_to}
+            </Typography>
+          </Typography>
+        </Stack>
+        <Stack direction="row">
+        <Icon icon="fluent:real-estate-20-filled" style={{ marginRight:'10px',marginTop:'2px' }}/>
+          <Typography variant="body2" sx={{color: 'text.secondary'}}>
+          Registration State &nbsp;
+            <Typography component="span" variant="subtitle2" color="text.primary">
+              {registration_state}
+            </Typography>
+          </Typography>
+        </Stack>
+    </Stack>
+    </Box>
     </Card>
   );
 }
-// ----------------------------------------------------------------------
 
-function applyFilter(array, query) {
-  if (query) {
-    return array.filter((friend) => friend.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
-  }
-
-  return array;
-}
