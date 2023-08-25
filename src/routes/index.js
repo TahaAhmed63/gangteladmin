@@ -9,7 +9,7 @@ import DashboardLayout from '../layouts/dashboard';
 import AuthGuard from '../guards/AuthGuard';
 // import RoleBasedGuard from '../guards/RoleBasedGuard';
 // config
-import { PATH_AFTER_LOGIN } from '../config';
+// import { PATH_AFTER_LOGIN } from '../config';
 // components
 import LoadingScreen from '../components/LoadingScreen';
 import ProfileUpdate from '../pages/dashboard/GangMember/ProfileUpdate';
@@ -49,8 +49,8 @@ export default function Router() {
           ),
           children: [
 
-            { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
-            { path: 'home', element: <GeneralAnalytics /> },
+            // { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
+            { element: <GeneralAnalytics /> ,index:true },
             { path: 'subadmin', element: <SubAdmin /> },
             { path: 'editsubadmin/:id', element: <EditSubAdmin /> },
             { path: 'addsubadmin', element: <AddSubAdmin /> },
@@ -76,9 +76,10 @@ export default function Router() {
             { path: 'editvehicle/:id', element: <EditVehicle /> },
             { path: 'update/:id', element: <ProfileUpdate /> },
             { path: 'user/profile/:id', element: <UserProfile /> },
-           
-           ],
-         },
+          ],
+    },
+          { path: '404', element: <NotFound /> },
+          { path: '*', element: <Navigate to="/404" replace /> },
 
   ]);
 }
@@ -172,4 +173,4 @@ const UserProfile = Loadable(lazy(() => import('../pages/dashboard/UserProfile')
 // const Pricing = Loadable(lazy(() => import('../pages/Pricing')));
 // const Payment = Loadable(lazy(() => import('../pages/Payment')));
 // const Page500 = Loadable(lazy(() => import('../pages/Page500')));
-// const NotFound = Loadable(lazy(() => import('../pages/Page404')));
+ const NotFound = Loadable(lazy(() => import('../pages/Page404')));
