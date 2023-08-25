@@ -22,6 +22,8 @@ const RootStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Page404() {
+  // eslint-disable-next-line no-alert
+  console.log("404")
   return (
     <Page title="404 Page Not Found" sx={{ height: 1 }}>
       <RootStyle>

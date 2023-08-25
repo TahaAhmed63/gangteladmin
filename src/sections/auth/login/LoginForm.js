@@ -49,7 +49,7 @@ export default function LoginForm({url}) {
     console.log('login-->>>',data)
     try {
        await login(data.email, data.password,url);
-      navigate('/dashboard/home')
+      navigate('/dashboard/')
     } catch (error) {
       console.error(error);
       reset();

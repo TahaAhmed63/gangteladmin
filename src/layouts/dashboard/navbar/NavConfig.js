@@ -27,7 +27,7 @@ const navConfig = [
 
   {
     items: [
-      { title: 'Dashboard', path: '/dashboard/home', icon: ICONS.dashboard },
+      { title: 'Dashboard', path: '/dashboard/', icon: ICONS.dashboard },
       { title: 'Admin', path: PATH_DASHBOARD.subadmin.subadmin, icon: ICONS.user },
       {
         title: 'Supervisor',
