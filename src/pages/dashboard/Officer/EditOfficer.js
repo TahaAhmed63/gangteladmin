@@ -1,16 +1,14 @@
-import React, { useEffect, useState ,useMemo} from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import React, { useMemo} from 'react';
+import { useForm} from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { styled } from '@mui/material/styles';
 import { LoadingButton } from '@mui/lab';
 import { useSnackbar } from 'notistack';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Card, Chip, Grid, Stack, TextField, Typography, Autocomplete, Container } from '@mui/material';
+import { Card,  Grid, Stack,Container } from '@mui/material';
 import axios from '../../../utils/axios';
-import { getelements } from '../../../redux/slices/supervisor';
 import { PATH_DASHBOARD } from '../../../routes/paths';
 import {OfficerSchema,getDefaultValues} from '../AllSchema/OfficerSchema'
-import { useDispatch, useSelector } from '../../../redux/store';
+import { useSelector } from '../../../redux/store';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import {
   FormProvider,
@@ -18,20 +16,12 @@ import {
   RHFSelect
 } from '../../../components/hook-form';
 
-const LabelStyle = styled(Typography)(({ theme }) => ({
-  ...theme.typography.subtitle2,
-  color: theme.palette.text.secondary,
-  marginBottom: theme.spacing(1)
-}));
 
-const TAGS_OPTION = []; 
 
 export default function EditOfficer() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
-  const [numFields, setNumFields] = useState();
   const { magictypes } = useSelector((state) => state.magictype);
   const { elements } = useSelector((state) => state.element);
   const { products } = useSelector((state) => state.product);
@@ -46,7 +36,6 @@ export default function EditOfficer() {
   });
 
   const {
-    control,
     reset,
     getValues,
     handleSubmit,

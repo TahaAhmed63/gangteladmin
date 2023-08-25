@@ -4,8 +4,6 @@ import { useMemo, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoadingButton } from '@mui/lab';
-import { styled } from '@mui/material/styles';
-import makeAnimated from 'react-select/animated';
 import { Card, Grid, Stack, Container, Typography, Box } from '@mui/material';
 import { Vehicle, getDefaultValues } from '../AllSchema/VehicleSchema';
 import { fData } from '../../../utils/formatNumber';
@@ -13,14 +11,8 @@ import axios from '../../../utils/axios';
 import { useSelector } from '../../../redux/store';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import { PATH_DASHBOARD } from '../../../routes/paths';
-
 import { FormProvider, RHFTextField, RHFSelect, RHFUploadAvatar } from '../../../components/hook-form';
 
-const LabelStyle = styled(Typography)(({ theme }) => ({
-  ...theme.typography.subtitle2,
-  color: theme.palette.text.error,
-  marginBottom: theme.spacing(0),
-}));
 
 export default function AddCard() {
   const navigate = useNavigate();
@@ -35,14 +27,11 @@ export default function AddCard() {
   for (let i = currentYear - pastOfYears; i <= currentYear + futureOfYears; i++) {
     yearOptions.push({ value: i, label: i });
   }
-
-  const animatedComponents = makeAnimated();
   const {
-    product: { products },
     member: { members },
   } = useSelector((state) => state);
 
-  const defaultValues = useMemo(() => getDefaultValues());
+  const defaultValues = useMemo(() => getDefaultValues(),[]);
 
   const methods = useForm({
     resolver: yupResolver(Vehicle),
@@ -52,13 +41,11 @@ export default function AddCard() {
   const {
     setValue,
     reset,
-    getValues,
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
 
   const OnSubmit = async (data) => {
-    console.log(data);
     try {
       const vehicle = new FormData();
       vehicle.append('registration', data?.registration);

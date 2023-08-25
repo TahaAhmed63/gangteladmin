@@ -44,7 +44,6 @@ export function getMembers() {
     dispatch(slice.actions.startLoading());
     try {
       const response = await axios.get('admin/customer');
-      console.log(response,'officer--->>>>')
       dispatch(slice.actions.getmemberSuccess(response?.data?.customers));
     } catch (error) {
       dispatch(slice.actions.hasError(error));

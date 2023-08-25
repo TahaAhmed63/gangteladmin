@@ -1,10 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { capitalCase } from 'change-case';
 import { useEffect, useState } from 'react';
-// @mui
+
 import { styled } from '@mui/material/styles';
 import { Tab, Box, Card, Tabs, Container } from '@mui/material';
-// routes
 import { useParams } from 'react-router';
 import { PATH_DASHBOARD } from '../../routes/paths';
 // hooks

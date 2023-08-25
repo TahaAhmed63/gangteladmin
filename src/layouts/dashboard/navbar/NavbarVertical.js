@@ -41,8 +41,7 @@ NavbarVertical.propTypes = {
 };
 
 export default function NavbarVertical({ isOpenSidebar, onCloseSidebar }) {
-  const user1 = JSON.parse(localStorage.getItem('user'));
-  console.log(navConfig, 'navConfig');
+  // const user1 = JSON.parse(localStorage.getItem('user'));
   const theme = useTheme();
 
   const { pathname } = useLocation();

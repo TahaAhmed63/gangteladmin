@@ -31,7 +31,7 @@ export default function AddMember() {
   });
 
   const {
-    control,
+    
     reset,
     setValue,
     getValues,

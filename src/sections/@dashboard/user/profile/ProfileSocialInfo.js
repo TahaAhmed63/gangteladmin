@@ -1,8 +1,6 @@
-import PropTypes from 'prop-types';
-// @mui
+/* eslint-disable react/prop-types */
 import { styled } from '@mui/material/styles';
 import { Link, Card, CardHeader, Stack } from '@mui/material';
-// components
 import Iconify from '../../../../components/Iconify';
 
 // ----------------------------------------------------------------------
@@ -17,8 +15,6 @@ const IconStyle = styled(Iconify)(({ theme }) => ({
 
 
 export default function ProfileSocialInfo( {member} ) {
-  console.log(member)
-
 
   const SOCIALS = [
     {

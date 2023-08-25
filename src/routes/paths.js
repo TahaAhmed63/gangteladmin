@@ -102,12 +102,6 @@ export const PATH_DASHBOARD = {
     position: path(ROOTS_DASHBOARD, '/position'),
     addposition: path(ROOTS_DASHBOARD, '/addposition'),
   },
-  // spell: {
-  //   app: path(ROOTS_DASHBOARD, '/'),
-  //   spell: path(ROOTS_DASHBOARD, '/spell'),
-  //   editspell: (id) => path(ROOTS_DASHBOARD, `/editspell/${id}`),
-  //   addspell: path(ROOTS_DASHBOARD, '/addspell'),
-  // },
 
   vehicle: {
     app: path(ROOTS_DASHBOARD, '/'),
@@ -115,12 +109,6 @@ export const PATH_DASHBOARD = {
     editvehicle: (id) => path(ROOTS_DASHBOARD, `/editvehicle/${id}`),
     addvehicle: path(ROOTS_DASHBOARD, '/addvehicle'),
   },
-
-
-
-
-
-
   general: {
     app: path(ROOTS_DASHBOARD, '/'),
     ecommerce: path(ROOTS_DASHBOARD, '/ecommerce'),
@@ -128,6 +116,14 @@ export const PATH_DASHBOARD = {
     banking: path(ROOTS_DASHBOARD, '/banking'),
     booking: path(ROOTS_DASHBOARD, '/booking'),
   },
+  user: {
+    root: path(ROOTS_DASHBOARD, '/user'),
+    profile: (id)=> path(ROOTS_DASHBOARD, `/user/profile/${id}`),
+    edit: (name) => path(ROOTS_DASHBOARD, `/user/${name}/edit`),
+  },
+
+
+
   // mail: {
   //   root: path(ROOTS_DASHBOARD, '/mail'),
   //   all: path(ROOTS_DASHBOARD, '/mail/all'),
@@ -139,16 +135,7 @@ export const PATH_DASHBOARD = {
   // },
   // calendar: path(ROOTS_DASHBOARD, '/calendar'),
   // kanban: path(ROOTS_DASHBOARD, '/kanban'),
-  user: {
-    root: path(ROOTS_DASHBOARD, '/user'),
-    new: path(ROOTS_DASHBOARD, '/user/new'),
-    list: path(ROOTS_DASHBOARD, '/user/list'),
-    cards: path(ROOTS_DASHBOARD, '/user/cards'),
-    profile: (id)=> path(ROOTS_DASHBOARD, `/user/profile/${id}`),
-    account: path(ROOTS_DASHBOARD, '/user/account'),
-    edit: (name) => path(ROOTS_DASHBOARD, `/user/${name}/edit`),
-    demoEdit: path(ROOTS_DASHBOARD, `/user/reece-chung/edit`),
-  },
+
   // eCommerce: {
   //   root: path(ROOTS_DASHBOARD, '/e-commerce'),
   //   shop: path(ROOTS_DASHBOARD, '/e-commerce/shop'),

@@ -1,4 +1,3 @@
-import * as Yup from 'yup';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import {useMemo } from 'react';
@@ -7,21 +6,18 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { LoadingButton } from '@mui/lab';
 import { Card, Grid, Stack, Container } from '@mui/material';
 import axios from '../../../utils/axios';
-import { getDeparts } from '../../../redux/slices/department';
-import { getProducts } from '../../../redux/slices/subadmin';
 import {SupervisorSchema,getDefaultValues} from '../AllSchema/SupervisorSchema'
-import { useDispatch, useSelector } from '../../../redux/store';
+import { useSelector } from '../../../redux/store';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import { PATH_DASHBOARD } from '../../../routes/paths';
 
-// components
+
 import { FormProvider, RHFTextField, RHFSelect } from '../../../components/hook-form';
 
 export default function AddElement() {
   const user1 = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const dispatch = useDispatch();
   const { departs } = useSelector((state) => state.depart);
   const { products } = useSelector((state) => state.product);
 

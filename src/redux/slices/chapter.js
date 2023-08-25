@@ -44,7 +44,6 @@ export function getChapters(id) {
     dispatch(slice.actions.startLoading());
     try {
       const response = await axios.get(`admin/gangchapter?gang_id=${id}`);
-      console.log(response,'chapter--->>>>')
       dispatch(slice.actions.getChapterSuccess(response?.data?.gang_chapters));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
@@ -52,5 +51,5 @@ export function getChapters(id) {
   };
 }
 
-// ----------------------------------------------------------------------
+
 

@@ -3,6 +3,8 @@
 
 import { Grid, Stack,Box,Typography,Card,Avatar } from '@mui/material';
 import { Icon } from '@iconify/react';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import ProfileAbout from './ProfileAbout';
 import OtherInfo from './OtherInfo';
 import ProfileSocialInfo from './ProfileSocialInfo';
@@ -12,6 +14,8 @@ export default function Profile({ member }) {
     <Grid container spacing={3}>
       <Grid item xs={12} md={6}>
         <Stack spacing={3}>
+  {!member &&  <Skeleton width={550}  height={400} baseColor="#212B36" highlightColor="#161C24" borderRadius='20px' />}
+  {!member &&  <Skeleton width={550}  height={400} baseColor="#212B36" highlightColor="#161C24" borderRadius='20px'/>}
 
            <ProfileAbout member={member} />
            <OtherInfo member={member} />
@@ -20,6 +24,11 @@ export default function Profile({ member }) {
 
       <Grid item xs={12} md={6}>
         <Stack spacing={3}>
+        {!member &&  <Skeleton width={550}  height={200} baseColor="#212B36" highlightColor="#161C24" borderRadius='20px' />}
+        {!member &&  <Skeleton width={550}  height={170} baseColor="#212B36" highlightColor="#161C24" borderRadius='20px'/>}
+        {!member &&  <Skeleton width={550}  height={115} baseColor="#212B36" highlightColor="#161C24" borderRadius='20px' />}
+        {!member &&  <Skeleton width={550}  height={115} baseColor="#212B36" highlightColor="#161C24" borderRadius='20px'/>}
+        {!member &&  <Skeleton width={550}  height={115} baseColor="#212B36" highlightColor="#161C24" borderRadius='20px'/>}
           <ProfileSocialInfo member={member}/>
           <UserCard member={member?.subadmin}/>
           <UserCard member={member?.supervisor}/>

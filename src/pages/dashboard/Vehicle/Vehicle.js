@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { useState, useEffect, useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
 import EditIcon from '@mui/icons-material/Edit';
@@ -18,7 +19,6 @@ import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 
-// ----------------------------------------------------------------------
 
 export default function Card() {
   const { enqueueSnackbar } = useSnackbar();
@@ -92,7 +92,6 @@ export default function Card() {
       enqueueSnackbar(error?.message, {
         variant: 'error',
       });
-      console.error(error);
     }
   }
 

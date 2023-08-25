@@ -1,12 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
-import EditIcon from '@mui/icons-material/Edit';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Delete as DeleteIcon } from '@mui/icons-material';
-import { useNavigate, Link as RouterLink } from 'react-router-dom';
-// @mui
-import { Box, Button, Container, IconButton,Tooltip } from '@mui/material';
-// redux
+import { Link as RouterLink } from 'react-router-dom';
+import { Box, Button, Container, IconButton } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from '../../../redux/store';
 import { getPosition } from '../../../redux/slices/position';
@@ -17,8 +13,6 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
-
-// ----------------------------------------------------------------------
 
 export default function Position() {
   const { enqueueSnackbar } = useSnackbar();
@@ -38,10 +32,8 @@ export default function Position() {
     []
   );
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { positions } = useSelector((state) => state.position);
-  console.log(positions,'---------------->>>positions')
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
@@ -66,7 +58,6 @@ export default function Position() {
       enqueueSnackbar(error?.message, {
         variant: 'error',
       });
-      console.error(error);
     }
   }
 

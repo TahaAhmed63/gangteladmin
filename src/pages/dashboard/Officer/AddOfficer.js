@@ -1,11 +1,10 @@
-import React, { useEffect, useState ,useCallback,useMemo} from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import React, { useEffect, useMemo} from 'react';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { styled } from '@mui/material/styles';
 import { LoadingButton } from '@mui/lab';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
-import { Card, Chip, Grid, Stack, TextField, Typography, Autocomplete, Container, StepConnector } from '@mui/material';
+import { Card, Grid, Container,Stack } from '@mui/material';
 import axios from '../../../utils/axios';
 import { getelements } from '../../../redux/slices/supervisor';
 import {OfficerSchema,getDefaultValues} from '../AllSchema/OfficerSchema'
@@ -15,11 +14,9 @@ import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import {
   FormProvider,
   RHFTextField,
-  RHFSelect,
-  RHFUploadSingleFile
+  RHFSelect
 } from '../../../components/hook-form';
-
-const TAGS_OPTION = []; 
+ 
 
 export default function AddOfficer() {
   const dispatch = useDispatch();
@@ -41,14 +38,11 @@ export default function AddOfficer() {
   });
 
   const {
-    control,
     reset,
-    setValue,
     getValues,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { isSubmitting }
   } = methods;
-console.log(errors)
 
   const onSubmit = async () => {
     const formValues = getValues();

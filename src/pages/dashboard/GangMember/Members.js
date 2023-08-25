@@ -44,7 +44,6 @@ export default function Member() {
         size: 10,
         Cell: ({ row }) => {
           if (row.original.image) {
-            console.log('Subadmin data:', row.original.image); // Check the subadmin object
             return (
               <>
                 {' '}
@@ -84,9 +83,7 @@ export default function Member() {
         header: 'Supervisor',
         size: 20,
         Cell: ({ row }) => {
-          console.log('Row data:', row); // Check the structure of row data
           if (row.original.supervisor) {
-            console.log('Subadmin data:', row.original.subadmin); // Check the subadmin object
             return `${row.original.supervisor.first_name} ${row.original.supervisor.last_name}`;
           }
         },

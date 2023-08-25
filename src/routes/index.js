@@ -12,7 +12,6 @@ import AuthGuard from '../guards/AuthGuard';
 import { PATH_AFTER_LOGIN } from '../config';
 // components
 import LoadingScreen from '../components/LoadingScreen';
-import Member from '../pages/dashboard/GangMember/Members';
 import ProfileUpdate from '../pages/dashboard/GangMember/ProfileUpdate';
 import AddPosition from '../pages/dashboard/Position/AddPosition';
 import Position from '../pages/dashboard/Position/Position';
@@ -78,26 +77,6 @@ export default function Router() {
             { path: 'update/:id', element: <ProfileUpdate /> },
             { path: 'user/profile/:id', element: <UserProfile /> },
            
-
-
-
-        //     { path: 'ecommerce', element: <GeneralEcommerce /> },
-            
-        //     { path: 'banking', element: <GeneralBanking /> },
-        //     { path: 'booking', element: <GeneralBooking /> },
-    
-        //     {
-        //       path: 'e-commerce',
-        //       children: [
-        //         { element: <Navigate to="/dashboard/e-commerce/shop" replace />, index: true },
-        //         { path: 'shop', element: <EcommerceShop /> },
-        //         { path: 'product/:name', element: <EcommerceProductDetails /> },
-        //         { path: 'list', element: <EcommerceProductList /> },
-        //         { path: 'product/new', element: <EcommerceProductCreate /> },
-        //         { path: 'product/:name/edit', element: <EcommerceProductCreate /> },
-        //         { path: 'checkout', element: <EcommerceCheckout /> },
-        //       ],
-        //     },
            ],
          },
 
@@ -145,19 +124,20 @@ const Vehicle = Loadable(lazy(() => import('../pages/dashboard/Vehicle/Vehicle')
 const EditVehicle = Loadable(lazy(() => import('../pages/dashboard/Vehicle/EditVehicle')));
 const AddVehicle = Loadable(lazy(() => import('../pages/dashboard/Vehicle/AddVehicle')));
 
-
-const GeneralEcommerce = Loadable(lazy(() => import('../pages/dashboard/GeneralEcommerce')));
-const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));
 const GeneralAnalytics = Loadable(lazy(() => import('../pages/dashboard/Dashboard')));
-const GeneralBanking = Loadable(lazy(() => import('../pages/dashboard/GeneralBanking')));
-const GeneralBooking = Loadable(lazy(() => import('../pages/dashboard/GeneralBooking')));
+const UserProfile = Loadable(lazy(() => import('../pages/dashboard/UserProfile')));
 
-// ECOMMERCE
-const EcommerceShop = Loadable(lazy(() => import('../pages/dashboard/EcommerceShop')));
-const EcommerceProductDetails = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductDetails')));
-const EcommerceProductList = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductList')));
-const EcommerceProductCreate = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductCreate')));
-const EcommerceCheckout = Loadable(lazy(() => import('../pages/dashboard/EcommerceCheckout')));
+// const GeneralEcommerce = Loadable(lazy(() => import('../pages/dashboard/GeneralEcommerce')));
+// const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));
+// const GeneralBanking = Loadable(lazy(() => import('../pages/dashboard/GeneralBanking')));
+// const GeneralBooking = Loadable(lazy(() => import('../pages/dashboard/GeneralBooking')));
+
+// // ECOMMERCE
+// const EcommerceShop = Loadable(lazy(() => import('../pages/dashboard/EcommerceShop')));
+// const EcommerceProductDetails = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductDetails')));
+// const EcommerceProductList = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductList')));
+// const EcommerceProductCreate = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductCreate')));
+// const EcommerceCheckout = Loadable(lazy(() => import('../pages/dashboard/EcommerceCheckout')));
 
 // // INVOICE
 // const InvoiceList = Loadable(lazy(() => import('../pages/dashboard/InvoiceList')));
@@ -171,11 +151,10 @@ const EcommerceCheckout = Loadable(lazy(() => import('../pages/dashboard/Ecommer
 // const BlogNewPost = Loadable(lazy(() => import('../pages/dashboard/BlogNewPost')));
 
 // USER
-const UserProfile = Loadable(lazy(() => import('../pages/dashboard/UserProfile')));
-const UserCards = Loadable(lazy(() => import('../pages/dashboard/UserCards')));
-const UserList = Loadable(lazy(() => import('../pages/dashboard/UserList')));
-const UserAccount = Loadable(lazy(() => import('../pages/dashboard/UserAccount')));
-const UserCreate = Loadable(lazy(() => import('../pages/dashboard/UserCreate')));
+// const UserCards = Loadable(lazy(() => import('../pages/dashboard/UserCards')));
+// const UserList = Loadable(lazy(() => import('../pages/dashboard/UserList')));
+// const UserAccount = Loadable(lazy(() => import('../pages/dashboard/UserAccount')));
+// const UserCreate = Loadable(lazy(() => import('../pages/dashboard/UserCreate')));
 
 // // APP
 // const Chat = Loadable(lazy(() => import('../pages/dashboard/Chat')));

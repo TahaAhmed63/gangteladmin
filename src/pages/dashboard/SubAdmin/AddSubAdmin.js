@@ -1,9 +1,6 @@
-import * as Yup from 'yup';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { useMemo } from 'react';
-
-// form
 import { useForm, } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -17,7 +14,6 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 import {
   FormProvider,
   RHFTextField,
-  RHFDescription,
 } from '../../../components/hook-form';
 
 
@@ -66,11 +62,6 @@ export default function AddSubAdmin() {
     }
   };
   
-  const handlePasswordKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      OnSubmit(methods.getValues()); // Call the onSubmit function
-    }
-  };
   
   return (
     <Container maxWidth='sm'>

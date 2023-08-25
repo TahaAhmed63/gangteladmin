@@ -3,6 +3,8 @@
 
 import { styled } from '@mui/material/styles';
 import { Box, Card, Typography, CardContent } from '@mui/material';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import cssStyles from '../../../../utils/cssStyles';
 import Image from '../../../../components/Image';
 
@@ -21,14 +23,31 @@ const CaptionStyle = styled(CardContent)(({ theme }) => ({
 }));
 
 export default function ProfileGallery({member }) {
-
-
-  
+console.log(member)  
   return (
     <Box sx={{ mt: 5 }}>
       <Typography variant="h4" sx={{ mb: 3 }}>
         Associates
       </Typography>
+      {(member?.length < 0 && member !== 'undefined')  &&
+        <div className='d-flex'>
+        <div className='mx-3'>
+        <Skeleton width={340}  height={300} baseColor="#212B36" highlightColor="#161C24"/>
+        <Skeleton width={270}  height={40} baseColor="#212B36" highlightColor="#161C24"/>
+        <Skeleton width={300}  height={40} baseColor="#212B36" highlightColor="#161C24"/>
+        </div>
+        <div className='mx-3'>
+        <Skeleton width={340}  height={300} baseColor="#212B36" highlightColor="#161C24"/>
+        <Skeleton width={270}  height={40} baseColor="#212B36" highlightColor="#161C24"/>
+        <Skeleton width={300}  height={40} baseColor="#212B36" highlightColor="#161C24"/>
+        </div>
+        <div className='mx-3'>
+        <Skeleton width={340}  height={300} baseColor="#212B36" highlightColor="#161C24"/>
+        <Skeleton width={270}  height={40} baseColor="#212B36" highlightColor="#161C24"/>
+        <Skeleton width={300}  height={40} baseColor="#212B36" highlightColor="#161C24"/>
+        </div>
+        </div>
+     }
 
       <Card sx={{ p: 3 }}>
         <Box

@@ -1,4 +1,3 @@
-import * as Yup from 'yup';
 import { useSnackbar } from 'notistack';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useMemo } from 'react';

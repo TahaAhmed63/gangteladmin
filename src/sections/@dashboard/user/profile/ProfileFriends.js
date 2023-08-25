@@ -5,16 +5,10 @@
 import { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
 import { useParams } from 'react-router';
-import PropTypes from 'prop-types';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import { Box,  Card, Typography,Stack} from '@mui/material';
 import axiosInstance from '../../../../utils/axios';
-
-
-ProfileFriends.propTypes = {
-  friends: PropTypes.array,
-  findFriends: PropTypes.string,
-  onFindFriends: PropTypes.func,
-};
 
 export default function ProfileFriends() {
   const { id } = useParams();
@@ -40,6 +34,31 @@ export default function ProfileFriends() {
     <Typography variant="h4" sx={{ mb: 3 }}>
       Vehicles
     </Typography>
+    
+    {!vehicle  && 
+      <>
+      <div className='d-flex'> 
+      <Skeleton width={400}  height={300} baseColor="#212B36" highlightColor="#161C24"/>
+      <div className='px-4'>
+      <Skeleton width={650}  height={55} baseColor="#212B36" highlightColor="#161C24"/>
+      <Skeleton width={500}  height={56} baseColor="#212B36" highlightColor="#161C24"/>
+      <Skeleton width={650}  height={56} baseColor="#212B36" highlightColor="#161C24"/>
+      <Skeleton width={300}  height={56} baseColor="#212B36" highlightColor="#161C24"/>
+      <Skeleton width={650}  height={56} baseColor="#212B36" highlightColor="#161C24"/>
+      </div>
+      </div>
+      <div className='d-flex mt-5'> 
+      <Skeleton width={400}  height={300} baseColor="#212B36" highlightColor="#161C24"/>
+      <div className='px-4'>
+      <Skeleton width={650}  height={55} baseColor="#212B36" highlightColor="#161C24"/>
+      <Skeleton width={500}  height={56} baseColor="#212B36" highlightColor="#161C24"/>
+      <Skeleton width={650}  height={56} baseColor="#212B36" highlightColor="#161C24"/>
+      <Skeleton width={300}  height={56} baseColor="#212B36" highlightColor="#161C24"/>
+      <Skeleton width={650}  height={56} baseColor="#212B36" highlightColor="#161C24"/>
+      </div>
+      </div>
+      </>
+  }
         {vehicle?.map((e)=> <FriendCard {...e}/>)}
     </Box>
   );

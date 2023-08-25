@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as Yup from 'yup';
 import { useSnackbar } from 'notistack';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -17,7 +18,6 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 import {
   FormProvider,
   RHFTextField,
-  RHFDescription,
 } from '../../../components/hook-form';
 
 

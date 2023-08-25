@@ -1,6 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
-import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Delete as DeleteIcon } from '@mui/icons-material';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';

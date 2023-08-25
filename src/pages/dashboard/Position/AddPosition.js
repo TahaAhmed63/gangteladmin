@@ -2,8 +2,6 @@ import * as Yup from 'yup';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { useMemo } from 'react';
-
-// form
 import { useForm, } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoadingButton } from '@mui/lab';
@@ -46,7 +44,6 @@ export default function AddPosition() {
 
   const OnSubmit = async () => {
     const formValues = getValues();
-    console.log(formValues)
     try {
       const gang=new FormData();
       gang.append('name',formValues?.name)   
@@ -62,7 +59,6 @@ export default function AddPosition() {
       enqueueSnackbar(error?.message,{ 
         variant: 'error'
       });
-      console.error(error);
     }
   };
 

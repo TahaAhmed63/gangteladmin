@@ -1,4 +1,4 @@
-import * as Yup from 'yup';
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useSnackbar } from 'notistack';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useMemo } from 'react';
@@ -15,17 +15,14 @@ import axios from '../../../utils/axios';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
-import { FormProvider, RHFTextField, RHFDescription } from '../../../components/hook-form';
+import { FormProvider, RHFTextField } from '../../../components/hook-form';
 
 export default function EditSubAdmin() {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
   const { products } = useSelector((state) => state.product);
-  const person = useSelector((state) => state);
-  console.log(person, 'checking new products');
   const currentAdmin = products.find((product) => product.id === +id);
-  console.log(currentAdmin, 'details admin--->>>');
 
   const defaultValues = useMemo(() => getDefaultValues(currentAdmin), []);
 
@@ -43,7 +40,6 @@ export default function EditSubAdmin() {
 
   const OnSubmit = async () => {
     const formValues = getValues();
-    console.log(formValues);
     try {
       const subadmin = new FormData();
       subadmin.append('first_name', formValues?.fname);
@@ -67,12 +63,6 @@ export default function EditSubAdmin() {
         variant: 'error',
       });
       console.error(error);
-    }
-  };
-
-  const handlePasswordKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      OnSubmit(methods.getValues()); // Call the onSubmit function
     }
   };
 

@@ -1,13 +1,10 @@
 import { combineReducers } from 'redux';
-import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import productReducer from './slices/subadmin';
 import elementReducer from './slices/supervisor';
 import magictypeReducer from './slices/magictype';
 import departReducer from './slices/department';
-import rarityReducer from './slices/rarity';
-import spellReducer from './slices/spell';
 import vehicleReducer from './slices/vehicle';
 import gangReducer from './slices/gang';
 import chapterReducer from './slices/chapter';
@@ -34,8 +31,6 @@ const rootReducer = combineReducers({
   element: elementReducer,
   magictype: magictypeReducer,
   depart: departReducer,
-  rarity: rarityReducer,
-  spell: spellReducer,
   vehicle: vehicleReducer,
   product: productReducer,
   gang: gangReducer,

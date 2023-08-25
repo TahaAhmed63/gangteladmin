@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import * as Yup from 'yup';
 import { useSnackbar } from 'notistack';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -9,7 +8,6 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoadingButton } from '@mui/lab';
 import { styled } from '@mui/material/styles';
-import makeAnimated from 'react-select/animated';
 import { Card, Grid, Stack, Container, Typography, Box, Autocomplete, Chip, TextField } from '@mui/material';
 import { FormSelect } from 'react-bootstrap';
 import { profileupdateschema, getProfileupdatevalues } from '../AllSchema/gangmember';
@@ -23,7 +21,6 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 import {
   FormProvider,
   RHFTextField,
-  RHFSelect,
   RHFUploadAvatar,
   RHFUploadMultiFile,
 } from '../../../components/hook-form';
@@ -47,7 +44,6 @@ export default function ProfileUpdate() {
 
   const {
     gang: { gangs },
-    product: { products },
     position: { positions },
     member: { members },
   } = useSelector((state) => state);
@@ -73,9 +69,6 @@ export default function ProfileUpdate() {
 
   const getGangId = (e) => {
     setGangid(e.target.value);
-    // setTimeout(() => {
-    //   getChapters();
-    // }, 5000);
   };
 
   useEffect(() => {
@@ -188,6 +181,7 @@ export default function ProfileUpdate() {
     const filteredItems = values.images?.filter((_file) => _file !== file);
     setValue('recent_pictrue', filteredItems);
   };
+  
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(OnSubmit)}>
       <Container maxWidth="lg">
