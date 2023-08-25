@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-// @mui
+/* eslint-disable react/prop-types */
+
 import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
 // utils
