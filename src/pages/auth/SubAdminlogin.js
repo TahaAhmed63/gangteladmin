@@ -1,13 +1,9 @@
-import { capitalCase } from 'change-case';
-import { Link as RouterLink } from 'react-router-dom';
-// @mui
+
 import { styled } from '@mui/material/styles';
-import { Box, Card, Stack, Link, Alert, Tooltip, Container, Typography } from '@mui/material';
+import { Box, Card, Stack, Container, Typography } from '@mui/material';
 // routes
 import loginwebp from '../../assets/login.webp'
-import { PATH_AUTH } from '../../routes/paths';
-// hooks
-import useAuth from '../../hooks/useAuth';
+
 import useResponsive from '../../hooks/useResponsive';
 // components
 import Page from '../../components/Page';
@@ -62,9 +58,6 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Login() {
-  const { method } = useAuth();
-
-  const smUp = useResponsive('up', 'sm');
 
   const mdUp = useResponsive('up', 'md');
 

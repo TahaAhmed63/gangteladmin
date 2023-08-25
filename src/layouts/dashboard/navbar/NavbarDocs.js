@@ -1,11 +1,6 @@
 // @mui
 import { Stack } from '@mui/material';
-// hooks
-import useAuth from '../../../hooks/useAuth';
-// assets
 import { DocIllustration } from '../../../assets';
-
-// ----------------------------------------------------------------------
 
 export default function NavbarDocs() {
   return (

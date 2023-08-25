@@ -130,23 +130,23 @@ function AuthProvider({ children }) {
     });
   };
 
-  const register = async (email, password, firstName, lastName) => {
-    const response = await axios.post('/api/account/register', {
-      email,
-      password,
-      firstName,
-      lastName,
-    });
-    const { accessToken, user } = response.data;
+  // const register = async (email, password, firstName, lastName) => {
+  //   const response = await axios.post('/api/account/register', {
+  //     email,
+  //     password,
+  //     firstName,
+  //     lastName,
+  //   });
+  //   const { accessToken, user } = response.data;
 
-    window.localStorage.setItem('accessToken', accessToken);
-    dispatch({
-      type: 'REGISTER',
-      payload: {
-        user,
-      },
-    });
-  };
+  //   window.localStorage.setItem('accessToken', accessToken);
+  //   dispatch({
+  //     type: 'REGISTER',
+  //     payload: {
+  //       user,
+  //     },
+  //   });
+  // };
 
   const logout = async () => {
     setSession(null);
