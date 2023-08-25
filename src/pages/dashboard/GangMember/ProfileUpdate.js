@@ -317,7 +317,7 @@ export default function ProfileUpdate() {
                                 <Chip {...getTagProps({ index })} key={option.id} size="small" label={option.name} />
                               ))
                             }
-                            renderInput={(params) => <TextField label="Tags" {...params} />}
+                            renderInput={(params) => <TextField label="Associates" {...params}   focused/>}
                           />
                         )}
                       />
