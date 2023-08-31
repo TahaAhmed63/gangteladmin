@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 // form
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -7,69 +6,80 @@ import { useForm } from 'react-hook-form';
 import { Stack } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useSnackbar } from 'notistack';
-import axios from '../../../utils/axios';
+import axios from '../../utils/axios';
 // import useIsMountedRef from '../../../hooks/useIsMountedRef';
-// components
-import { FormProvider, RHFTextField } from '../../../components/hook-form';
+import { FormProvider, RHFTextField } from '../../components/hook-form';
 
 // ----------------------------------------------------------------------
 
-ResetPasswordForm.propTypes = {
-  onSent: PropTypes.func,
-  onGetEmail: PropTypes.func,
-};
 
-export default function ResetPasswordForm({ onSent, onGetEmail }) {
+
+export default function ForgetPasswordForm() {
   // const isMountedRef = useIsMountedRef();
   const { enqueueSnackbar } = useSnackbar();
 
   const ResetPasswordSchema = Yup.object().shape({
-    email: Yup.string().email('Email must be a valid email address').required('Email is required'),
+    email: Yup.string()
+      .email('Email must be a valid email address')
+      .required('Email is required'),
+    code: Yup.string().required('Code is required'),
+    password: Yup.string()
+      .required('Password is required')
+      .min(8, 'Password must be at least 8 characters'),
+    confirm_password: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Confirm password must match for Pasword')
+      .required('Confirm password is required'),
   });
 
   const methods = useForm({
     resolver: yupResolver(ResetPasswordSchema),
-    defaultValues: { email: '' },
+    defaultValues: { email: '',code:'',password:'',confirm_password:'' },
   });
 
   const {
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting ,errors},
   } = methods;
+  console.log(errors,'errors---->>>')
 
   const onSubmit = async (data) => {
+    console.log(data)
     try {
       const forget = new FormData();
       forget.append('email', data?.email);
+      forget.append('token', data?.code);
+      forget.append('password', data?.password);
+      forget.append('confirm_password', data?.confirm_password);
       await axios
-        .post('admin/forgot/password', forget)
+        .post('admin/reset/password', forget)
         .then((response) => {
-          console.log(response)
+            console.log(response)
           if (response?.data?.status === true) {
             enqueueSnackbar(response?.data?.message);
-             onSent();
-            onGetEmail(data.email);
           }
           else{
             enqueueSnackbar(response?.data?.message);
           }
         });
-    } catch (error) {
-      enqueueSnackbar(error?.message, {
+    } catch (errors) {
+      enqueueSnackbar(errors.errors[0], {
         variant: 'error',
       });
-      console.error(error);
+      console.log(errors.errors[0]);
     }
   };
 
 
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <Stack spacing={3}>
+      <Stack spacing={3} sx={{mt:5}}>
         <RHFTextField name="email" label="Email address" />
+        <RHFTextField name="code" label="Code" />
+        <RHFTextField name="password" label="Password" />
+        <RHFTextField name="confirm_password" label="Confirm Password" />
 
         <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
-          Reset Password
+          Submit
         </LoadingButton>
       </Stack>
     </FormProvider>
