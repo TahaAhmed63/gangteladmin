@@ -40,6 +40,7 @@ export default function Router() {
     { path: '/login/officer', element: <Officerlogin/> },
     { path: '/login/member', element: <Memberlogin/> },
     { path: '/reset-passsword', element: <ResetPassword /> },
+    { path: '/verify', element: <VerifyCode /> },
     {
           path: 'dashboard',
           element: (
@@ -93,7 +94,7 @@ const Officerlogin = Loadable(lazy(() => import('../pages/auth/Officerlogin')));
 const Memberlogin = Loadable(lazy(() => import('../pages/auth/Memberlogin')));
 // const Register = Loadable(lazy(() => import('../pages/auth/Register')));
 const ResetPassword = Loadable(lazy(() => import('../pages/auth/ResetPassword')));
-// const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
+const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
 
 
 const SubAdmin = Loadable(lazy(() => import('../pages/dashboard/SubAdmin/SubAdmin')));

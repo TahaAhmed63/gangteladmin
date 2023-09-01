@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
+
 import { styled } from '@mui/material/styles';
 import { Box, Button, Container, Typography } from '@mui/material';
 import LogoOnlyLayout from '../../layouts/LogoOnlyLayout';
 import Page from '../../components/Page';
-// sections
-import { ResetPasswordForm } from '../../sections/auth/reset-password';
+
 // assets
 import { SentIcon } from '../../assets';
+import ForgetPasswordForm from './ForgetPasswordForm';
+import { ResetPasswordForm } from '../../sections/auth/reset-password';
 
 // ----------------------------------------------------------------------
 
@@ -51,7 +53,7 @@ export default function ResetPassword() {
               </>
             ) : (
               <Box sx={{ textAlign: 'center' }}>
-                <SentIcon sx={{ mb: 5, mx: 'auto', height: 160 }} />
+                <SentIcon sx={{ mb: 2, mx: 'auto', height: 120 }} />
 
                 <Typography variant="h3" gutterBottom>
                   Request sent successfully
@@ -63,9 +65,7 @@ export default function ResetPassword() {
                   Please check your email.
                 </Typography>
 
-                <Button size="large" variant="contained" component={RouterLink} to='/' sx={{ mt: 5 }}>
-                  Back
-                </Button>
+               <ForgetPasswordForm/>
               </Box>
             )}
           </Box>
